@@ -80,7 +80,38 @@ Its LRF: $f(x) = x - 1$
 Problem: LRF is not strong enough for all loops.
 \begin{example}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
+
+$f(x, y, z) = a_1x + a_2y + a_3z + b$
+
+$y$ cannot be used for non-existence of its lower bound.
+
+$f(x, y, z) = x + z$
+
+Problem?
 \end{example}
 
+\end{frame}
+
+
+\begin{frame}\frametitle{Example: Multiphase Ranking Function}
+\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
+
+$\langle z + 1, y + 1, x\rangle$
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+$x$&$y$&$z$&$z+1$&$y+1$&$x$\\
+\hline
+$1$&$1$&$1$&$2$&$2$&$1$\\
+$2$&$2$&$0$&$1$&$3$&$2$\\
+$4$&$2$&$-1$&$0$&$3$&$4$\\
+\hline
+$6$&$1$&$-2$&$-1$&$2$&$6$\\
+$7$&$-1$&$-3$&$-2$&$0$&$7$\\
+\hline
+$6$&$-4$&$-4$&$-3$&$-3$&$6$\\
+$2$&$-8$&$-5$&$-4$&$-7$&$2$\\
+\hline
+$-6$&$-13$&$-6$&$$&$$&$$\\
+\end{tabular}
 \end{frame}
 \end{document}

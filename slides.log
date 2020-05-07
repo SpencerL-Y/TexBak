@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  7 MAY 2020 11:16
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  7 MAY 2020 11:30
 entering extended mode
 **C:/Users/10244/Desktop/tex/slides.tex
 (C:/Users/10244/Desktop/tex/slides.tex
@@ -953,16 +953,18 @@ ng>] [4
 
 ] [5
 
+] [6
+
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
 
 (C:\Users\10244\Desktop\tex\slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -972,10 +974,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 15461 strings out of 495354
- 292237 string characters out of 3182178
+ 15465 strings out of 495354
+ 292270 string characters out of 3182178
  357080 words of memory out of 3000000
- 18247 multiletter control sequences out of 15000+200000
+ 18249 multiletter control sequences out of 15000+200000
  13763 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  49i,14n,53p,444b,545s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -992,9 +994,9 @@ ediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><I:
 .pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/
 amsfonts/symbols/msam10.pfb>
-Output written on slides.pdf (5 pages, 171413 bytes).
+Output written on slides.pdf (6 pages, 177382 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
