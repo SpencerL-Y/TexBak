@@ -96,7 +96,9 @@ Problem?
 \begin{frame}\frametitle{Example: Multiphase Ranking Function}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
 
+Attempt to use a ranking function that has several phases: 
 $\langle z + 1, y + 1, x\rangle$
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
 $x$&$y$&$z$&$z+1$&$y+1$&$x$\\
@@ -111,7 +113,63 @@ $7$&$-1$&$-3$&$-2$&$0$&$7$\\
 $6$&$-4$&$-4$&$-3$&$-3$&$6$\\
 $2$&$-8$&$-5$&$-4$&$-7$&$2$\\
 \hline
-$-6$&$-13$&$-6$&$$&$$&$$\\
+$-6$&$-13$&$-6$&$-5$&$-12$&$-6$\\
+\hline
 \end{tabular}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}{Multiphase Ranking Function}
+\begin{definition}
+Given a set of transitions $T\subseteq \mathbb{Q}^{2n}$, we say $\langle f_1, \ldots, f_d\rangle$ is a multiphase ranking function for $T$ if for every $\textbf{x}'' \in T$, there is an index $i\in [1, d]$, s.t.
+
+\begin{center}
+\includegraphics[scale = 0.3]{3.png}
+\end{center}
+We say that $\textbf{x}''$ is ranked by $f_i$(for the minimal).
+\end{definition}
+
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Example Revisit}
+\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
+
+\begin{center}
+\includegraphics[scale = 0.2]{3.png}
+
+\includegraphics[scale = 0.4]{3.pdf}
+\end{center}
+\end{frame}
+
+
+\begin{frame}\frametitle{Nested Ranking Function}
+\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
+
+Loop condition: $x + z > 0$. We only want to use this constraint for the ranking function.
+
+$\langle z + 1, y + 1, x + z\rangle$
+
+
+\begin{definition}[Nested Ranking Function]
+
+A tuple $\langle f_1, \ldots, f_d\rangle$ is a nested ranking function for $T$ if the following requirements are satisfied for all $\textbf{x}''\in T$
+\begin{center}
+\includegraphics[scale = 0.3]{6.png}
+
+\end{center}
+
+\end{definition}
+
+Let $f_0 = 0$.
+\end{frame}
+
+\begin{frame}\frametitle{}
+
+
+
 \end{frame}
 \end{document}

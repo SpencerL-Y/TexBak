@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  7 MAY 2020 11:30
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  7 MAY 2020 12:08
 entering extended mode
 **C:/Users/10244/Desktop/tex/slides.tex
 (C:/Users/10244/Desktop/tex/slides.tex
@@ -956,15 +956,45 @@ ng>] [4
 ] [6
 
 ]
+<3.png, id=183, 330.48468pt x 179.16937pt>
+File: 3.png Graphic file (type png)
+ <use 3.png>
+Package pdftex.def Info: 3.png used on input line 135.
+(pdftex.def)             Requested size: 99.14616pt x 53.75122pt.
+ [7
+
+ <C:/Users/10244/Desktop/tex/3.png>]
+File: 3.png Graphic file (type png)
+ <use 3.png>
+Package pdftex.def Info: 3.png used on input line 146.
+(pdftex.def)             Requested size: 66.09576pt x 35.83324pt.
+ <3.pdf, id=212, 559.33969pt x 403.5075pt>
+File: 3.pdf Graphic file (type pdf)
+
+<use 3.pdf>
+Package pdftex.def Info: 3.pdf used on input line 146.
+(pdftex.def)             Requested size: 223.7319pt x 161.40013pt.
+ [8
+
+ <C:/Users/10244/Desktop/tex/3.pdf>]
+<6.png, id=261, 884.55469pt x 155.83218pt>
+File: 6.png Graphic file (type png)
+ <use 6.png>
+Package pdftex.def Info: 6.png used on input line 168.
+(pdftex.def)             Requested size: 265.36845pt x 46.75002pt.
+ [9
+
+ <C:/Users/10244/Desktop/tex/6.png>] [10
+
+]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
-
-(C:\Users\10244\Desktop\tex\slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+ (C:\Users\10244\Desktop\tex\slides.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -974,10 +1004,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 15465 strings out of 495354
- 292270 string characters out of 3182178
- 357080 words of memory out of 3000000
- 18249 multiletter control sequences out of 15000+200000
+ 15495 strings out of 495354
+ 292535 string characters out of 3182178
+ 365080 words of memory out of 3000000
+ 18269 multiletter control sequences out of 15000+200000
  13763 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  49i,14n,53p,444b,545s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -993,10 +1023,11 @@ ediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><I:
 /work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/
-amsfonts/symbols/msam10.pfb>
-Output written on slides.pdf (6 pages, 177382 bytes).
+amsfonts/symbols/msam10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (10 pages, 452390 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 355 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
