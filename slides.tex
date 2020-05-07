@@ -8,7 +8,7 @@
 
 \title{On Multiphase-Linear Ranking Functions}
 \date{\today}
-
+\author{Xie Li}
 
 \begin{document}
 \maketitle
@@ -28,16 +28,26 @@
 
 \begin{frame}\frametitle{Single Path Linear Constraint Loop}
 \begin{example}
+\begin{center}
 
+\includegraphics[scale = 0.4]{loopExample.png}
 
+\includegraphics[scale = 0.4]{loopExample1.png}
+\end{center}
 
 \end{example}
 
 \begin{definition}[SLC]
-
+\includegraphics[scale = 0.4]{1.png}
 
 
 \end{definition}
+\begin{center}
+\includegraphics[scale = 0.35]{2.png}
+
+$A''\textbf{x}'' \le \textbf{c}''$
+\end{center}
+
 
 \end{frame}
 
@@ -58,8 +68,18 @@ $f(x_1, \ldots, x_n) = a_1x_1 + \ldots a_nx_n + a_0$, such that
 \end{definition}
 
 \begin{example}
+\[\texttt{while }( x - 1 > 0) \texttt{do } x' = x - 1\]
+
+Its LRF: $f(x) = x - 1$
+\end{example}
+
+\end{frame}
 
 
+\begin{frame}\frametitle{Example: Multiphase Ranking Function}
+Problem: LRF is not strong enough for all loops.
+\begin{example}
+\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
 \end{example}
 
 \end{frame}
