@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  9 MAY 2020 16:09
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  10 MAY 2020 01:45
 entering extended mode
 **C:/Users/10244/Desktop/tex/proofs.tex
 (C:/Users/10244/Desktop/tex/proofs.tex
@@ -935,11 +935,11 @@ Overfull \hbox (17.32088pt too wide) in paragraph at lines 118--118
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
  (C:\Users\10244\Desktop\tex\proofs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 169.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
 Package rerunfilecheck Info: File `proofs.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -954,7 +954,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  15506 strings out of 495354
  292987 string characters out of 3182178
- 359425 words of memory out of 3000000
+ 359424 words of memory out of 3000000
  18276 multiletter control sequences out of 15000+200000
  17056 words of font info for 67 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -976,7 +976,7 @@ public/amsfonts/cm/cmsy8.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/font
 s/type1/public/amsfonts/cm/cmtt12.pfb><I:/work_immediate/basic_software/CTEX/Mi
 KTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><I:/work_immediate/basic_so
 ftware/CTEX/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on proofs.pdf (10 pages, 454970 bytes).
+Output written on proofs.pdf (10 pages, 455269 bytes).
 PDF statistics:
  356 PDF objects out of 1000 (max. 8388607)
  21 named destinations out of 1000 (max. 500000)

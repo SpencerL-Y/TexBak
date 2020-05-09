@@ -156,12 +156,27 @@ For LLRF: $\Delta f_1(\textbf{x}'') > 0$, $f_1(\textbf{x}) \ge 0$ is a LRF due t
 
 For M$\Phi$RF: is a LRF.
 
-\item $d > 1$:
+\item $d > 1$: Observe that for a given LLRF $\langle f_1, f_2, \ldots, f_d\rangle $, after removing $f_k$, $\langle f_1, \ldots, f_{k-1}, f_{k+1}, \ldots, f_d\rangle$ is also a LLRF.
+
+If we apply IH here, we get a M$\Phi$RF of depth $d-1$.
 
 \end{itemize}
 
 
 \end{proof}
+
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Weak LLRF to M$\Phi$RF}
+Now we want some techniques to use a M$\Phi$RF of depth $d-1$ and $f_k$ we removed to prove there is a M$\Phi$RF of depth $d$ on $\mathcal{Q}$. 
+\begin{lemma}[2]
+Let $f$ be a non-negative linear function over $\mathcal{Q}$. If $\mathcal{Q}' = \mathcal{Q}\ cap \{\textbf{x} '' \mid \Delta f(\textbf{x} '') \le 0\}$ has 
+
+\end{lemma}
+
+
 \end{frame}
 
 \end{document}
