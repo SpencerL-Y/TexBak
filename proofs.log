@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  8 MAY 2020 23:25
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  9 MAY 2020 11:44
 entering extended mode
-**C:/Users/10244/Desktop/tex/slides.tex
-(C:/Users/10244/Desktop/tex/slides.tex
+**C:/Users/10244/Desktop/tex/proofs.tex
+(C:/Users/10244/Desktop/tex/proofs.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\beamer\base\beamer.cls
@@ -745,7 +745,7 @@ LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\beamer\base\themes\font
 \beamerfontthemeserif.sty
 Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
-) (C:\Users\10244\Desktop\tex\slides.aux)
+) (C:\Users\10244\Desktop\tex\proofs.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
@@ -824,8 +824,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
- (C:\Users\10244\Desktop\tex\slides.out)
-(C:\Users\10244\Desktop\tex\slides.out)
+ (C:\Users\10244\Desktop\tex\proofs.out)
+(C:\Users\10244\Desktop\tex\proofs.out)
 \@outlinefile=\write5
 
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\beamer\base\translator\
@@ -855,7 +855,7 @@ dicts\translator-theorem-dictionary\translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
 LaTeX Info: Redefining \includegraphics on input line 13.
-(C:\Users\10244\Desktop\tex\slides.nav)
+(C:\Users\10244\Desktop\tex\proofs.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 14.
@@ -864,166 +864,60 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 {I:/work_immediate/basic_software/CTEX/UserData/pdftex/config/pdftex.map{Unicod
 e.sfd}{UGBK.sfd}}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+LaTeX Font Info:    Try loading font information for U+msa on input line 35.
 
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+LaTeX Font Info:    Try loading font information for U+msb on input line 35.
 
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 27.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 35.
 
 (I:\work_immediate\basic_software\CTEX\MiKTeX\tex\latex\stmaryrd\ustmry.fd)
 [2
 
-] <loopExample.png, id=67, 677.53125pt x 74.52844pt>
-File: loopExample.png Graphic file (type png)
- <use loopExample.png>
-Package pdftex.def Info: loopExample.png used on input line 52.
-(pdftex.def)             Requested size: 271.00769pt x 29.81084pt.
+] [3
 
-<loopExample1.png, id=69, 804.00375pt x 76.78688pt>
-File: loopExample1.png Graphic file (type png)
- <use loopExample1.png>
-Package pdftex.def Info: loopExample1.png used on input line 52.
-(pdftex.def)             Requested size: 321.59581pt x 30.7142pt.
-
-Overfull \hbox (14.30594pt too wide) in paragraph at lines 52--52
- [][] 
- []
-
-<1.png, id=70, 385.44pt x 99.37125pt>
-File: 1.png Graphic file (type png)
- <use 1.png>
-Package pdftex.def Info: 1.png used on input line 52.
-(pdftex.def)             Requested size: 154.17326pt x 39.74779pt.
-
-<2.png, id=71, 581.17125pt x 108.405pt>
-File: 2.png Graphic file (type png)
- <use 2.png>
-Package pdftex.def Info: 2.png used on input line 52.
-(pdftex.def)             Requested size: 203.41298pt x 37.9423pt.
- [3
-
- <C:/Users/10244/Desktop/tex/loopExample.png> <C:/Users/10244/Desktop/tex/loopE
-xample1.png> <C:/Users/10244/Desktop/tex/1.png> <C:/Users/10244/Desktop/tex/2.p
-ng>] [4
-
-] [5
-
-] [6
+] [4
 
 ]
-<3.png, id=183, 330.48468pt x 179.16937pt>
-File: 3.png Graphic file (type png)
- <use 3.png>
-Package pdftex.def Info: 3.png used on input line 137.
-(pdftex.def)             Requested size: 99.14616pt x 53.75122pt.
- [7
 
- <C:/Users/10244/Desktop/tex/3.png>]
-File: 3.png Graphic file (type png)
- <use 3.png>
-Package pdftex.def Info: 3.png used on input line 148.
-(pdftex.def)             Requested size: 66.09576pt x 35.83324pt.
- <3.pdf, id=212, 559.33969pt x 403.5075pt>
-File: 3.pdf Graphic file (type pdf)
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 74.
 
-<use 3.pdf>
-Package pdftex.def Info: 3.pdf used on input line 148.
-(pdftex.def)             Requested size: 223.7319pt x 161.40013pt.
- [8
-
- <C:/Users/10244/Desktop/tex/3.pdf>]
-<6.png, id=261, 884.55469pt x 155.83218pt>
-File: 6.png Graphic file (type png)
- <use 6.png>
-Package pdftex.def Info: 6.png used on input line 173.
-(pdftex.def)             Requested size: 265.36845pt x 46.75002pt.
- [9
-
- <C:/Users/10244/Desktop/tex/6.png>] [10
-
-] <4.png, id=315, 512.66531pt x 253.69781pt>
-File: 4.png Graphic file (type png)
- <use 4.png>
-Package pdftex.def Info: 4.png used on input line 203.
-(pdftex.def)             Requested size: 133.28983pt x 65.95987pt.
-
-[11
-
- <C:/Users/10244/Desktop/tex/4.png>]
-File: 4.png Graphic file (type png)
- <use 4.png>
-Package pdftex.def Info: 4.png used on input line 233.
-(pdftex.def)             Requested size: 102.53123pt x 50.73866pt.
- [12
-
-] [13
-
-] [14
-
-]
-<7.png, id=418, 810.77907pt x 76.03406pt>
-File: 7.png Graphic file (type png)
- <use 7.png>
-Package pdftex.def Info: 7.png used on input line 274.
-(pdftex.def)             Requested size: 243.2356pt x 22.81038pt.
- [15
-
- <C:/Users/10244/Desktop/tex/7.png>] [16
-
-] <5.png, id=470, 575.14874pt x 34.62938pt>
-File: 5.png Graphic file (type png)
- <use 5.png>
-Package pdftex.def Info: 5.png used on input line 301.
-(pdftex.def)             Requested size: 230.05542pt x 13.85149pt.
-
-<8.png, id=471, 769.37437pt x 88.07906pt>
-File: 8.png Graphic file (type png)
- <use 8.png>
-Package pdftex.def Info: 8.png used on input line 301.
-(pdftex.def)             Requested size: 307.7443pt x 35.23099pt.
-
-Overfull \hbox (0.45442pt too wide) in paragraph at lines 301--301
- [] 
- []
-
-[17
-
- <C:/Users/10244/Desktop/tex/5.png> <C:/Users/10244/Desktop/tex/8.png>]
-[18
-
-] [19
+[5
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
- (C:\Users\10244\Desktop\tex\slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
-Package rerunfilecheck Info: File `slides.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
+ (C:\Users\10244\Desktop\tex\proofs.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 75.
+Package rerunfilecheck Info: File `proofs.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 15595 strings out of 495354
- 294159 string characters out of 3182178
- 365425 words of memory out of 3000000
- 18340 multiletter control sequences out of 15000+200000
- 18270 words of font info for 73 fonts, out of 3000000 for 9000
+ 15457 strings out of 495354
+ 292269 string characters out of 3182178
+ 359425 words of memory out of 3000000
+ 18242 multiletter control sequences out of 15000+200000
+ 16719 words of font info for 65 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 49i,14n,53p,444b,736s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,14n,53p,444b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
 <I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi8.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/pu
@@ -1037,12 +931,11 @@ _immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pf
 b><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmtt10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts
-/type1/public/amsfonts/symbols/msam10.pfb><I:/work_immediate/basic_software/CTE
-X/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (19 pages, 586120 bytes).
+blic/amsfonts/symbols/msam10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on proofs.pdf (5 pages, 146751 bytes).
 PDF statistics:
- 603 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 193 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
