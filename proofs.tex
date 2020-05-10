@@ -395,19 +395,84 @@ Problem: how to prove the existence of the lower bound?
 
 
 \begin{frame}\frametitle{Prove the Lower Bound}
-$\mathcal{Q}_I', \mathcal{Q}_I''$. Let $f_i(\textbf{x}) = \vec{a}_i\textbf{x} - b_i$.
+$\mathcal{Q}_I', \mathcal{Q}_I''$.
 \begin{itemize}
 \item If $\mathcal{Q}_I'$ is empty, then by the definition of $\mathcal{Q}'$ $f_1$ is lower bounded.
 
 \item Otherwise, prove the lower bound on $\mathcal{Q}_I \setminus \mathcal{Q}_I'$
+\[\mathcal{Q}'_I = \{\textbf{x}'' \mid \vec{a}_i\cdot \textbf{x}'' \le b_i, i \in [1, m]\}\]
+\[\mathcal{P}_i = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' > b_i\}\]
+\[\mathcal{P}_i' = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' \ge b_i\}\]
+
+For $i\in [1, m]$.
+Then clearly $\mathcal{Q}_I\setminus \mathcal{Q}_I' \subseteq \bigcup_{i = 1}^{m} \mathcal{P}_i$, by construction all the integer points in $\mathcal{P}_i$ are also in $\mathcal{Q}_I\setminus \mathcal{Q}_I'$.
+
+Proof target: for every $i$, $f_1$ is lower bounded in $\mathcal{P}_i$ for every $i$.
+
+Fix $i$ for the following arguments, s.t. $\mathcal{P}_i$ is not empty.
+
+
+
 \end{itemize}
 
 
 \end{frame}
 
 
-
 \begin{frame}
+\frametitle{Prove the Lower Bound}
+
+\[\mathcal{Q}'_I = \{\textbf{x}'' \mid \vec{a}_i\cdot \textbf{x}'' \le b_i, i \in [1, m]\}\]
+\[\mathcal{P}_i = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' > b_i\}\]
+\[\mathcal{P}_i' = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' \ge b_i\}\]
+
+
+
+
+Assume (prove by contradiction) $\mathcal{P}_i$ does not lower bound $f_1$.
+Let $\textbf{x}''_0\in \mathcal{P}_i$.
+
+\[f_1(\textbf{x}) = \vec{\lambda}\cdot \textbf{x} + \lambda_0 \]
+\[\mathcal{P}_i = \mathcal{O} + \mathcal{C}\]
+
+There must be a vector $\textbf{y}''\in \mathcal{C}$ s.t. $\vec{\lambda}\cdot \textbf{y}  < 0$
+
+
+\end{frame}
+
+\begin{frame}\frametitle{Prove the Lower Bound}
+
+\[\mathcal{Q}' = \mathcal{Q}_I\cap \{\textbf{x}''\mid f_1(\textbf{x}) \le -1\}\]
+\[\mathcal{Q}'_I = \{\textbf{x}'' \mid \vec{a}_i\cdot \textbf{x}'' \le b_i, i \in [1, m]\}\]
+\[\mathcal{P}_i = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' > b_i\}\]
+\[\mathcal{P}_i' = \mathcal{Q}_I \cap \{\textbf{x}''\mid \vec{a}_i \cdot \textbf{x}'' \ge b_i\}\]
+
+$\textbf{x}_0'' + k\textbf{y}''$ is in $\mathcal{P}_i'$, the set $S = \{\textbf{x}_0'' + k\textbf{y}''\mid k \in \mathbb{Z}_+\}$ is contained in $\mathcal{P}_i$.
+
+Integer points of $\mathcal{P}_i$ are all in $\mathcal{Q}_I\setminus \mathcal{Q}_I'$.
+
+Contradiction.
+
+Hence, $f_1$ is bounded.
+\end{frame}
+
+
+\begin{frame}\frametitle{Intuition: Proof of the Lower Bound}
+
+\end{frame}
+
+
+
+\begin{frame}\frametitle{The Depth of a M$\Phi$RF}
+Idea: pre-compute the depth $d$ for M$\Phi$RF synthesis.
+
+\begin{theorem}[5]
+For integer $B > 0$, the following loop $\mathcal{Q}_B$
+\begin{center}
+\includegraphics[scale=0.5]{5.PNG}
+\end{center}
+needs at least $B + 1$ components in any M$\Phi$RF.
+\end{theorem}
 
 \end{frame}
 \end{document}
