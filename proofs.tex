@@ -20,11 +20,30 @@
 
 \includegraphics[scale = 0.4]{loopExample.png}
 
-\includegraphics[scale = 0.4]{loopExample1.png}
-\end{center}
 
+\end{center}
+Let $B = (-1, 0, 1)$, $\textbf{x} = (x, y, z)^T, \textbf{b} = 0$.
+
+Let $\textbf{x}'' = (x, y, z, x', y', z')$, 
+
+\begin{equation}
+A = \left[
+\begin{array}{cccccc}
+     1 &1 &0 -1 & 0 & 0 \\
+     0 & 1 & 1 & 0 & -1 & 0 \\
+     0& 0 & 1 & 0 & 0 & -1
+\end{array}
+\right]
+\end{equation}
+
+and $\textbf{c} = (0, 0, 1)^T$
 \end{example}
 
+
+
+
+\end{frame}
+\begin{frame}\frametitle{Single Path Linear Constraint Loop}
 \begin{definition}[SLC]
 \includegraphics[scale = 0.4]{1.PNG}
 
@@ -35,10 +54,7 @@
 
 $A''\textbf{x}'' \le \textbf{c}''$
 \end{center}
-
-
 \end{frame}
-
 \begin{frame}\frametitle{Ranking Functions}
 
 \begin{definition}[Linear Ranking Function(LRF)]
@@ -81,6 +97,18 @@ Let $f_0 = 0$.
 
 \end{frame}
 
+\begin{frame}\frametitle{Limitation of LRF}
+\[\texttt{while } (q > 0) \texttt{do } q' = q - y, y ' = y + 1\]
+
+Assume there is a LRF for this loop, say $f(q, y) = a_1 q + a_2 y + b$
+
+\[f_(q, y) - f(q', y') = a_1y + a_2\]
+
+
+Since $y$ is not bounded, we cannot guarantee  $\Delta f(q,y,q',y') > 0$
+
+\end{frame}
+
 \begin{frame}\frametitle{Example: Nested r.f.}
 \begin{center}
 \includegraphics[scale = 0.3]{6.PNG}
@@ -93,7 +121,7 @@ Let $f_0 = 0$.
 \item Above loop has Nested r.f. $\langle 1-y, q + 1\rangle$
 \item 
 \begin{center}
-\includegraphics[scale = 0.35]{10.png}
+\includegraphics[scale = 0.35]{10.PNG}
 \end{center}
 \end{itemize}
 \end{frame}
@@ -139,9 +167,9 @@ We say that $\textbf{x}''$ is ranked by $f_i$(for the minimal).
 
 
 \begin{frame}\frametitle{Example Revisit}
-\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
+\[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z' = z - 1\]
 \[\langle z + 1, y + 1, x \rangle\]
-$\textbf{x}''$ is ranked by $f_k$ when $i = k$.
+$\textbf{x}''$ is ranked by $f_k$ when $i = k$. In this example, $f_1(x, y, z) = z + 1$, $f_2(x, y, z) = y + 1$ and $f_3(x, y, z) = x$
 \begin{center}
 \includegraphics[scale = 0.2]{3.PNG}
 
@@ -271,7 +299,7 @@ BM$\Phi$RF($\mathbb{Q}$)$\in$\texttt{PTIME}.
 \end{theorem}
 
 \begin{proof}
-
+Leike et al. .Ranking Templates for Linear Loops. 
 
 \end{proof}
 \end{frame}
@@ -533,7 +561,7 @@ Assume the loop has a M$\Phi$RF with depth $B$, then it is obvious that there ar
 \begin{frame}\frametitle{Proof of Theorem (5)}
 $j > i$ and $f_k(x, y) = a_1 x + a_2 y + a_0$
 \begin{center}
-\includegraphics[scale = 0.3]{9.png}
+\includegraphics[scale = 0.3]{9.PNG}
 \end{center}
 
 \end{frame}
