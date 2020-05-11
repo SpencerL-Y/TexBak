@@ -93,7 +93,7 @@ Let $f_0 = 0$.
 \item Above loop has Nested r.f. $\langle 1-y, q + 1\rangle$
 \item 
 \begin{center}
-%TODO include graphics
+\includegraphics[scale = 0.35]{10.png}
 \end{center}
 \end{itemize}
 \end{frame}
@@ -140,11 +140,12 @@ We say that $\textbf{x}''$ is ranked by $f_i$(for the minimal).
 
 \begin{frame}\frametitle{Example Revisit}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
-
+\[\langle z + 1, y + 1, x \rangle\]
+$\textbf{x}''$ is ranked by $f_k$ when $i = k$.
 \begin{center}
 \includegraphics[scale = 0.2]{3.PNG}
 
-\includegraphics[scale = 0.4]{3.pdf}
+\includegraphics[scale = 0.3]{3.pdf}
 \end{center}
 \end{frame}
 
@@ -462,8 +463,9 @@ Fix $i$ for the following arguments, s.t. $\mathcal{P}_i$ is not empty.
 \end{frame}
 
 \begin{frame}\frametitle{Intuition: Proof of the Lower Bound}
+\[\mathcal{Q}' = \mathcal{Q}_I\cap \{\textbf{x}''\mid f_1(\textbf{x}) \le -1\}\]
 \begin{center}
-%TODO include graphics
+\includegraphics[scale = 0.4]{lowerbound.png}
 \end{center}
 \end{frame}
 
@@ -531,7 +533,7 @@ Assume the loop has a M$\Phi$RF with depth $B$, then it is obvious that there ar
 \begin{frame}\frametitle{Proof of Theorem (5)}
 $j > i$ and $f_k(x, y) = a_1 x + a_2 y + a_0$
 \begin{center}
-%TODO include graphics here
+\includegraphics[scale = 0.3]{9.png}
 \end{center}
 
 \end{frame}
@@ -580,7 +582,7 @@ Proof Idea: Use the bound for $-\Delta f_k(\textbf{x}_i '')$ to bound $F_k(t)$.
 
 \begin{frame}\frametitle{Proof of Lemma (6)}
 \begin{center}
-\includegraphics[scale= 0.35]{14.png}
+\includegraphics[scale= 0.33]{14.png}
 \end{center}
 where $ \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) \ge \Delta f_k(\textbf{x}'') = f_k(\textbf{x}_{i+1} - f_k(\textbf{x}_{i})$
 \end{frame}
