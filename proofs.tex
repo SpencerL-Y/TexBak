@@ -80,6 +80,23 @@ Let $f_0 = 0$.
 
 
 \end{frame}
+
+\begin{frame}\frametitle{Example: Nested r.f.}
+\begin{center}
+\includegraphics[scale = 0.3]{6.PNG}
+
+\end{center}
+
+\[\texttt{while } (q > 0) \texttt{do } q' = q - y, y ' = y + 1\]
+
+\begin{itemize}
+\item Above loop has Nested r.f. $\langle 1-y, q + 1\rangle$
+\item 
+\begin{center}
+%TODO include graphics
+\end{center}
+\end{itemize}
+\end{frame}
 \begin{frame}\frametitle{Example: Multiphase Ranking Function}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
 
@@ -161,9 +178,9 @@ Intuition of Motzkin's transposition theorem:...
 Given an non-empty polyhedron $\mathcal{P}$ and linear functions $f_1, \ldots , f_k$ such that 
 
 \begin{enumerate}
-\item $\textbf{x}\in \mathcal{P}\rightarrow f_1(  \textbf{x}) > 0 \vee \ldots \vee f_{k-1}(\textbf{x}) > 0 \vee f_{k}(\textbf{x}) \ge 0$
+\item $\textbf{x}\in \mathcal{P}\rightarrow f_1(  \textbf{x}) \ge 0 \vee \ldots \vee f_{k-1}(\textbf{x}) \ge 0 \vee f_{k}(\textbf{x}) \ge 0$
 
-\item $\textbf{x} \in \mathcal{P} \not\rightarrow f_1(\textbf{x}) > 0 \vee \ldots f_{k-1}(\textbf{x}) > 0$
+\item $\textbf{x} \in \mathcal{P} \not\rightarrow f_1(\textbf{x}) \ge 0 \vee \ldots f_{k-1}(\textbf{x}) \ge 0$
 
 \end{enumerate}
 There exists a non-negative constants $\mu_1, \ldots, \mu_{k-1}$ such that 
@@ -173,7 +190,18 @@ There exists a non-negative constants $\mu_1, \ldots, \mu_{k-1}$ such that
 
 
 \end{frame}
+\begin{frame}\frametitle{Proof of Lemma (0)}
+Let $\mathcal{P}$ be $B\textbf{x} \le c$, $f_i = \vec{a}_i \textbf{x} - b_i$.
+Then $(i)$ is equivalent to the infeasibility of $B\textbf{x} \le c \wedge A\textbf{x} < b$, by the theorem we have $\vec{\lambda}, \vec{\mu}$ s.t.
 
+\begin{center}
+\includegraphics[scale=0.45]{11.png}
+\end{center}
+Then for all $\textbf{x}\in \mathcal{P}$
+\begin{center}
+\includegraphics[scale=0.35]{12.png}
+\end{center}
+\end{frame}
 
 \begin{frame}\frametitle{M$\Phi$RF to Nested r.f.}
 \begin{theorem}[1]
@@ -189,7 +217,7 @@ By induction on the depth $d$.
 \item $d > 1$: $d = 2$ e.g.
 $\langle f_1, f_2\rangle$. When index $i = 1$, we do not impose bound on $f_2(\textbf{x})$. However, a bound is needed for $f_2'(\textbf{x}s)$ in nested r.f. $\langle f_1', f_2'\rangle$.
 
-To solve the problem that $f_2(\textbf{x})$ might goes under $0$, when $\textbf{x}''$ is ranked by $f_1$. Consider  $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}'') \le 0\}$
+To solve the problem that $f_2(\textbf{x})$ might goes under $0$, when $\textbf{x}''$ is ranked by $f_1$. Consider  $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}) \le 0\}$
 
 
 \end{itemize}
@@ -329,16 +357,31 @@ Use Lemma(0) to find the $i$.
 
 \end{frame}
 \begin{frame}\frametitle{M$\Phi$RF and LLRFs over the Integers}
+%\begin{example}
+%\[\texttt{while } (x_2 - x_1 \le 0, x_1 + x_2 \ge 1, x_3 \ge 0) 
+%\]
+%\[\texttt{do }x_2 ' = x_2 - 2x_1 + 1; x_3 ' = x_3 + 10x_2 + 9\]
+%\end{example}
+%Intepreted over integer: the loop has the M$\Phi$RF $\langle 10x_2, x_3\rangle$
+
+%Intepreted over rationals: the loop does not terminate: $(\frac{1}{2}, \frac{1}{2}, 0)$
+
+\begin{itemize}
+\item Actual programs with \texttt{int}.
+
+\item More important, conclusions for rational does not always applicable in on integer version.
+
+\end{itemize}
 \begin{example}
-\[\texttt{while } (x_2 - x_1 \le 0, x_1 + x_2 \ge 1, x_3 \ge 0) 
-\]
-\[\texttt{do }x_2 ' = x_2 - 2x_1 + 1; x_3 ' = x_3 + 10x_2 + 9\]
+\begin{center}
+
+\includegraphics[scale = .3]{7.PNG}
+
+\end{center}
 \end{example}
-Intepreted over integer: the loop has the M$\Phi$RF $\langle 10x_2, x_3\rangle$
+For rationals: $x_1 = \dfrac{1}{2}, x_2 = \dfrac{1}{2}$
 
-Intepreted over rationals: the loop does not terminate: $(\frac{1}{2}, \frac{1}{2}, 0)$
-
-
+For integers: there exists a linear ranking function $f(x_1, x_2) = x_1 + x_2$
 \end{frame}
 
 \begin{frame}\frametitle{M$\Phi$RF and LLRFs over the Integers}
@@ -418,6 +461,11 @@ Fix $i$ for the following arguments, s.t. $\mathcal{P}_i$ is not empty.
 
 \end{frame}
 
+\begin{frame}\frametitle{Intuition: Proof of the Lower Bound}
+\begin{center}
+%TODO include graphics
+\end{center}
+\end{frame}
 
 \begin{frame}
 \frametitle{Prove the Lower Bound}
@@ -457,9 +505,6 @@ Hence, $f_1$ is bounded.
 \end{frame}
 
 
-\begin{frame}\frametitle{Intuition: Proof of the Lower Bound}
-
-\end{frame}
 
 
 
@@ -474,5 +519,82 @@ For integer $B > 0$, the following loop $\mathcal{Q}_B$
 needs at least $B + 1$ components in any M$\Phi$RF.
 \end{theorem}
 
+\begin{proof}
+Define $R_I = \{(2^ic, c, 2^{i+1}c, 3c) \mid c \ge 1 \}$ and note that for $i \in [0,B]$, we have $R_i \in \mathcal{Q}_B$. 
+
+Assume the loop has a M$\Phi$RF with depth $B$, then it is obvious that there are $R_i$ and $R_j, i\ne j$ that are ranked by the same phase $f_k$, w.l.o.g., assume $j > i$ and $f_k(x, y) = a_1 x + a_2 y + a_0$, we have 
+ 
+\end{proof}
+
 \end{frame}
+
+\begin{frame}\frametitle{Proof of Theorem (5)}
+$j > i$ and $f_k(x, y) = a_1 x + a_2 y + a_0$
+\begin{center}
+%TODO include graphics here
+\end{center}
+
+\end{frame}
+
+\begin{frame}\frametitle{Iteration Bounds from M$\Phi$RFs}
+\begin{example}
+\[\texttt{while }(x \ge 0)\texttt{do } x'= x + y, y' = y - 1\]
+\end{example}
+M$\Phi$RF: $\langle y + 1, x \rangle $
+
+When start from $x = x_0$ and $y = y_0$...
+
+$x_0 + \dfrac{y_0(y_0 + 1)}{2} - 1$
+\end{frame}
+
+\begin{frame}\frametitle{Iteration Bounds from M$\Phi$RFs}
+Overview:
+Given a SLC loop and a corresponding M$\Phi$RF $\tau = \langle f_1, \ldots, f_d\rangle$.
+\begin{itemize}
+\item $F_k(t)$: the value of $f_k$ after iteration $t$.
+
+\item $UB_k(t)$: bound for $f_k$. For $t > T_k$, $UB_k(T_k)$ becomes negative.
+
+\item $T_k$: an upper bound on the time in which the $k$-th phase ends.
+
+\item The whole loop must terminate before $\max_kT_k$ iterations.
+\end{itemize}
+
+$\textbf{x}_t$ be te state after iteration $t$. Define $F_k(t) = f_k(\textbf{x}_t)$. Let $M = \max(f_1(\textbf{x}_0), \ldots, f_k(\textbf{x}_0))$ 
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Iteration Bounds from M$\Phi$RF}
+\begin{lemma}[4]
+For all $k \in [1, d]$, there are $\mu_1, \ldots, \mu_{k - 2} \ge 0$ and $\mu_{k - 1} > 0$ such that $\textbf{x}''\in \mathcal{Q}\rightarrow \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) + (\Delta f_k(\textbf{x}'') - 1) \ge 0$.
+\end{lemma}
+\begin{proof}
+\includegraphics[scale=0.35]{13.png}
+\end{proof}
+\begin{lemma}[5]
+For all $k \in [1, d]$, there are constants $c_k, d_k > 0$ such that $F_k(t) \le c_kMt^{k - 1}- d_kt^k$, for all $t \ge 1 $.
+\end{lemma}[6]
+Proof Idea: Use the bound for $-\Delta f_k(\textbf{x}_i '')$ to bound $F_k(t)$.
+\end{frame}
+
+\begin{frame}\frametitle{Proof of Lemma (6)}
+\begin{center}
+\includegraphics[scale= 0.35]{14.png}
+\end{center}
+where $ \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) \ge \Delta f_k(\textbf{x}'') = f_k(\textbf{x}_{i+1} - f_k(\textbf{x}_{i})$
+\end{frame}
+\begin{frame}
+\begin{theorem}[6]
+An SLC loop that has a M$\Phi$RF terminates in a number of iterations bounded by $O(||\textbf{x}_0||_\infty)$
+\end{theorem}
+
+\begin{proof}
+$F_k(t) \le c_kMt^{k - 1}- d_kt^k$. For $t > \max\{1, (c_k/d_k)M\}$, we have $F_k(t) < 0$.
+
+Thus, the loop terminates by the time $\max\{1, (c_i/d_i)M, \ldots, (c_k/d_k)M\}$ where $M = \max(f_1(\textbf{x}_0), \ldots, f_k(\textbf{x}_0))$.
+
+\end{proof}
+\end{frame}
+
 \end{document}
