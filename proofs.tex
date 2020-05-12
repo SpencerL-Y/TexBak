@@ -14,7 +14,7 @@
 \maketitle
 
 
-\begin{frame}\frametitle{Single Path Linear Constraint Loop}
+\begin{frame}\frametitle{Single Path Linear Constraint Loop}{\scriptsize
 \begin{example}
 \begin{center}
 
@@ -22,6 +22,8 @@
 
 
 \end{center}
+
+
 Let $B = (-1, 0, 1)$, $\textbf{x} = (x, y, z)^T, \textbf{b} = 0$.
 
 Let $\textbf{x}'' = (x, y, z, x', y', z')$, 
@@ -37,27 +39,30 @@ A = \left[
 \end{equation}
 
 and $\textbf{c} = (0, 0, 1)^T$
+
+
 \end{example}
 
 
 
 
-\end{frame}
-\begin{frame}\frametitle{Single Path Linear Constraint Loop}
+%\end{frame}
+%\begin{frame}\frametitle{Single Path Linear Constraint Loop}
 \begin{definition}[SLC]
-\includegraphics[scale = 0.4]{1.PNG}
+\includegraphics[scale = 0.28]{1.PNG}
 
 
 \end{definition}
 \begin{center}
-\includegraphics[scale = 0.35]{2.PNG}
+\includegraphics[scale = 0.25]{2.PNG}
 
 $A''\textbf{x}'' \le \textbf{c}''$
 \end{center}
+}
 \end{frame}
 \begin{frame}\frametitle{Ranking Functions}
 
-\begin{definition}[Linear Ranking Function(LRF)]
+\begin{definition}[Single Linear Ranking Function(LRF)]
 
 $f(x_1, \ldots, x_n) = a_1x_1 + \ldots a_nx_n + a_0$, such that
 
@@ -74,14 +79,37 @@ $f(x_1, \ldots, x_n) = a_1x_1 + \ldots a_nx_n + a_0$, such that
 \begin{example}
 \[\texttt{while }( x - 1 > 0) \texttt{do } x' = x - 5\]
 
-Its LRF: $f(x) = x - 1$
+LRF: $f(x) = ax + b$.
+\begin{itemize}
+\item $ax + b \ge 0$ $\Rightarrow$ $x \ge -\frac{b}{a} = 1$.
+\item $ax + b - (ax' + b) = a(x - x') = 5a$ $\Rightarrow$ $5a \ge 1$
+\end{itemize}
+A possible SLRF: $f(x) = x - 1$
 \end{example}
 
-We can define a binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$
+%We can define a binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$
 
 \end{frame}
 
-\begin{frame}\frametitle{Nested r.f.}
+
+
+\begin{frame}\frametitle{Limitation of SLRF}
+\[\texttt{while } (q > 0) \texttt{do } q' = q - y, y ' = y + 1\]
+
+Assume there is a LRF for this loop, say $f(q, y) = a_1 q + a_2 y + b$
+
+\[f(q, y) - f(q', y') = a_1y + a_2\]
+
+
+Since $y$ is not bounded, we cannot guarantee  $\Delta f(q,y,q',y') > 0$
+
+The loop does not has a SLRF, however, it does terminate.
+
+We still wish to use $q$ for ranking function, but to distinguish different ``phase'' of $q$ base on either $y \ge 0$ or $y < 0$ 
+
+
+\end{frame}
+\begin{frame}\frametitle{Nested RF}
 
 \begin{definition}[Nested Ranking Function]
 
@@ -97,19 +125,8 @@ Let $f_0 = 0$.
 
 \end{frame}
 
-\begin{frame}\frametitle{Limitation of LRF}
-\[\texttt{while } (q > 0) \texttt{do } q' = q - y, y ' = y + 1\]
 
-Assume there is a LRF for this loop, say $f(q, y) = a_1 q + a_2 y + b$
-
-\[f_(q, y) - f(q', y') = a_1y + a_2\]
-
-
-Since $y$ is not bounded, we cannot guarantee  $\Delta f(q,y,q',y') > 0$
-
-\end{frame}
-
-\begin{frame}\frametitle{Example: Nested r.f.}
+\begin{frame}\frametitle{Example: Nested RF}
 \begin{center}
 \includegraphics[scale = 0.3]{6.PNG}
 
@@ -118,13 +135,57 @@ Since $y$ is not bounded, we cannot guarantee  $\Delta f(q,y,q',y') > 0$
 \[\texttt{while } (q > 0) \texttt{do } q' = q - y, y ' = y + 1\]
 
 \begin{itemize}
-\item Above loop has Nested r.f. $\langle 1-y, q + 1\rangle$
+\item Above loop has Nested RF $\langle 1-y, q + 1\rangle$
 \item 
 \begin{center}
 \includegraphics[scale = 0.35]{10.PNG}
 \end{center}
 \end{itemize}
 \end{frame}
+\begin{frame}\frametitle{Linear Loop Program}
+\begin{definition}
+A linear loop program \texttt{LOOP}$(x, x')$ is a binary relation defined by a formula with the free variables $x$ and $x'$ of the form
+\begin{center}
+\includegraphics[scale = 0.2]{15.PNG}
+
+\end{center}
+for some finite index set $I$.
+\end{definition}
+\begin{example}
+\[\texttt{while } (q > 0)\{\texttt{if } (y > 0): q' = q - y - 1; \texttt{else }: q' = q + y - 1\}\]
+can be represented by 
+\begin{center}
+
+\includegraphics[scale = 0.35]{17.PNG}
+\end{center}
+\end{example}
+\end{frame}
+\begin{frame}\frametitle{Limitation of Nested RF}
+\begin{example}
+\[\texttt{while }(q > 0 \vee y > 0) \]
+\[\{\texttt{if }(y > 0): y' = y - 1; q ' = q;\texttt{else }: q' = q - 1\}\]
+\end{example}
+This program does not have a nested ranking function for we require $f_d\ge 0$ but the guard is $q > 0 \vee y > 0$.
+
+Howerver, this loop does terminate. Then we use a ``multi-phase" ranking function $\langle y,  q\rangle$ to prove the termination.
+\end{frame}
+
+
+
+\begin{frame}{Multiphase Ranking Function}
+\begin{definition}
+Given a set of transitions $T\subseteq \mathbb{Q}^{2n}$, we say $\langle f_1, \ldots, f_d\rangle$ is a multiphase ranking function for $T$ if for every $\textbf{x}'' \in T$, there is an index $i\in [1, d]$, s.t.
+
+\begin{center}
+\includegraphics[scale = 0.3]{3.PNG}
+\end{center}
+We say that $\textbf{x}''$ is ranked by $f_i$(for the minimal).
+\end{definition}
+
+
+\end{frame}
+
+
 \begin{frame}\frametitle{Example: Multiphase Ranking Function}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z = z - 1\]
 
@@ -150,35 +211,81 @@ $-6$&$-13$&$-6$&$-5$&$-12$&$-6$\\
 \end{tabular}
 \end{center}
 \end{frame}
-
-
-\begin{frame}{Multiphase Ranking Function}
-\begin{definition}
-Given a set of transitions $T\subseteq \mathbb{Q}^{2n}$, we say $\langle f_1, \ldots, f_d\rangle$ is a multiphase ranking function for $T$ if for every $\textbf{x}'' \in T$, there is an index $i\in [1, d]$, s.t.
-
-\begin{center}
-\includegraphics[scale = 0.3]{3.PNG}
-\end{center}
-We say that $\textbf{x}''$ is ranked by $f_i$(for the minimal).
-\end{definition}
-
-
-\end{frame}
-
-
-\begin{frame}\frametitle{Example Revisit}
+\begin{frame}\frametitle{Example: Multiphase Ranking Function}
 \[\texttt{while }( x > -z) \texttt{do } x' = x + y, y' = y + z, z' = z - 1\]
 \[\langle z + 1, y + 1, x \rangle\]
 $\textbf{x}''$ is ranked by $f_k$ when $i = k$. In this example, $f_1(x, y, z) = z + 1$, $f_2(x, y, z) = y + 1$ and $f_3(x, y, z) = x$
 \begin{center}
 \includegraphics[scale = 0.2]{3.PNG}
 
-\includegraphics[scale = 0.3]{3.pdf}
+\includegraphics[scale = 0.28]{divide.png}
 \end{center}
 \end{frame}
 
 
 
+
+
+
+\begin{frame}\frametitle{M$\Phi$RF to Nested RF}
+\begin{theorem}[1]
+If $\mathcal{Q}$ has a M$\Phi$RF of depth $d$, then it has a nested ranking function of depth at most $d$.
+
+
+\end{theorem}
+
+\begin{proof}
+By induction on the depth $d$.
+\begin{itemize}
+\item $d = 1$: M$\Phi$RF and nested RF are both LRF.
+\item $d > 1$: $d = 2$ e.g.
+$\langle f_1, f_2\rangle$. When index $i = 1$, we do not impose bound on $f_2(\textbf{x})$. However, a bound is needed for $f_2'(\textbf{x})$ in nested RF $\langle f_1', f_2'\rangle$.
+
+To solve the problem that $f_2(\textbf{x})$ might goes under $0$, when $\textbf{x}''$ is ranked by $f_1$. Consider  $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}) \le 0\}$
+
+
+\end{itemize}
+
+
+\end{proof}
+
+\end{frame}
+
+\begin{frame}\frametitle{M$\Phi$RF to Nested RF}
+\begin{lemma}[1]
+Let $\tau = \langle f_1, \ldots, f_d \rangle$ be an irredundant M$\Phi$RF for $\mathcal{Q}$, such that $\langle f_2, \ldots, f_d\rangle$ is a nested ranking function for $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}) \le 0\}$. Then there is a nested ranking function of depth $d$ for $\mathcal{Q}$.
+
+\end{lemma}
+Prove by construction: construct a nested RF $\langle f_1', \ldots, f_d'\rangle$
+\begin{center}
+\includegraphics[scale = 0.3]{1.pdf}
+\includegraphics[scale = 0.2]{6.PNG}
+
+
+\end{center}
+If $f_d$ is non-negative on $\mathcal{Q}$, then $f_d' = f_d$.
+Otherwise, $\textbf{x}'' \in \mathcal{Q} \rightarrow f_d(\textbf{x}) \ge 0 \vee f_1(\textbf{x}) > 0$
+
+
+\end{frame}
+
+\begin{frame}
+\begin{lemma}[0]
+Given an non-empty polyhedron $\mathcal{P}$ and linear functions $f_1, \ldots , f_k$ such that 
+
+\begin{enumerate}
+\item $\textbf{x}\in \mathcal{P}\rightarrow f_1(  \textbf{x}) \ge 0 \vee \ldots \vee f_{k-1}(\textbf{x}) \ge 0 \vee f_{k}(\textbf{x}) \ge 0$
+
+\item $\textbf{x} \in \mathcal{P} \not\rightarrow f_1(\textbf{x}) \ge 0 \vee \ldots\vee f_{k-1}(\textbf{x}) \ge 0$
+
+\end{enumerate}
+There exists a non-negative constants $\mu_1, \ldots, \mu_{k-1}$ such that 
+
+\[\textbf{x}\in \mathcal{P} \rightarrow \mu_1f_1(\textbf{x}) + \ldots + \mu_{k-1}f_{k-1}(\textbf{x}) + f_k(\textbf{x}) \ge 0\]
+\end{lemma}
+
+
+\end{frame}
 
 \begin{frame}\frametitle{Motzkin's Transposition Theorem}
 \begin{theorem}[Motzkin's Transposition Theorem]
@@ -196,29 +303,9 @@ $\wedge (\lambda^Tb < 0 \vee \mu \ne 0)$
 
 \end{itemize}
 \end{theorem}
-
-
-Intuition of Motzkin's transposition theorem:...
 \end{frame}
 
 
-\begin{frame}
-\begin{lemma}[0]
-Given an non-empty polyhedron $\mathcal{P}$ and linear functions $f_1, \ldots , f_k$ such that 
-
-\begin{enumerate}
-\item $\textbf{x}\in \mathcal{P}\rightarrow f_1(  \textbf{x}) \ge 0 \vee \ldots \vee f_{k-1}(\textbf{x}) \ge 0 \vee f_{k}(\textbf{x}) \ge 0$
-
-\item $\textbf{x} \in \mathcal{P} \not\rightarrow f_1(\textbf{x}) \ge 0 \vee \ldots f_{k-1}(\textbf{x}) \ge 0$
-
-\end{enumerate}
-There exists a non-negative constants $\mu_1, \ldots, \mu_{k-1}$ such that 
-
-\[\textbf{x}\in \mathcal{P} \rightarrow \mu_1f_1(\textbf{x}) + \mu_{k-1}f_{k-1}(\textbf{x}) + f_k(\textbf{x}) \ge 0\]
-\end{lemma}
-
-
-\end{frame}
 \begin{frame}\frametitle{Proof of Lemma (0)}
 Let $\mathcal{P}$ be $B\textbf{x} \le c$, $f_i = \vec{a}_i \textbf{x} - b_i$.
 Then $(i)$ is equivalent to the infeasibility of $B\textbf{x} \le c \wedge A\textbf{x} < b$, by the theorem we have $\vec{\lambda}, \vec{\mu}$ s.t.
@@ -232,52 +319,8 @@ Then for all $\textbf{x}\in \mathcal{P}$
 \end{center}
 \end{frame}
 
-\begin{frame}\frametitle{M$\Phi$RF to Nested r.f.}
-\begin{theorem}[1]
-If $\mathcal{Q}$ has a M$\Phi$RF of depth $d$, then it has a nested ranking function of depth at most $d$.
-
-
-\end{theorem}
-
-\begin{proof}
-By induction on the depth $d$.
-\begin{itemize}
-\item $d = 1$: M$\Phi$RF and nested r.f. are both LRF.
-\item $d > 1$: $d = 2$ e.g.
-$\langle f_1, f_2\rangle$. When index $i = 1$, we do not impose bound on $f_2(\textbf{x})$. However, a bound is needed for $f_2'(\textbf{x}s)$ in nested r.f. $\langle f_1', f_2'\rangle$.
-
-To solve the problem that $f_2(\textbf{x})$ might goes under $0$, when $\textbf{x}''$ is ranked by $f_1$. Consider  $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}) \le 0\}$
-
-
-\end{itemize}
-
-
-\end{proof}
-
-\end{frame}
-
-\begin{frame}\frametitle{M$\Phi$RF to Nested r.f.}
-\begin{lemma}[1]
-Let $\tau = \langle f_1, \ldots, f_d \rangle$ be an irredundant M$\Phi$RF for $\mathcal{Q}$, such that $\langle f_2, \ldots, f_d\rangle$ is a nested ranking function for $\mathcal{Q}' = \mathcal{Q}\cap \{\textbf{x}''\in \mathbb{Q}^{2n}\mid f_1(\textbf{x}) \le 0\}$. Then there is a nested ranking function of depth $d$ for $\mathcal{Q}$.
-
-\end{lemma}
-Prove by construction: construct a nested r.f. $\langle f_1', \ldots, f_d'\rangle$
+\begin{frame}\frametitle{M$\Phi$RF to Nested RF}
 \begin{center}
-\includegraphics[scale = 0.3]{1.pdf}
-\includegraphics[scale = 0.2]{6.PNG}
-
-
-\end{center}
-If $f_d$ is non-negative on $\mathcal{Q}$, then $f_d' = f_d$.
-Otherwise, $\textbf{x}'' \in \mathcal{Q} \rightarrow f_d(\textbf{x}) \ge 0 \vee f_1(\textbf{x}) > 0$
-
-
-\end{frame}
-
-
-\begin{frame}\frametitle{M$\Phi$RF to Nested r.f.}
-\begin{center}
-\includegraphics[scale = 0.3]{1.pdf}
 \includegraphics[scale = 0.2]{6.PNG}
 \end{center}
 
@@ -299,12 +342,12 @@ BM$\Phi$RF($\mathbb{Q}$)$\in$\texttt{PTIME}.
 \end{theorem}
 
 \begin{proof}
-Leike et al. .Ranking Templates for Linear Loops. 
+Leike et al..Ranking Templates for Linear Loops. 
 
 \end{proof}
 \end{frame}
 
-
+\iffalse
 \begin{frame}\frametitle{LLRF}
 
 Intuition: remind binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$.
@@ -534,7 +577,7 @@ Contradiction.
 Hence, $f_1$ is bounded.
 \end{frame}
 
-
+\fi
 
 
 
@@ -563,6 +606,14 @@ $j > i$ and $f_k(x, y) = a_1 x + a_2 y + a_0$
 \begin{center}
 \includegraphics[scale = 0.3]{9.PNG}
 \end{center}
+$j > i$
+
+$a_12^{i - 1} > 0$ $\Rightarrow$ $a_1 > 0$
+
+$a_1 (2^{i} - 2^{j - 1}) > 0$ $\Rightarrow$ $i + 1 > j$ $\Rightarrow$ $i \ge j$. Contradiction.
+
+
+
 
 \end{frame}
 
