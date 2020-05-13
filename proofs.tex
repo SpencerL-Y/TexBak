@@ -9,7 +9,7 @@
 \title{On Multiphase-Linear Ranking Functions}
 \date{\today}
 \author{Xie Li}
-
+\newif\ifcomm\commfalse
 \begin{document}
 \maketitle
 
@@ -224,15 +224,26 @@ $\textbf{x}''$ is ranked by $f_k$ when $i = k$. In this example, $f_1(x, y, z) =
 
 
 
-
-
-
 \begin{frame}\frametitle{M$\Phi$RF to Nested RF}
 \begin{theorem}[1]
 If $\mathcal{Q}$ has a M$\Phi$RF of depth $d$, then it has a nested ranking function of depth at most $d$.
 
 
 \end{theorem}
+
+
+
+
+\end{frame}
+
+\ifcomm
+\begin{frame}\frametitle{M$\Phi$RF to Nested RF}
+\begin{theorem}[1]
+If $\mathcal{Q}$ has a M$\Phi$RF of depth $d$, then it has a nested ranking function of depth at most $d$.
+
+
+\end{theorem}
+
 
 \begin{proof}
 By induction on the depth $d$.
@@ -332,7 +343,7 @@ If above inequation also holds for $\mathcal{Q}$, then $f_{i-1}' = f_{i-1}$, Oth
 
 
 \end{frame}
-
+\fi
 \begin{frame}\frametitle{BM$\Phi$RF($\mathbb{Q})\in$\texttt{PTIME}}
 \begin{theorem}[2]
 BM$\Phi$RF($\mathbb{Q}$)$\in$\texttt{PTIME}.
@@ -347,7 +358,7 @@ Leike et al..Ranking Templates for Linear Loops.
 \end{proof}
 \end{frame}
 
-\iffalse
+\iftrue
 \begin{frame}\frametitle{LLRF}
 
 Intuition: remind binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$.
@@ -369,7 +380,16 @@ A LLRF is weak if..
 \end{definition}
 
 \end{frame}
+\begin{frame}\frametitle{Weak LLRF to M$\Phi$RF}
 
+\begin{theorem}[3]
+If $\mathcal{Q}$ has a weak LLRF of depth $d$, it has a  M$\Phi$RF of depth $d$.
+
+
+\end{theorem}
+
+\end{frame}
+\ifcomm
 \begin{frame}\frametitle{Weak LLRF to M$\Phi$RF}
 
 \begin{theorem}[3]
@@ -466,8 +486,17 @@ For integers: there exists a linear ranking function $f(x_1, x_2) = x_1 + x_2$
 
 
 \end{frame}
+\fi
 
+\begin{frame}\frametitle{Weak LLRF: Integer to Rational}
+\begin{theorem}[4]
 
+Let $\langle f_1, \ldots, f_d\rangle$ be a weak LLRF for $I(\mathcal{Q})$. Then there are constants $c_1, \ldots, c_d$ such that $\langle f_1 + c_1, \ldots, f_d + c_d\rangle$ is a weak LLRF for $\mathcal{Q}_I$(over the rationals).
+
+\end{theorem}
+
+\end{frame}
+\ifcomm
 \begin{frame}\frametitle{Weak LLRF: Integer to Rational}
 \begin{theorem}[4]
 
@@ -581,6 +610,7 @@ Hence, $f_1$ is bounded.
 
 
 
+\fi
 \begin{frame}\frametitle{The Depth of a M$\Phi$RF}
 Idea: pre-compute the depth $d$ for M$\Phi$RF synthesis.
 
@@ -655,7 +685,7 @@ For all $k \in [1, d]$, there are $\mu_1, \ldots, \mu_{k - 2} \ge 0$ and $\mu_{k
 \end{proof}
 \begin{lemma}[5]
 For all $k \in [1, d]$, there are constants $c_k, d_k > 0$ such that $F_k(t) \le c_kMt^{k - 1}- d_kt^k$, for all $t \ge 1 $.
-\end{lemma}[6]
+\end{lemma}
 Proof Idea: Use the bound for $-\Delta f_k(\textbf{x}_i '')$ to bound $F_k(t)$.
 \end{frame}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  12 MAY 2020 13:50
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  12 MAY 2020 22:17
 entering extended mode
 **C:/Users/10244/Desktop/tex/proofs.tex
 (C:/Users/10244/Desktop/tex/proofs.tex
@@ -974,99 +974,70 @@ Overfull \vbox (3.98006pt too high) detected at line 223
 
  <C:/Users/10244/Desktop/tex/divide.png>] [12
 
+] [13
+
+]
+<4.PNG, id=379, 512.66531pt x 253.69781pt>
+File: 4.PNG Graphic file (type png)
+ <use 4.PNG>
+Package pdftex.def Info: 4.PNG used on input line 382.
+(pdftex.def)             Requested size: 133.28983pt x 65.95987pt.
+ [14
+
+ <C:/Users/10244/Desktop/tex/4.PNG>] [15
+
+] [16
+
+] <5.PNG, id=456, 575.14874pt x 34.62938pt>
+File: 5.PNG Graphic file (type png)
+
+<use 5.PNG>
+Package pdftex.def Info: 5.PNG used on input line 632.
+(pdftex.def)             Requested size: 287.57367pt x 17.31464pt.
+ [17
+
+ <C:/Users/10244/Desktop/tex/5.PNG>]
+<9.PNG, id=483, 890.5772pt x 295.85532pt>
+File: 9.PNG Graphic file (type png)
+ <use 9.PNG>
+Package pdftex.def Info: 9.PNG used on input line 648.
+(pdftex.def)             Requested size: 267.17522pt x 88.75726pt.
+ [18
+
+ <C:/Users/10244/Desktop/tex/9.PNG>] [19
+
+] [20
+
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 270.
+(Font)              using `OT1/cmss/bx/n' instead on input line 690.
 
-<1.pdf, id=351, 492.33937pt x 256.70906pt>
-File: 1.pdf Graphic file (type pdf)
- <use 1.pdf>
-Package pdftex.def Info: 1.pdf used on input line 270.
-(pdftex.def)             Requested size: 147.70294pt x 77.0133pt.
-File: 6.PNG Graphic file (type png)
- <use 6.PNG>
-Package pdftex.def Info: 6.PNG used on input line 270.
-(pdftex.def)             Requested size: 176.9078pt x 31.16588pt.
-
-Overfull \hbox (17.32088pt too wide) in paragraph at lines 270--270
- [][] 
- []
-
-[13
-
- <C:/Users/10244/Desktop/tex/1.pdf>] [14
-
-] [15
-
-]
-<11.png, id=449, 623.32875pt x 68.255pt>
-File: 11.png Graphic file (type png)
- <use 11.png>
-Package pdftex.def Info: 11.png used on input line 320.
-(pdftex.def)             Requested size: 280.49535pt x 30.71445pt.
-
-<12.png, id=450, 810.02625pt x 104.39pt>
-File: 12.png Graphic file (type png)
- <use 12.png>
-Package pdftex.def Info: 12.png used on input line 320.
-(pdftex.def)             Requested size: 283.51343pt x 36.53703pt.
- [16
-
- <C:/Users/10244/Desktop/tex/11.png> <C:/Users/10244/Desktop/tex/12.png>]
-File: 6.PNG Graphic file (type png)
- <use 6.PNG>
-Package pdftex.def Info: 6.PNG used on input line 334.
-(pdftex.def)             Requested size: 176.9078pt x 31.16588pt.
- [17
-
-] [18
-
-]
-<5.PNG, id=530, 575.14874pt x 34.62938pt>
-File: 5.PNG Graphic file (type png)
- <use 5.PNG>
-Package pdftex.def Info: 5.PNG used on input line 602.
-(pdftex.def)             Requested size: 287.57367pt x 17.31464pt.
- [19
-
- <C:/Users/10244/Desktop/tex/5.PNG>] <9.PNG, id=558, 890.5772pt x 295.85532pt>
-File: 9.PNG Graphic file (type png)
- <use 9.PNG>
-Package pdftex.def Info: 9.PNG used on input line 618.
-(pdftex.def)             Requested size: 267.17522pt x 88.75726pt.
- [20
-
- <C:/Users/10244/Desktop/tex/9.PNG>] [21
-
-] [22
-
-]
-<13.png, id=635, 792.9625pt x 75.28125pt>
+<13.png, id=561, 792.9625pt x 75.28125pt>
 File: 13.png Graphic file (type png)
  <use 13.png>
-Package pdftex.def Info: 13.png used on input line 660.
+Package pdftex.def Info: 13.png used on input line 690.
 (pdftex.def)             Requested size: 277.54103pt x 26.34882pt.
- [23
+ [21
 
- <C:/Users/10244/Desktop/tex/13.png>] <14.png, id=662, 859.21pt x 484.81125pt>
+ <C:/Users/10244/Desktop/tex/13.png>] <14.png, id=588, 859.21pt x 484.81125pt>
 File: 14.png Graphic file (type png)
  <use 14.png>
-Package pdftex.def Info: 14.png used on input line 667.
+Package pdftex.def Info: 14.png used on input line 697.
 (pdftex.def)             Requested size: 283.54018pt x 159.9882pt.
- [24
+ [22
 
- <C:/Users/10244/Desktop/tex/14.png>] [25
+ <C:/Users/10244/Desktop/tex/14.png>] [23
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 681.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 681.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 711.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 711.
  (C:\Users\10244\Desktop\tex\proofs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 681.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 681.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 711.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 711.
 Package rerunfilecheck Info: File `proofs.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1079,10 +1050,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 15670 strings out of 495354
- 295209 string characters out of 3182178
- 365425 words of memory out of 3000000
- 18396 multiletter control sequences out of 15000+200000
+ 15648 strings out of 495354
+ 294812 string characters out of 3182178
+ 365435 words of memory out of 3000000
+ 18378 multiletter control sequences out of 15000+200000
  17854 words of font info for 71 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  49i,14n,53p,444b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1109,9 +1080,9 @@ work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 symbols/msam10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on proofs.pdf (25 pages, 825347 bytes).
+Output written on proofs.pdf (23 pages, 574312 bytes).
 PDF statistics:
- 788 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 712 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
