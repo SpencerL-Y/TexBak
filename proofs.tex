@@ -8,7 +8,7 @@
 
 \title{On Multiphase-Linear Ranking Functions}
 \date{\today}
-\author{Xie Li}
+\author{Amir M. Ben-Amram and Samir Genaim}
 \newif\ifcomm\commfalse
 \begin{document}
 \maketitle
@@ -87,7 +87,7 @@ LRF: $f(x) = ax + b$.
 A possible SLRF: $f(x) = x - 1$
 \end{example}
 
-%We can define a binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$
+We can define a binary relation $\textbf{x} \succeq \textbf{x}'$ iff  $f(\textbf{x}) - f(\textbf{x}') \ge 1$ and $f(\textbf{x}) \ge 0$
 
 \end{frame}
 
@@ -168,6 +168,9 @@ can be represented by
 This program does not have a nested ranking function for we require $f_d\ge 0$ but the guard is $q > 0 \vee y > 0$.
 
 Howerver, this loop does terminate. Then we use a ``multi-phase" ranking function $\langle y,  q\rangle$ to prove the termination.
+
+
+\includegraphics[scale = 0.35]{6.PNG}
 \end{frame}
 
 
@@ -674,8 +677,15 @@ Given a SLC loop and a corresponding M$\Phi$RF $\tau = \langle f_1, \ldots, f_d\
 $\textbf{x}_t$ be te state after iteration $t$. Define $F_k(t) = f_k(\textbf{x}_t)$. Let $M = \max(f_1(\textbf{x}_0), \ldots, f_k(\textbf{x}_0))$ 
 
 \end{frame}
-
-
+\begin{frame}\frametitle{Iteration Bounds from M$\Phi$RFs}
+\begin{lemma}[4]
+For all $k \in [1, d]$, there are $\mu_1, \ldots, \mu_{k - 2} \ge 0$ and $\mu_{k - 1} > 0$ such that $\textbf{x}''\in \mathcal{Q}\rightarrow \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) + (\Delta f_k(\textbf{x}'') - 1) \ge 0$.
+\end{lemma}
+\begin{lemma}[5]
+For all $k \in [1, d]$, there are constants $c_k, d_k > 0$ such that $F_k(t) \le c_kMt^{k - 1}- d_kt^k$, for all $t \ge 1 $.
+\end{lemma}
+\end{frame}
+\ifcomm
 \begin{frame}\frametitle{Iteration Bounds from M$\Phi$RF}
 \begin{lemma}[4]
 For all $k \in [1, d]$, there are $\mu_1, \ldots, \mu_{k - 2} \ge 0$ and $\mu_{k - 1} > 0$ such that $\textbf{x}''\in \mathcal{Q}\rightarrow \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) + (\Delta f_k(\textbf{x}'') - 1) \ge 0$.
@@ -695,6 +705,14 @@ Proof Idea: Use the bound for $-\Delta f_k(\textbf{x}_i '')$ to bound $F_k(t)$.
 \end{center}
 where $ \mu_1f_1(\textbf{x}) + \cdots + \mu_{k - 1}f_{k-1}(\textbf{x}) \ge \Delta f_k(\textbf{x}'') = f_k(\textbf{x}_{i+1} - f_k(\textbf{x}_{i})$
 \end{frame}
+\fi
+\begin{frame}
+\begin{theorem}[6]
+An SLC loop that has a M$\Phi$RF terminates in a number of iterations bounded by $O(||\textbf{x}_0||_\infty)$
+\end{theorem}
+
+\end{frame}
+\ifcomm
 \begin{frame}
 \begin{theorem}[6]
 An SLC loop that has a M$\Phi$RF terminates in a number of iterations bounded by $O(||\textbf{x}_0||_\infty)$
@@ -707,5 +725,6 @@ Thus, the loop terminates by the time $\max\{1, (c_i/d_i)M, \ldots, (c_k/d_k)M\}
 
 \end{proof}
 \end{frame}
+\fi
 
 \end{document}

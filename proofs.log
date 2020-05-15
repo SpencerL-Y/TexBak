@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  12 MAY 2020 22:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.11.26)  13 MAY 2020 13:52
 entering extended mode
 **C:/Users/10244/Desktop/tex/proofs.tex
 (C:/Users/10244/Desktop/tex/proofs.tex
@@ -944,12 +944,22 @@ Overfull \vbox (4.05067pt too high) detected at line 162
 [7
 
  <C:/Users/10244/Desktop/tex/15.PNG> <C:/Users/10244/Desktop/tex/17.PNG>]
+File: 6.PNG Graphic file (type png)
+
+<use 6.PNG>
+Package pdftex.def Info: 6.PNG used on input line 174.
+(pdftex.def)             Requested size: 309.59879pt x 54.54207pt.
+
+Overfull \hbox (2.30891pt too wide) in paragraph at lines 174--174
+[][]  
+ []
+
 [8
 
 ] <3.PNG, id=244, 330.48468pt x 179.16937pt>
 File: 3.PNG Graphic file (type png)
  <use 3.PNG>
-Package pdftex.def Info: 3.PNG used on input line 186.
+Package pdftex.def Info: 3.PNG used on input line 189.
 (pdftex.def)             Requested size: 99.14616pt x 53.75122pt.
  [9
 
@@ -958,16 +968,16 @@ Package pdftex.def Info: 3.PNG used on input line 186.
 ]
 File: 3.PNG Graphic file (type png)
  <use 3.PNG>
-Package pdftex.def Info: 3.PNG used on input line 223.
+Package pdftex.def Info: 3.PNG used on input line 226.
 (pdftex.def)             Requested size: 66.09576pt x 35.83324pt.
 
 <divide.png, id=297, 542.77782pt x 452.4403pt>
 File: divide.png Graphic file (type png)
  <use divide.png>
-Package pdftex.def Info: divide.png used on input line 223.
+Package pdftex.def Info: divide.png used on input line 226.
 (pdftex.def)             Requested size: 151.97675pt x 126.68242pt.
 
-Overfull \vbox (3.98006pt too high) detected at line 223
+Overfull \vbox (3.98006pt too high) detected at line 226
  []
 
 [11
@@ -980,7 +990,7 @@ Overfull \vbox (3.98006pt too high) detected at line 223
 <4.PNG, id=379, 512.66531pt x 253.69781pt>
 File: 4.PNG Graphic file (type png)
  <use 4.PNG>
-Package pdftex.def Info: 4.PNG used on input line 382.
+Package pdftex.def Info: 4.PNG used on input line 385.
 (pdftex.def)             Requested size: 133.28983pt x 65.95987pt.
  [14
 
@@ -992,7 +1002,7 @@ Package pdftex.def Info: 4.PNG used on input line 382.
 File: 5.PNG Graphic file (type png)
 
 <use 5.PNG>
-Package pdftex.def Info: 5.PNG used on input line 632.
+Package pdftex.def Info: 5.PNG used on input line 635.
 (pdftex.def)             Requested size: 287.57367pt x 17.31464pt.
  [17
 
@@ -1000,7 +1010,7 @@ Package pdftex.def Info: 5.PNG used on input line 632.
 <9.PNG, id=483, 890.5772pt x 295.85532pt>
 File: 9.PNG Graphic file (type png)
  <use 9.PNG>
-Package pdftex.def Info: 9.PNG used on input line 648.
+Package pdftex.def Info: 9.PNG used on input line 651.
 (pdftex.def)             Requested size: 267.17522pt x 88.75726pt.
  [18
 
@@ -1011,33 +1021,21 @@ Package pdftex.def Info: 9.PNG used on input line 648.
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 690.
+(Font)              using `OT1/cmss/bx/n' instead on input line 687.
 
-<13.png, id=561, 792.9625pt x 75.28125pt>
-File: 13.png Graphic file (type png)
- <use 13.png>
-Package pdftex.def Info: 13.png used on input line 690.
-(pdftex.def)             Requested size: 277.54103pt x 26.34882pt.
- [21
+[21
 
- <C:/Users/10244/Desktop/tex/13.png>] <14.png, id=588, 859.21pt x 484.81125pt>
-File: 14.png Graphic file (type png)
- <use 14.png>
-Package pdftex.def Info: 14.png used on input line 697.
-(pdftex.def)             Requested size: 283.54018pt x 159.9882pt.
- [22
-
- <C:/Users/10244/Desktop/tex/14.png>] [23
+] [22
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 711.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 711.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 730.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 730.
  (C:\Users\10244\Desktop\tex\proofs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 711.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 711.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 730.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 730.
 Package rerunfilecheck Info: File `proofs.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1050,10 +1048,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 15648 strings out of 495354
- 294812 string characters out of 3182178
- 365435 words of memory out of 3000000
- 18378 multiletter control sequences out of 15000+200000
+ 15634 strings out of 495354
+ 294679 string characters out of 3182178
+ 365575 words of memory out of 3000000
+ 18368 multiletter control sequences out of 15000+200000
  17854 words of font info for 71 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  49i,14n,53p,444b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1080,9 +1078,9 @@ work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 symbols/msam10.pfb><I:/work_immediate/basic_software/CTEX/MiKTeX/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb>
-Output written on proofs.pdf (23 pages, 574312 bytes).
+Output written on proofs.pdf (22 pages, 514903 bytes).
 PDF statistics:
- 712 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 683 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 
