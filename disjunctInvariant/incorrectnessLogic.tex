@@ -1,0 +1,50 @@
+\documentclass[11pt]{beamer}
+\title{Using Dynamic Analysis to Generate Disjunctive Invariants}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}
+
+\newtheorem{proposition}{Proposition}
+
+
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\begin{frame}\frametitle{Introduction}
+\begin{itemize}
+\item Invariants: defect detection, program verification and program repair.
+
+\item Find the invariants: static or dynamic, and their pros and cons.
+
+\item Conjunctive, polynomial and convex invariants $\Rightarrow$ Disjunctive program properties
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}\frametitle{Disjunctive Program}
+\begin{example}
+\[\texttt{if }(p)\{a = 1;\}\texttt{ else }\{a=2;\}\]
+\end{example}
+Neither $a = 1$ nor $a = 2$ is an invariant, but $(p \wedge a = 1)\vee (\neg p \wedge a = 2)$ is an invariant.
+\end{frame}
+\begin{frame}\frametitle{Overview}
+\begin{itemize}
+\item Existing invariant inference algorithm.
+
+
+\item Max-Plus invariants and a way to infer them.
+
+
+\item Using $k$-induction to verifying candidate invariants.
+
+
+\item Experiment results.
+
+\end{itemize}
+\end{frame}
+\end{document}
