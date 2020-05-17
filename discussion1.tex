@@ -11,6 +11,9 @@
 
 \begin{document}
 \maketitle
+
+
+
 \begin{frame}\frametitle{Limitation of Nested Ranking Functions}
 
 \begin{example}
@@ -42,9 +45,9 @@ Start with $x = 1, y = 5$
 
 A possible single linear ranking function $f(x, y) = x + 3y$.
 
-This example demonstrates the blocks may be split by the ranking function. 
+This example demonstrates the blocks may be split by the ranking function into halves. 
 
-i.e. in last example the regular split is just a coincidency.
+i.e. the regular split of last example is just a coincidency.
 
 \end{example}
 
@@ -54,7 +57,7 @@ i.e. in last example the regular split is just a coincidency.
 Use the terms of a loop 
 \begin{center}
 
-\includegraphics[scale = 0.65]{jump.png}
+\includegraphics[scale = 0.45]{jump.png}
 
 \end{center}
 \end{frame}
@@ -75,8 +78,8 @@ Start from $x = 1, y = 8, z = -2$.
 
 
 
-\begin{frame}\frametitle{Guess $f_1$ for Multiphase Ranking Function}
-Idea: although some ranking functions are not the borders of the blocks, we still wish to use the guard to guess the phases.
+\begin{frame}\frametitle{Idea1: Guess $f_1$ for Multiphase Ranking Function}
+Idea: although some ranking functions are not the borders of the blocks, we still wish to use the guard to guess the phases. Put the guessed $f_1$ into \texttt{SVMRanker} to solve a ranking function for the first phase.
 
 After a guess, conjunct the negation of the guard into the loop for nest guess.
 
@@ -88,15 +91,29 @@ The examble below shows that this idea is not feasible.
 \[\texttt{else }: x' = x - 1; y = 5; \}\]
 
 \end{example}
-The loop is not terminating but...
+The loop is not terminating but if we using the method to conjunct the negation, we may wrongly conclude that the loop is terminating with a multiphase ranking function $\langle y, x\rangle$.
 \end{frame}
 
-\begin{frame}\frametitle{Attempt to Merge the Blocks}
-Idea: if we find the jump-in-and-out situations of the execution between two blocks, we consider it as one.
+\begin{frame}\frametitle{Idea2: Attempt to Merge the Blocks}
+Idea: if we find the jump-in-and-out situations of the execution between two blocks, we consider to merge them into one. Besides, we can unwind the loop for several times to split a big block into several small one.
+\begin{center}
+
+\includegraphics[scale = 0.45]{split.png}
+
+\end{center}
+Intuition: in order to accurately find the ranking function for one phase, the worst case is that we need to unwind the loop for infinity times and consider every possible executing branch.
+\end{frame}
+
+\begin{frame}\frametitle{Idea2: Attempt to Merge the Blocks}
 
 Problem: One cannot tell it is the problem of the inability of multiphase ranking function for this loop, or it is really that these two blocks should be merged.
 
 \end{frame}
 
+\begin{frame}\frametitle{Current Thoughts}
+Consider some subclass of the loop with disjunction as [1] did, where they restrain there disjunction area to be a convex polyhedron in the sense of max-plus algebra.
+
+[1] Using Dynamic Analysis to Generate Disjunctive Invariants
+\end{frame}
 
 \end{document}
