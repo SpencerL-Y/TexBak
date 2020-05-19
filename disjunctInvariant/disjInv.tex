@@ -64,10 +64,11 @@ Invariant at location \texttt{L} is
 From the given trace, existing tools loke Daikon and DIG can generate conjunctive invariant below:
 \[11\ge x\]\[11 \ge y \ge 5\]\[y \ge x\]
 
-which cannot express the disjunctive behavior.
+which is over-approximating and cannot express the disjunctive behavior.
 \end{frame}
+\begin{frame}\frametitle{Algorithm Overview}
+Max-plus inequality: e.g. $\max(x, y+1) \ge 1$
 
-\begin{frame}\frametitle{Max-Plus Polyhedra}
 By constructing a max-plus polyhedra over the trace points, we obtain relations simplified to 
 \begin{center}
 \includegraphics[scale=0.4]{2.png}
@@ -137,7 +138,7 @@ Conjunctions of formulas above is equivalent to
 
 
 \begin{frame}\frametitle{Weak Max-Plus Invariants}
-Traditional min max invariant complexity: $O(n^d)$.
+Traditional min max invariant complexity: $O(n^k)$\footnote{Inferring Min and Max Invariants Using Max-plus Polyhedra}.
 
 We define a weak max relation to be of the form: 
 
@@ -148,6 +149,8 @@ where $c_i \in \{0, -\infty\}$
 
 Difference of weak version: 
 Only  performs in the form $\max(x, b) \ge y$ and $\max(y, b)\ge x$
+
+
 \end{frame}
 
 \begin{frame}\frametitle{Example of Finding Weak Max-Plus Invariant}
@@ -195,6 +198,8 @@ can be described equivalently by
 \end{frame}
 
 \begin{frame}\frametitle{Verifying Candidate Invariant}
+In the algorithm we use $k$-induction to verify the invriant and remove spurious invariant.
+
 \textbf{k-Induction:} $k$ base cases are specified, and $k$ previus instance are availble to prove the inductive step.
 
 $M = (I,T)$
@@ -232,6 +237,12 @@ $p_i\wedge T_{i+1} \wedge p_{i+1}\wedge T_{i+2} \wedge p_{i+2}\wedge T_{i+3} \Ri
 \begin{frame}\frametitle{Code: KIP}
 \begin{center}
 \includegraphics[scale=0.4]{9.png}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Experiment Result}
+\begin{center}
+\includegraphics[scale=0.4]{12.png}
 \end{center}
 \end{frame}
 \end{document}
