@@ -67,7 +67,7 @@ From the given trace, existing tools loke Daikon and DIG can generate conjunctiv
 which is over-approximating and cannot express the disjunctive behavior.
 \end{frame}
 \begin{frame}\frametitle{Algorithm Overview}
-Max-plus inequality: e.g. $\max(x, y+1) \ge 1$
+Max-plus\footnote{Max-Plus Algebra} inequality: e.g. $\max(x, y+1) \ge 1$
 
 By constructing a max-plus polyhedra over the trace points, we obtain relations simplified to 
 \begin{center}
@@ -80,7 +80,7 @@ Then use $k$\textbf{-induction} to remove the spurious relations $x - y \ge -6, 
 \end{frame}
 
 \begin{frame}\frametitle{Invariant Inference Algorithm}
-DIG: A Dynamic Invariant Generator for Polynomial and Array Invariants
+DIG is a tool for dynamic generating polynomial convex invariants. \footnote{A Dynamic Invariant Generator for Polynomial and Array Invariants}
 
 General polyhedra inequality:
 \[c_1t_1+\ldots + c_nt_n \ge 0\]
@@ -245,4 +245,19 @@ $p_i\wedge T_{i+1} \wedge p_{i+1}\wedge T_{i+2} \wedge p_{i+2}\wedge T_{i+3} \Ri
 \includegraphics[scale=0.4]{12.png}
 \end{center}
 \end{frame}
+
+\begin{frame}\frametitle{Conclude}
+What have we introduced?
+\begin{itemize}
+\item Max-plus iequalities that can represent non-convex zone.
+\item A inferring algorithm for Max-plus invariants.
+
+Input: Program, location, trace.
+
+Output: Several max-plus inequalities that surround the trace points.
+\item $k$-Induction technique for removing spurious iequalities.
+\end{itemize}
+\end{frame}
+
+
 \end{document}
