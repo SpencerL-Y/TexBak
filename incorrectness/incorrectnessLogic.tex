@@ -74,12 +74,12 @@ Website: \underline{fbinfer.com}
 
 For incorrectness logic, we use ``presume" as to identify a pre-assertion and use ``achieves" to identify the post-assertion. Consider an example below.
 \begin{center}
-\includegraphics[scale = 0.25]{4.png}
+\includegraphics[scale = 0.25]{4.PNG}
 
 \end{center}
 Question: is the assertion $z==42$ an under-approximation of the states reachable from executing code from states statisfying the presumption?
 \begin{center}
-\includegraphics[scale = 0.35]{3.png}
+\includegraphics[scale = 0.35]{3.PNG}
 \end{center}
 \end{frame}
 
@@ -100,7 +100,7 @@ We can reason about errors by distinguishing the result-assertion by some tags.
 For example, we use ``er: predicate" for erroneous or abnormal termination.
 \begin{center}
 
-\includegraphics[scale = 0.35]{5.png}
+\includegraphics[scale = 0.35]{5.PNG}
 
 \end{center} 
 In this paper, the author only considers errors caused by statement \texttt{error();}.
@@ -112,7 +112,7 @@ In this paper, the author only considers errors caused by statement \texttt{erro
 Similar to the incorrectness specification, we also need tags for normal, not exceptional, termination of a program. Here we use ``ok" for this purpose.
 \begin{center}
 
-\includegraphics[scale = 0.35]{6.png}
+\includegraphics[scale = 0.35]{6.PNG}
 
 \end{center} 
 \end{frame}
@@ -174,14 +174,14 @@ $\dfrac{[p]C_i[\epsilon:q]}{[p]C_1 + C_2[\epsilon:q]}$
 
 \begin{frame}\frametitle{Program Conversion}
 \begin{center}
-\includegraphics[scale = 0.30]{7.png}
+\includegraphics[scale = 0.30]{7.PNG}
 
 \end{center}
 
 \end{frame}
 \begin{frame}\frametitle{Rules for Variables and Mutations}
 \begin{center}
-\includegraphics[scale = 0.30]{8.png}
+\includegraphics[scale = 0.30]{8.PNG}
 
 \end{center}
 where $Mod(C)$ is the set of variables that program $C$ modified, $Free(r)$ means the set of free variables in assertion $r$ and \texttt{nondet()} is a nondeterministic value.
@@ -232,7 +232,7 @@ The semantic of the triple $[p]C[\epsilon: q]$? Relations can be regarded as the
 
 \begin{frame}
 \begin{center}\frametitle{Semantics}
-\includegraphics[scale = 0.3]{9.png}
+\includegraphics[scale = 0.3]{9.PNG}
 \begin{theorem}
 All the listed properties in last section are true of the semantic.
 
@@ -329,7 +329,7 @@ $C = (\texttt{assume  x == 1; x = 88}) + (\texttt{assume  x == 2; x = 88})$
 \textbf{Reasoning about Loops}
 
 \begin{center}
-\includegraphics[scale = 0.28]{10.png}
+\includegraphics[scale = 0.28]{10.PNG}
 
 \end{center}
 Use consequence rule and implication backward:
@@ -340,11 +340,11 @@ Use consequence rule and implication backward:
 
 \begin{center}
 
-\includegraphics[scale=0.4]{11.png}
+\includegraphics[scale=0.4]{11.PNG}
 \end{center}
 \begin{center}
 
-\includegraphics[scale=0.25]{12.png}
+\includegraphics[scale=0.25]{12.PNG}
 \end{center}
 
 
@@ -354,7 +354,7 @@ Use consequence rule and implication backward:
 \textbf{Conditionals, Expressiveness and Pruning}
 \begin{center}
 
-\includegraphics[scale = 0.34]{13.png}
+\includegraphics[scale = 0.34]{13.PNG}
 \end{center}
 \end{frame}
 
@@ -364,7 +364,7 @@ Use consequence rule and implication backward:
 %A "flaky test" is one that, due to nondeterminism, can give different answers on different test runs. "Sturdy" however means that the program give the same answer on all runs of a program.
 %\begin{center}
 
-%\includegraphics[scale = 0.36]{14.png}
+%\includegraphics[scale = 0.36]{14.PNG}
 %\end{center}
 %\begin{itemize}
 %\item $wp(\pi)q$ describe states for which execution of $\pi$ is guaranteed to terminate and satisfy $q$.
