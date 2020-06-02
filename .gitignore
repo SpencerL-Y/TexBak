@@ -2,7 +2,6 @@
 *.log
 *.nax
 *.out
-*.pdf
 *.gz
 *.snm
 *.toc
