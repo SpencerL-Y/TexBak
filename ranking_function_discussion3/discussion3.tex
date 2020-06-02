@@ -151,7 +151,7 @@ Reason: the first guess is incorrect.
 \caption{Algorithm Version2: Learn Multiphase RF Backtracking }
 \begin{algorithmic}[1]
 
-\texttt{train\_backtracking\_loopbody}($L$, \texttt{rf\_list}, \texttt{tpList}, \texttt{tempId}, \texttt{currentDepth}, \texttt{maxDepth}):
+\STATE \texttt{train\_backtracking\_loopbody}($L$, \texttt{rf\_list}, \texttt{tpList}, \texttt{tempId}, \texttt{currentDepth}, \texttt{maxDepth}):
 
 \end{algorithmic}
 \end{algorithm}
@@ -159,9 +159,31 @@ Reason: the first guess is incorrect.
 Use dfs to learn multiphase ranking function, if for one layer the learning result is \texttt{UNKNOWN}, backtrack one depth and change the template.
 \end{frame}
 
+\begin{frame}\frametitle{Case 5: Jump In-and-Out}
+\begin{example}
+\texttt{while($x$ > 0 or $y$ > 0) do }
+
+$\texttt{If y > 0:} x' = x; y' = y - 2;$
+$\texttt{else:} x' = x - 1; y' = y + 1;$
+
+\end{example}
+\begin{itemize}
+\item Not backtracking: cannot learn out
+
+\item Backtracking:
+\begin{center}
+\includegraphics[scale=0.5]{6.png}
+\end{center}
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}\frametitle{TODOs}
 \begin{itemize}
+
 \item Implement the algorithm that extract guard to be the ranking function.
+
+\item Add to deal with nodeterministic loops.
 
 \item Find more cases and explore the advantage of our methods, and do some large scale experiment.
 \end{itemize}
