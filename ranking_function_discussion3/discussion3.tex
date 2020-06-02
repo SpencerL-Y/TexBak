@@ -82,10 +82,10 @@ If we try $by + c$ as the first template and $ax + by + c$ as the second:
 \includegraphics[scale= 0.5]{3.png}
 \end{center}
 
-We have to modify our algorithm to by adding back-tracking to try different template when we fail to learn a ranking function out. 
+We have to modify our algorithm to by adding back-tracking to try different templates when we fail to learn a ranking function out. 
 \end{frame}
 
-\begin{frame}\frametitle{Case 3: Multiphase Nested-RF}
+\begin{frame}\frametitle{Case 3: Split Technique}
 \begin{example}
 \texttt{while($x$ > 0 or $y$ > 0) do }$x' = x + y; y' = y - 1$
 
@@ -98,7 +98,73 @@ not $\delta$.
 
 \end{example}
 
+By seting the conjuncted formula to $ y < -0.1$,
+ $-y > 0.1$. The multiphase ranking function is $\langle y+0.1, x\rangle$
+
+
 \end{frame}
 
+\begin{frame}\frametitle{Case 4: Not all cases can be solved}
+\begin{example}
+\texttt{while($x \ge 1$ and $y \ge 1 $ and $x \ge y$ and $2^By \ge x$) do }$x' = 2x; y' = 3y$
+
+\end{example}
+According to "On Multiphase" paper, this loop has a multiphase ranking function:
+
+\[\langle x - 2^By, x - 2^{B-1}y, \ldots, x - y\rangle\]
+
+
+We ran a experiment on $B = 2$. But failed to learn the RF out.
+\begin{center}
+\includegraphics[scale=0.5]{5.png}
+\end{center}
+
+Reason: the first guess is incorrect.
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Algorithm Version 2}
+
+\begin{algorithm}[H]
+\caption{Algorithm Version2: Learn Multiphase RF Backtracking }
+\begin{algorithmic}[1]
+\REQUIRE Loop $L$, depthBound $db$, templateList \texttt{tpList}
+
+\ENSURE $\texttt{result}\in \{\texttt{FIN, INF, UNKNOWN}\}$, a list of RFs \texttt{rf\_list}
+\STATE $i = 1$
+\WHILE{$i \le db$ and \texttt{result} $==$ \texttt{UNKNOWN}}
+\STATE \texttt{rf\_list = []}
+\STATE \texttt{result, rf\_list}$=$\texttt{train\_backtracking\_loopbody}($L$, \texttt{rf\_list}, \texttt{tpList}, 0, 1, $i$)
+\IF{\texttt{result != UNKNOWN}}
+	\textbf{return result, rf\_list}
+\ENDIF
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+\end{frame}
+
+\begin{frame}\frametitle{Algorithm Version 2 Continue}
+
+\begin{algorithm}[H]
+\caption{Algorithm Version2: Learn Multiphase RF Backtracking }
+\begin{algorithmic}[1]
+
+\texttt{train\_backtracking\_loopbody}($L$, \texttt{rf\_list}, \texttt{tpList}, \texttt{tempId}, \texttt{currentDepth}, \texttt{maxDepth}):
+
+\end{algorithmic}
+\end{algorithm}
+
+Use dfs to learn multiphase ranking function, if for one layer the learning result is \texttt{UNKNOWN}, backtrack one depth and change the template.
+\end{frame}
+
+\begin{frame}\frametitle{TODOs}
+\begin{itemize}
+\item Implement the algorithm that extract guard to be the ranking function.
+
+\item Find more cases and explore the advantage of our methods, and do some large scale experiment.
+\end{itemize}
+\end{frame}
 
 \end{document}
