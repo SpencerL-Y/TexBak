@@ -7,7 +7,7 @@
 \usepackage{algorithm, algorithmic}
 \usepackage{stmaryrd}\usefonttheme[onlymath]{serif}
 
-\title{Discussion 3: Algorithm V1 \& Experiment on Cases}
+\title{Discussion 3: Algorithm V1,V2 \& Experiment on Cases}
 \begin{document}
 
 \maketitle
@@ -57,7 +57,7 @@ Result of the algorithm: $\langle 0.9971 y, 0.639x + 0.6774\rangle$
 \texttt{while($x$ > 0 or $y$ > 0) do }
 
 $\texttt{If y > 0:} x' = x; y' = y - 1;$
-$\texttt{else:} x' = x - 1; y' = y;$
+$\texttt{else:} x' = x - 1; y' = y - 1;$
 
 
 \end{example}
@@ -66,14 +66,13 @@ is a loop with 2-phase multiphase ranking function $\langle y, x\rangle$
 
 Use template $ax + by + c$ to run:
 \begin{center}
-\includegraphics[scale= 0.5]{2.png}
+\includegraphics[scale= 0.5]{7.png}
 \end{center}
-where the learn unbound part always generating $x + y$ as a decreasing function.
-
+where the learn unbound part first generated $x + y$ as a decreasing function, which is a spurious phase.
 \end{frame}
 
-\begin{frame}\frametitle{Way to solve the problem}
-Try a different template when learning failed.
+\begin{frame}\frametitle{Way to solve the spurious decreasing function}
+Try different templates.
 
 If we try $by + c$ as the first template and $ax + by + c$ as the second:
 
@@ -98,7 +97,7 @@ not $\delta$.
 
 \end{example}
 
-By seting the conjuncted formula to $ y < -0.1$,
+By setting the conjuncted formula to $ y < -0.1$,
  $-y > 0.1$. The multiphase ranking function is $\langle y+0.1, x\rangle$
 
 
@@ -181,11 +180,11 @@ $\texttt{else:} x' = x - 1; y' = y + 1;$
 \begin{frame}\frametitle{TODOs}
 \begin{itemize}
 
-\item Implement the algorithm that extract guard to be the ranking function.
+\item Implement the algorithm that extracts guards to be candidate ranking functions.
 
 \item Add to deal with nodeterministic loops.
 
-\item Find more cases and explore the advantage of our methods, and do some large scale experiment.
+\item Find more cases and explore the advantage of our methods, and do some large scale experiments.
 \end{itemize}
 \end{frame}
 
