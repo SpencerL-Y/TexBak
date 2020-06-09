@@ -12,9 +12,17 @@
 
 \maketitle
 \begin{frame}\frametitle{Experiment Result}
-
+\textbf{Experiment Configurations:}
 Test cases are grabbed from SV-COMP. Number of cases: 134.
 
+Sampling Strategy: Lowerbound of number of points $=10$, expand sampling zone until reach the lowerbound.
+
+Template Strategy: 
+\begin{itemize}
+\item Mulitphase: Linear templates: single variable plus linear combination of all.
+\item SVMRanker: Linear + NonLinear
+\item LassoRanker: Only Support Linear
+\end{itemize}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -28,6 +36,8 @@ INFINITE & 34& 34&34 & 37\\
 
 UNKNOWN & 61& 58&70 & 73\\
 \hline
+TIME &1107s& 5709s& 162s& 1695s\\
+\hline
 
 \end{tabular}
 \end{center}
@@ -36,9 +46,6 @@ UNKNOWN & 61& 58&70 & 73\\
 Our algorithm can solve more cases than SVMRanker and LassoRanker.
 \end{frame}
 
-\begin{frame}\frametitle{Time Result}
-
-\end{frame}
 
 \begin{frame}\frametitle{Specifying Cases}
 \begin{itemize}
@@ -121,6 +128,13 @@ Termination: $146,147,129,74,71,15$
 \begin{center}
 \includegraphics[scale=0.40]{74.png}
 \end{center}
+\end{itemize}
+\end{frame}
+\begin{frame}\frametitle{TODOs}
+\begin{itemize}
+\item Make the problems of cases above clear.
+\item Do more experiment on different experiment configurations.
+\item Write the experiment part of the paper.
 \end{itemize}
 \end{frame}
 \end{document}
