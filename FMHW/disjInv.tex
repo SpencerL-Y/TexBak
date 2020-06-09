@@ -1,0 +1,64 @@
+\documentclass[UTF-8]{ctexart}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}
+
+\newtheorem{proposition}{Proposition}
+\author{李勰 201928015029029}
+\title{形式化方法大作业}
+\date{\today}
+
+
+\geometry{a4paper, scale = 0.8}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item 第一题：对各种模型和分量进行阐述，并且说明要素在系统建模中起到的作用。
+以下按照模型依次讨论和解释。
+\begin{itemize}
+\item Kripke模型：
+
+A Kripke structure is a tuple: $\langle S, R, I\rangle$. 其中$S$表示状态的集合，$R$表示迁移关系，$I$是初始状态的集合。对于一个信息系统来说，状态的集合里的状态指的是变量的赋值，例如对于软件系统来说，变量是什么值，对于计算机系统，还包括寄存器的状态，PC的值等等。$R$表示可能的状态之间的迁移关系，比如一个If语句，如果guard成立，做一个迁移，如果不成立做另外一个迁移。初始状态集$I$表示系统最初的可能的状态。
+
+
+\item 公平Kripke模型
+
+和Kripke模型相比，公平的Kripke定义为$\langle S,R,I,F\rangle$，多了一个$F$，表示公平性约束的有穷集合。这里直观上来说公平的意思就是，对于$F$里面的每个状态，我的一个计算的序列，如果是无穷长度的序列，必须无穷次经过其中每一个状态。如果把$\pi$看作一个模型上的路径的话，可以写为$\inf(\pi)\cap f \ne \emptyset$.公平性在实际系统建模的刻画中，可以用来描述一些公平约束，例如两个进程不停对于一个资源的访问。我们要求其中每一个进程都能访问互斥资源无穷多次，就可以利用这个模型来建模。
+
+\item 标号Kripke模型
+
+标号Kripke模型是一个四元组$\langle S,R,I,L\rangle$，和Kripke模型相比多了个$L$，$L$的定义是从状态到原子命题集合的幂集的一个函数。这里的原子命题，引入了命题逻辑中的一些内容。主要的想法是，如果每个状态我们都能用$L$表示一些在该状态为真的原子命题，我们就能用逻辑更好的讨论该状态或者说模型的执行的过程中的性质。用这个模型我们可以很容易的从数学上表示出，对于所有执行$x$的值不等于$0$这样的性质。
+
+\item 公平标号Kripke模型
+
+该模型是以上两个模型的是原子命题集合$AP$上的$\langle S,R,I,L,F\rangle$五元组。这里不同的是$F$变为了公平性约束的有穷集合，也就是一个命题逻辑公式的集合。
+
+\item 卫式迁移模型：
+
+卫式迁移模型是对于一阶逻辑的一个扩充，卫式迁移模型的迁移是$\rightarrow,:=$共同定义的，比如$\phi \rightarrow \vec{x} = \vec{a}$. 直观上说就是如果公式$\phi$在状态上被满足，那么可以更新状态，这里的状态就是一个变量的赋值函数。卫式迁移模型和Kripke模型在语义上来说是等价的，同样的我们也有公平卫式迁移模型等模型。
+
+\item 流程图模型
+
+流程图模型是对卫式迁移模型的扩充，增加了两个集合的符号，辅助符号集合和标号符号集合$H,LB$. 语法上添加了分支和跳转，语义上和卫式迁移模型等价。
+
+\item LTS模型
+
+标号迁移模型，标号迁移模型是对Kripke模型的一个扩展，主要扩展了迁移时候的标号的有穷集合$\Sigma$，迁移的边上现在需要有个标号的guard。
+
+双标号迁移模型，同时有$\Sigma,L$的Kripke模型。
+
+\item B\"uchi自动机
+
+\end{itemize}
+
+
+\end{enumerate}
+
+
+\end{document}
