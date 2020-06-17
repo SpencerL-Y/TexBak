@@ -1,0 +1,64 @@
+\documentclass[UTF-8]{article}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{multirow}
+
+\newtheorem{proposition}{Proposition}
+\title{Experiment Section}
+
+
+\geometry{a4paper, scale = 0.8}
+\begin{document}
+\maketitle
+\label{experiment_section}
+\section{Experimental Evaluation}
+After adding the multi-phase ranking function learning algorithm to \textsc{SVMRanker}, we conducted experiments on constructed data set of loop programs to compare the algorithms of learning nested ranking function, of multi-phase ranking function and algorithm in the state-of-the-art tool \textsc{LassoRanker} embedded in \textsc{Ultimate Automizer}. Our dataset is composed of C programs and Boogie programs, where $96$ loop programs in C are taken from library of termination competition  \textsc{SV-COMP} and $134$ loop programs in Boogie are chosen from repository of \textsc{Ultimate Automizer}. For the configuration of experments, we use a server with a 3.6 GHz Intel Core i7-4790 CPU and 16GB RAM, timeout is set to 300 seconds for each case.
+
+\subsection{Overview of the Experiments}
+
+
+ 
+\begin{center}
+\begin{table}
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+	
+		 & \multicolumn{3}{c|}{\textsc{SVMRanker}} & \multirow{2}*{\textsc{Lasso}\textsc{Ranker}} \\
+		\cline{2-4}
+		 & Nested & 2-Multi & 4-Multi & ~ \\
+		\hline
+		Terminating & $54$& $72$& $78$& $72$\\
+		
+		Non-teminating & $50$&$50$ &$50$ & $52$\\
+		
+		Unknown & $126$& $108$ & $102$ & $106$\\
+		\hline
+		Total Time & $196$s& $1183$s&$4693$s & $2053$s\\
+	\end{tabular}
+\caption{General Experiment Results}
+\end{table}
+\label{general_exp_result}
+
+\end{center}
+As shown in Table \ref{general_exp_result}, we use our $231$ examples as inputs to \textsc{SVMRanker} and \textsc{LassoRanker}. For \textsc{SVMRanker}, we use ``Nested, 2-Multi, 4-Multi'' to represent the sythesising of nested ranking function, 2-phases-bounded and 4-phases-bounded multiphase ranking function respectively. In the experiment, we try different number of phases of nested ranking function according to the result of the learning. Furthermore, we use linear and non-linear templates for nested ranking function and use only linear templates for multiphase learning.
+
+
+
+
+From table \ref{general_exp_result}, it is obvious our new algorithm for multiphase r.f. is more powerful and can solve more cases than that of nested r.f. learning. From the comparation between ``2-Multi'' and ``4-Multi'', it is clear that larger bound on phases is given, more ranking functions can be found. Besides, since the number of terminating cases of multiphase learn is almost the same as \textsc{LassoRanker}, we can tell that our multiphsae learning algorithm enhance the capability of \textsc{SVMRanker} to deal with linear loops programs in our data set. 
+
+As for the total running time of this experiment. The total time of multiphase r.f. learning is much more than nested r.f. learning. This can be attribute to the backtracking and incremental learning of multiphase. Thought the long running time, we are still optimistic about our tool that it solves the same number of terminating cases as \textsc{LassoRanker} but only uses about half of their time.
+
+
+\subsection{Detailed Evaluation}
+\textit{(a) Time consumed in each stage.}
+
+
+\textit{(b) Advantage on non-linear loops.}
+\end{document}
