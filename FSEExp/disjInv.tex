@@ -13,7 +13,7 @@
 \title{Experiment Section}
 
 
-\geometry{a4paper, scale = 0.8}
+\geometry{a4paper, scale = 0.6}
 \begin{document}
 \maketitle
 \label{experiment_section}
@@ -23,8 +23,6 @@ After adding the multi-phase ranking function learning algorithm to \textsc{SVMR
 \subsection{Overview of the Experiments}
 
 
- 
-\begin{center}
 \begin{table}
 	\centering
 	\begin{tabular}{c|c|c|c|c}
@@ -42,23 +40,57 @@ After adding the multi-phase ranking function learning algorithm to \textsc{SVMR
 		Total Time & $196$s& $1183$s&$4693$s & $2053$s\\
 	\end{tabular}
 \caption{General Experiment Results}
-\end{table}
-\label{general_exp_result}
 
-\end{center}
+\label{general_exp_result}
+\end{table}
+
 As shown in Table \ref{general_exp_result}, we use our $231$ examples as inputs to \textsc{SVMRanker} and \textsc{LassoRanker}. For \textsc{SVMRanker}, we use ``Nested, 2-Multi, 4-Multi'' to represent the sythesising of nested ranking function, 2-phases-bounded and 4-phases-bounded multiphase ranking function respectively. In the experiment, we try different number of phases of nested ranking function according to the result of the learning. Furthermore, we use linear and non-linear templates for nested ranking function and use only linear templates for multiphase learning.
 
 
 
 
-From table \ref{general_exp_result}, it is obvious our new algorithm for multiphase r.f. is more powerful and can solve more cases than that of nested r.f. learning. From the comparation between ``2-Multi'' and ``4-Multi'', it is clear that larger bound on phases is given, more ranking functions can be found. Besides, since the number of terminating cases of multiphase learn is almost the same as \textsc{LassoRanker}, we can tell that our multiphsae learning algorithm enhance the capability of \textsc{SVMRanker} to deal with linear loops programs in our data set. 
+From Table \ref{general_exp_result}, it is obvious our new algorithm for multiphase r.f. is more powerful and can solve more cases than that of nested r.f. learning. From the comparation between ``2-Multi'' and ``4-Multi'', it is clear that larger bound on phases is given, more ranking functions can be found. Besides, since the number of terminating cases of multiphase learn is almost the same as \textsc{LassoRanker}, we can tell that our multiphsae learning algorithm enhance the capability of \textsc{SVMRanker} to deal with linear loops programs in our data set. 
 
 As for the total running time of this experiment. The total time of multiphase r.f. learning is much more than nested r.f. learning. This can be attribute to the backtracking and incremental learning of multiphase. Thought the long running time, we are still optimistic about our tool that it solves the same number of terminating cases as \textsc{LassoRanker} but only uses about half of their time.
 
 
 \subsection{Detailed Evaluation}
-\textit{(a) Time consumed in each stage.}
+\begin{table}
+\centering
+\begin{tabular}{c|c|c|c}
+
+& Nested & 2-Multi & 4-Multi\\
+\hline
+Sampling time & $14.9$s& $59.6$s& $170.3$s \\
+Training time & $7.2$s& $65.1$s& $186.9$s\\
+Z3 Solving time & $24.9$s& $278.6$s& $1965.7$s\\
+
+\end{tabular}
+\caption{Detailed Time Cost of \textsc{SVMRanker}}
+\label{detailed_time}
+\end{table}
 
 
-\textit{(b) Advantage on non-linear loops.}
+\subsubsection{
+\textit{(a) Time cost of each stage.}}
+To better illustrate the time cost, we record sampling time, training time and Z3 sovling time of the experiments as shown in Table \ref{detailed_time}. Time costs all increase fastly when the depth bound of multiphase learning increases. Most of the time are used on solving Z3 formulae to check the satisfiability of requirements on learned functions. In the future, since our multiphase templates are all linear templates, we wish to improve the result by using more efficient LP tools like \textsc{CPLEX} and \textsc{PuLP}\ref{PL tool reference}.
+
+\begin{table}
+\centering
+\begin{tabular}{c|c}
+& Non-linear loop programs \\
+\hline
+\textsc{SVMRanker} & $13$\\
+\textsc{LassoRanker} & $0$\\
+\hline
+Total number & $19$  \\
+\end{tabular}
+\caption{Solved Number of Non-linear Loops}
+\label{advantage_table}
+\end{table}
+
+\subsubsection{\textit{(b) Advantage on non-linear loops.}}
+According to Table \ref{advantage_table}, we summarized the non-linear cases solved by our tool and \textsc{LassoRanker}. We claim that our tool performs better than \textsc{LassoRanker} on non-linear loops. This is because the latter only utilize linear templates while our algorithm use non-linear templates as well.
+
+
 \end{document}
