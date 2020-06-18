@@ -44,14 +44,14 @@ After adding the multi-phase ranking function learning algorithm to \textsc{SVMR
 \label{general_exp_result}
 \end{table}
 
-As shown in Table \ref{general_exp_result}, we use our $230$ examples as inputs to \textsc{SVMRanker} and \textsc{LassoRanker}. For \textsc{SVMRanker}, we use ``Nested, 2-Multi, 4-Multi'' to represent the sythesising of nested ranking function, 2-phases-bounded and 4-phases-bounded multiphase ranking function respectively. ({\color{blue}{lx: Add description of the bound if the phase bound is not mentioned previously :xl}}) In the experiment, the algorithm tries different number of phases of nested ranking function according to the result of the learning. Furthermore, we use linear and non-linear templates for nested ranking function and use only linear templates for multiphase learning.
+As shown in Table \ref{general_exp_result}, we use our $230$ examples as inputs to \textsc{SVMRanker} and \textsc{LassoRanker}. For \textsc{SVMRanker}, we use ``Nested, 2-Multi, 4-Multi'' to represent the sythesising of nested ranking function, 2-phases-bounded and 4-phases-bounded multiphase ranking function respectively. {\color{blue}{lx: Add description of the bound if the phase bound is not mentioned previously :xl}} In the experiment, the algorithm tries different number of phases of nested ranking function according to the result of the learning. Furthermore, we use linear and non-linear templates for nested ranking function and use only linear templates for multiphase learning.
 
 
 
 
 From Table \ref{general_exp_result}, it is obvious our new algorithm for multiphase r.f. is more powerful and can solve more cases than that of nested r.f. learning. From the comparation between ``2-Multi'' and ``4-Multi'', it is clear that larger bound on phases is given, more ranking functions can be found. Besides, since the number of terminating cases of multiphase learn is almost the same as \textsc{LassoRanker}, we can tell that our multiphsae learning algorithm enhance the capability of \textsc{SVMRanker} to deal with linear loops programs in our data set. 
 
-As for the total running time of this experiment. The total time of multiphase r.f. learning is much more than nested r.f. learning. This can be attribute to the backtracking and incremental learning of multiphase.({\color{blue}{lx: Add description of backtracking and incremental learning if the phase bound is not mentioned previously :xl}}) Thought the long running time, we are still optimistic about our tool that it solves the same number of terminating cases as \textsc{LassoRanker} but only uses about half of their time.
+As for the total running time of this experiment. The total time of multiphase r.f. learning is much more than nested r.f. learning. This can be attribute to the backtracking and incremental learning of multiphase.{\color{blue}{lx: Add description of backtracking and incremental learning if the phase bound is not mentioned previously :xl}} Thought the long running time, we are still optimistic about our tool that it solves the same number of terminating cases as \textsc{LassoRanker} but only uses about half of their time.
 
 
 \subsection{Detailed Evaluation}
@@ -92,5 +92,5 @@ Total number & $19$  \\
 \subsubsection{\textit{(b) Advantage on non-linear loops.}}
 According to Table \ref{advantage_table}, we summarized the non-linear cases solved by our tool and \textsc{LassoRanker}. We state that our tool performs better than \textsc{LassoRanker} on non-linear loops. This is because the latter only utilize linear templates while our algorithm use non-linear templates as well.
 
-
+{\color{blue}{lx: exp section is slightly long, to cut:xl}}
 \end{document}
