@@ -16,6 +16,20 @@
 \geometry{a4paper, scale = 0.6}
 \begin{document}
 \maketitle
+
+\section{Architecture}
+\paragraph{Multiphase textual description}
+
+The work flow of learning multiphase ranking functions utilizes nested learning as a sub-procedure. The algorithm takes given program and default/user-set depth bound as input, search for linear ranking functions and decreasing functions under the depth bound. Multiphase learning also maintains a linear templates set for learning. If searching for multiphase ranking functions fails, it backtracks and changes template used for new learning. The work flow output terminating and non-terminating statement similar to that of nested learning and return unknown result if all templates are tried in the searching.
+
+When it comes to template setting, each template is encoded as a python array. Where each component represents a monomial and we also use python array whose length is the number of variable plus $1$ to represent monomial, and the component represent the power of corresponding variable. For example, if there are two variable $x, y$. We can use $[[s_1,s_2,b_1],[t_1,t_2,b_2]]$ to represent polynomial $b_1(x^{s_1}y^{s_2}) + b_2(x^{t_1}y^{t_2})$. For nested learning, we generate different polynomial templates. For multiphase learning, the templates are only restricted to $\{ax_i + c_2, \sum_{i}^{\texttt{varNum}}b_ix_i + c_2\}$ where the set of variables is $\{x_i\mid i\in \texttt{varNum}\}$.
+
+
+For optimization, our efforts are mainly devoted to reduce the time in sampling and in Z3 solving. We provide some preset strategies to relieve the time consumption. To effectively find the sampling space, we also use constraint solving to find a sample point then sample randomly near that point. Besides, for multiphase learning, we add option \verb|--template_strategy| for user to balance the time of searching and effectiveness of the algorithm. 
+
+\paragraph{Optimization options and techniques}
+
+
 \label{experiment_section}
 \section{Experimental Evaluation}
 After adding the multi-phase ranking function learning algorithm to \textsc{SVMRanker}, we conducted experiments on constructed dataset of loop programs to compare the algorithms of learning nested ranking function, of multi-phase ranking function and algorithm in the state-of-the-art tool \textsc{LassoRanker} embedded in \textsc{Ultimate Automizer}. Our dataset are $230$ Boogie programs, where $96$ programs are converted from library of \textsc{sv-comp}\ref{svcomp} and $134$ loop programs in Boogie are grabbed from repository of \textsc{Ultimate Automizer}. For the configuration of experments, we use a server with a 3.6 GHz Intel Core i7-4790 CPU and 16GB RAM and timeout is set to 300 seconds for each case.
@@ -93,4 +107,13 @@ Total number & $19$  \\
 According to Table \ref{advantage_table}, we summarized the non-linear cases solved by our tool and \textsc{LassoRanker}. We state that our tool performs better than \textsc{LassoRanker} on non-linear loops. This is because the latter only utilize linear templates while our algorithm use non-linear templates as well.
 
 {\color{blue}{lx: exp section is slightly long, to cut:xl}}
+
+\section{Conclusion}:
+In this paper we give theoretical background, architecture and experimental results of our tool \textsc{SVMRanker}. The successful application of SVM on synthesising nested and multiphase ranking functions and the development of this tool demonstrate the promising future of learning more kinds of ranking functions such as compositional ranking functions mentioned in \cite{linear ranking template}. During the experiment, though we do not found significant advantage of our tool on linear loops, our tool is still a good sumplement to \textsc{LassoRanker} on learning of non-linear loops.
+
+As future work, we plan to add more functionalities into our tool. For example, we wish to use recurrent set as a stronger way to find the non-termination and use LP tools to relieve the long solving time on linear templates. Besides, we also intend to enlarge the types of programs our tool supports, such as nondeterminism and nested loops. On theoretical aspect, whether we can use neural networks on termination verification is also worth exploring. 
+
+\clearpage 
+\appendix
+
 \end{document}

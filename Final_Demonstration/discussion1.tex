@@ -1,0 +1,120 @@
+\documentclass[11pt]{beamer}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}\usefonttheme[onlymath]{serif}
+
+\title{Discussion}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+
+\begin{frame}\frametitle{Limitation of Nested Ranking Functions}
+
+\begin{example}
+
+\[\texttt{while }(x > 0 \vee y > 0) \]
+\[\{\texttt{if }(y > 0): y' = y - 1; x ' = x;\texttt{else }: x' = x - 1;\}\]
+\end{example}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Blocks}
+Idea: use terms of the loop guard to split the space into \textit{blocks}.
+\begin{center}
+
+\includegraphics[scale = 0.65]{block.png}
+
+\end{center}
+\end{frame}
+\begin{frame}\frametitle{Cyclic Dependency and Irregular Split}
+
+\begin{example}
+
+\[\texttt{while }(x > 0 \vee y > 0) \]
+\[\{\texttt{if }(y > 0): y' = y - 2; x ' = x;\texttt{else }: y' = y + 1;x' = x - 1;\}\]
+
+Start with $x = 1, y = 5$
+
+
+A possible single linear ranking function $f(x, y) = x + 3y$.
+
+This example demonstrates the blocks may be split by the ranking function into halves. 
+
+i.e. the regular split of last example is just a coincidency.
+
+\end{example}
+
+\end{frame}
+
+\begin{frame}\frametitle{Blocks}
+Use the terms of a loop 
+\begin{center}
+
+\includegraphics[scale = 0.45]{jump.png}
+
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Multiphase Cyclic Dependency}
+\begin{example}
+
+\[\texttt{while }(x > 0 \vee y > 0) \]
+\[\{\texttt{if }(y > 0): x' = x - 2z; y' = y; z' = z + 1;\]
+\[\texttt{else }: x' = x + z; y' = y - 1; z' = z;\}\]
+\end{example}
+
+Start from $x = 1, y = 8, z = -2$.
+
+
+
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Idea1: Guess $f_1$ for Multiphase Ranking Function}
+Idea: although some ranking functions are not the borders of the blocks, we still wish to use the guard to guess the phases. Put the guessed $f_1$ into \texttt{SVMRanker} to solve a ranking function for the first phase.
+
+After a guess, conjunct the negation of the guard into the loop for nest guess.
+
+The examble below shows that this idea is not feasible.
+\begin{example}
+
+\[\texttt{while }(x > 0 \vee y > 0) \]
+\[\{\texttt{if }(y > 0): y' = y - 1; x' = 5;\]
+\[\texttt{else }: x' = x - 1; y = 5; \}\]
+
+\end{example}
+The loop is not terminating but if we using the method to conjunct the negation, we may wrongly conclude that the loop is terminating with a multiphase ranking function $\langle y, x\rangle$.
+\end{frame}
+
+\begin{frame}\frametitle{Idea2: Attempt to Merge the Blocks}
+Idea: if we find the jump-in-and-out situations of the execution between two blocks, we consider to merge them into one. Besides, we can unwind the loop for several times to split a big block into several small one.
+\begin{center}
+
+\includegraphics[scale = 0.45]{split.png}
+
+\end{center}
+Intuition: in order to accurately find the ranking function for one phase, the worst case is that we need to unwind the loop for infinity times and consider every possible executing branch.
+\end{frame}
+
+\begin{frame}\frametitle{Idea2: Attempt to Merge the Blocks}
+
+Problem: One cannot tell it is the problem of the inability of multiphase ranking function for this loop, or it is really that these two blocks should be merged.
+
+\end{frame}
+
+\begin{frame}\frametitle{Current Thoughts}
+Consider some subclass of the loop with disjunction as [1] did, where they restrain there disjunction area to be a convex polyhedron in the sense of max-plus algebra.
+
+[1] Using Dynamic Analysis to Generate Disjunctive Invariants
+\end{frame}
+
+
+\end{document}
