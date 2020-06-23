@@ -27,6 +27,10 @@ In this paper, they propose the algorithm of learning loop invariants using CLN.
 
 This paper generalize the model into GCLN, where ``G'' stands for gated.
 
+
+Tool is available at
+
+https://github.com/gryan11/cln2inv
 \end{frame}
 \begin{frame}\frametitle{Overview}
 \begin{itemize}
@@ -37,29 +41,7 @@ This paper generalize the model into GCLN, where ``G'' stands for gated.
 \end{itemize}
 
 \end{frame}
-\begin{frame}\frametitle{Difficulties}
-\begin{itemize}
-\item Large search space with high magnitude terms. e.g. terms like $x^2$ and $x^y$ grows exponentially.
 
-\item Limitted samples. Bounds on the number of loop iterations with integer variables.
-
-\item Distinguishing sufficient inequalities.
-
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}\frametitle{Ways to Resolve}
-\begin{itemize}
-
-\item \textbf{Learning with G-CLNs}, where the gated value can be used to turn on or off the terms. Combine dropout.
-
-\item \textbf{Fractional sampling}. Relax the semantic of the loop to continuous functions.
-
-\item \textbf{Piecewise Biased Quadratic Units(PBQU)}. A way to penalizes loose fits and converges to tight contraints on data.
-
-\end{itemize}
-\end{frame}
 \begin{frame}\frametitle{Background}
 \begin{definition}[Loop Invariant Inference]
 Given the precondition $P$ and postcondition $Q$. Finding an inductive invariant $I$ such that,
@@ -72,12 +54,58 @@ Loop invariants can be encoded in SMT. The data driven invariant inference is to
 
 
 \end{frame}
+\begin{frame}\frametitle{Difficulties}
+\begin{itemize}
+\item Large search space with high magnitude terms. e.g. terms like $x^2$ and $x^y$ frow fast.
+
+\item Limitted samples. Bounds on the number of loop iterations with integer variables.
+
+\item Distinguishing sufficient inequalities.
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Examples}
+\begin{center}
+\includegraphics[scale=0.4]{exp1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Examples}
+\begin{center}
+
+\includegraphics[scale=0.4]{exp2.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}\frametitle{Ways to Resolve}
+\begin{itemize}
+
+\item \textbf{Learning with G-CLNs}, where the gated value can be used to turn on or off the terms. Combine dropout.
+
+\item \textbf{Fractional sampling}. Relax the semantic of the loop to continuous functions.
+
+\item \textbf{Piecewise Biased Quadratic Units(PBQU)}. A way to penalizes loose fits and converges to tight contraints on data.
+
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}\frametitle{Making Loop Invariant Learnable}
+
+Principles:
+\begin{enumerate}
+\item Remain the meaning of the logic.
+\item Continuous and smooth.
+\item Increasing when unsat terms change to sat terms.
+\end{enumerate}
+
 Using a differentiable logic: Basic Fuzzy Logic(BL). BL is a relaxation of FOL on continuous truth value on the interval $[0,1]$.
 
 \begin{itemize}
-\item t-norms($\otimes$). Consistency: $t \otimes 1 = 1, t \otimes 0 = 0$, commutative and monotonic.
+\item t-norms($\otimes$). Consistency: $t \otimes 1 = t, t \otimes 0 = 0$, commutative and monotonic.
 
 \item t-conorms($\oplus$), operates as disjunctions for BL and derived from DeMorgan's law with $\neg t = 1 - t$ 
 \end{itemize}
@@ -88,12 +116,6 @@ Using a differentiable logic: Basic Fuzzy Logic(BL). BL is a relaxation of FOL o
 \end{frame}
 
 \begin{frame}\frametitle{Semantic Mapping}
-Principles:
-\begin{enumerate}
-\item Remain the meaning of the logic.
-\item Continuous and smooth.
-\item Increasing when unsat terms change to sat terms.
-\end{enumerate}
 We use $\mathcal{S}$ as the mapping function and it is defined recursively. $\mathcal{S}(F) : X \rightarrow [0,1]$.
 \begin{center}
 \includegraphics[scale=0.4]{2.png}
@@ -104,8 +126,13 @@ We use $\mathcal{S}$ as the mapping function and it is defined recursively. $\ma
 
 \begin{frame}\frametitle{Example}
 \begin{center}
-\includegraphics[scale=0.5]{4.png}
+\includegraphics[scale=0.24]{4b.png}
+
+\includegraphics[scale=0.36]{4.png}
 \end{center}
+
+\[F(x) = (x = 1)\vee (x \ge 5) \vee (x \ge 3 \wedge x \le 4)\]
+
 \end{frame}
 \begin{frame}\frametitle{Workflow}
 \begin{center}
@@ -142,17 +169,17 @@ where $\lambda_i$ are normalization parameters.
 \end{frame}
 
 
-\begin{frame}\frametitle{Formula Extractions}
-\begin{center}
-\includegraphics[scale=0.5]{6.png}
-\end{center}
-\end{frame}
+
 \begin{frame}\frametitle{Formula Extractions}
 \begin{center}
 \includegraphics[scale=0.4]{8.png}
 \end{center}
 \end{frame}
-
+\begin{frame}\frametitle{Formula Extractions}
+\begin{center}
+\includegraphics[scale=0.5]{6.png}
+\end{center}
+\end{frame}
 
 \begin{frame}\frametitle{Piecewise Construction}
 \begin{center}
@@ -191,15 +218,15 @@ Large number of terms poses diffuculties for learning. Random dropout of terms.
 \end{center}
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Evaluation: Nonlinear}
+\begin{frame}\frametitle{Experimental Evaluation: Ablation Study}
 \begin{center}
 \includegraphics[scale=0.3]{13.png}
 \end{center}
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Evaluation: Nonlinear}
+\begin{frame}\frametitle{Experimental Evaluation: Comparason to Previous CLN}
 \begin{center}
-\includegraphics[scale=0.3]{14.png}
+\includegraphics[scale=0.37]{14.png}
 \end{center}
 \end{frame}
 
