@@ -1,0 +1,3 @@
+MODULE mainVARsemaphore : boolean;proc1     : process user(semaphore);proc2     : process user(semaphore);ASSIGNinit(semaphore) := FALSE;SPEC AG ! (proc1.state = critical & proc2.state = critical)SPEC AG (proc1.state = entering -> AF proc1.state = critical)MODULE user(semaphore)VARstate :{idle, entering, critical, exiting};ASSIGNinit(state) := idle;next(state) :=casestate = idle                  :{idle, entering};state = entering & !semaphore : critical;state = critical              :{critical, exiting};state = exiting               : idle;TRUE                          : state;esac;next(semaphore) :=casestate = entering : TRUE;state = exiting  : FALSE;TRUE             : semaphore;esac;
+FAIRNESS
+running
