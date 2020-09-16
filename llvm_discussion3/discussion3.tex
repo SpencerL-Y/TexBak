@@ -20,7 +20,10 @@
 
 \item A summary of the tools: capabilities and algorithms.
 
-\item 
+\item A survey paper.
+
+
+\item Currently working on designing data structures for later development.
 \end{itemize}
 
 \end{frame}
@@ -122,10 +125,36 @@ Toolname & AI & CE & BMC & SMC & SE & Conc & SA\\
 \end{frame}
 
 \begin{frame}\frametitle{Survey Paper}
+A Survey of Automated Techniques for
+Formal Software Verification
+\begin{center}
+\includegraphics[scale=0.24]{table.png}
+\end{center}
+\end{frame}
+\begin{frame}
+\begin{center}
+LLVM Pass \& LLVM C++ API
 
+
+\end{center}
+Compiling of llvm pass:
+
+\texttt{
+clang `llvm-config --cxxflags` -Wl,-znodelete -fno-rtti -fPIC -shared [Passname].cpp -o [Passname].so `llvm-config --ldflags`
+}
+\texttt{opt -load ./[Passname].so -[Pass] [filename].ll}
+
+Compiling of llvm api:
+
+\texttt{ c++ IRReaderTest.cpp `llvm-config --cxxflags --ldflags --libs core` -o a}
 \end{frame}
 
-\begin{frame}\frametitle{Trace Abstraction}
+\begin{frame}\frametitle{Later Work}
+\begin{itemize}
+\item Design of the abstract data structure.
 
+\item Building the gap between LLVM data structure and our own data structure.
+\end{itemize}
 \end{frame}
+
 \end{document}
