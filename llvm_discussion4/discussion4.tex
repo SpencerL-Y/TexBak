@@ -1,0 +1,89 @@
+\documentclass[11pt]{beamer}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{stmaryrd}\usefonttheme[onlymath]{serif}
+
+\title{Progess Report 4}
+\date{\today}
+\author{Xie Li}
+\begin{document}
+\maketitle
+
+\begin{frame}\frametitle{Overview of the Progress}
+\begin{itemize}
+\item Sample-based Algorithm.
+\item Reading a chapter of BDD of handbook.
+\item A brief summary of algorithms and techniques.
+\item Build the gap between LLVM IR and our own data structure.
+\item Configured the use of CMake and LLVM API for developing.
+\item Investigate \textsc{Spot}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Sample based Algorithm}
+
+\begin{itemize}
+\item LLVM IR $\Rightarrow$ CFG $\Rightarrow$ Automaton $\mathcal{A}$
+
+\item LTL/LTLf $\Rightarrow$ Automaton(BA/DFA) $\mathcal{P}$
+
+\item Sample paths of $\mathcal{A}\times \mathcal{P}$ on the fly 
+
+$\Rightarrow$
+
+check feasibility of the path
+
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Properties}
+
+\begin{itemize}
+\item Reachability problem: avoidance of errornous states. Here the ``error'' may be given by statement \texttt{error()} in the source.
+
+LTL: $\textbf{G} ! \texttt{error()}$
+
+
+\item Overflow problem: can be encoded as 
+\[-\texttt{maxInt}\le x \le \texttt{maxInt}\]
+
+\item Free and Deref of pointers: can be represented as LTL formula or reachability problem.
+
+
+\item Devided by zero.
+
+\item Use after free, use without definition.
+
+
+\item Termination.
+
+\item No Deadlocks.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Algorithms}
+\begin{itemize}
+\item  Sampled-based MC: SMT solver for feasibility checking, sampling strategy, on-the-fly product.
+\item Symbolic MC: BDD library for the encoding of the formula and conditions, SMT solver for checking.
+
+\item Bounded MC: 
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Current Progress of Coding}
+Source code available at
+\begin{center}
+\texttt{https://github.com/SpencerL-Y/LLVMADT}
+\end{center}
+\end{frame}
+
+\end{document}
