@@ -1,0 +1,158 @@
+\documentclass[11pt]{beamer}
+\title{One-Counter Automata and its Reachability Problem} 
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}\usefonttheme[onlymath]{serif}
+
+\newtheorem{proposition}{Proposition}
+\author{Przemyslaw Daca et al.}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\begin{frame}\frametitle{Overview }
+\begin{itemize}
+\item Preliminaries: Counter Automata and Pushdown Automata and Turing Machine.
+
+
+\item Reachability Problem.
+
+\item Some Interesting Reductions.
+
+
+\item Algorithm.
+
+           
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Reference}
+[1] Haase et al. On the Complexity of Model Checking Counter Automata. Phd thesis.
+
+[2] Marvin L. Minsky. Recursive unsolvability of post’s problem of ”tag” and othertopics in theory of turing machines.The Annals of Mathematics, 74(3):437–455,1961.
+
+[3] Xie Li, Taolue Chen, Zhilin Wu and Mingji Xia. Computing Linear Arithmetic Representation for Reachability Relation of One-counter Automata
+
+[4] Wikipedia..
+\end{frame}
+
+\begin{frame}\frametitle{Counter Automata}
+\begin{definition}[k-Counter Automata]
+
+Let $k\in \mathbb{N}_{>0}$ and $\texttt{Op} = \{\texttt{add}_i(z)\mid i\in[k], z\in \mathbb{Z}\} \cup \{\texttt{zero}_i\}$. A $k$-counter automaton is a tuple $\mathcal{A} = (Q, q_0, F, \Delta, \epsilon)$ where $\epsilon: \Delta \rightarrow \texttt{Op}$ is a additional transition labelling function.
+
+
+\end{definition}
+
+\begin{example}{1-Counter Automata}
+
+
+
+\end{example}\hspace{5000pt}
+\end{frame}
+
+\begin{frame}\frametitle{Pushdown Automata}
+\begin{definition}[PDA]
+A pushdown automaton is a tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, Z, F)$.
+\begin{itemize}
+\item $\delta$ is a finite subset of $Q\times (\Sigma \cup \{\epsilon\}) \times \Gamma \times Q \times \Gamma^*$.
+\item $\Sigma, \Gamma$ are the tape alphabet and stack alphabet respectively.
+\item $Z$ is the initial symbol of stack representing the bottom of the stack.
+\end{itemize}
+
+\end{definition}
+
+\end{frame}
+\begin{frame}\frametitle{One-Counter Automata and Pushdown Automata}
+
+\textbf{One-counter automata is a special case of pushdown automata.}
+
+$\Gamma = \{Z, g\}$ and the stack of PDA can be written as 
+
+\[Zg^n, n\in \mathbb{N}\]
+
+which can be regarded as a non-negative counter.
+
+
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Two-Counter Automata is Turing Equivalent}
+Proof sketch:
+\begin{enumerate}
+\item A Turing machine can be simulated by two stacks.
+\item A stac kcan be simulated by two counters. Where one counter is used to storing the binary number represented by the stack and the other one used for scratchpad for update. 
+
+\item Four counters can be simulated by two counters. Four virtual counter $a,b,c,d$ can be encoded as a G\"odel number $2^a3^b5^c7^d$ by one real counter and the comparablyother counter is used as scratchpad.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Undecidable problem of TM}
+\begin{itemize}
+\item Acceptance problem. $\langle TM, \omega\rangle$.
+\item Reachability problem. $TM, c_{init}, c_{f}$.
+
+\end{itemize}
+More generally, Rice's theorem formally state what problem is decidable about turing machine.
+
+\begin{theorem}{Rice's Theorem}
+If $P$ is a non-trivial property, and the language holding the property, $L_P$ is recognized by a turing machine $M$, then $L_P = \{\langle M\rangle\mid L(M) \in P\}$ is undecidable.
+\end{theorem}
+
+
+Hence, some important basic problems are all undecidable for counter automata.
+\end{frame}
+
+
+\begin{frame}\frametitle{Several Ways to Retain the Decidability}
+\begin{itemize}
+\item Restrict to 1-counter automata.
+
+\item Structural restriction: flatness (no nested cycles).
+
+\item Reversal Boundness.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Reachability Problem of OCA}
+
+\begin{definition}[Configuration of OCA]
+Given an OCA $\mathcal{A} = (Q, q_0, F, \Delta, \epsilon)$, we use a pair $(q, c)$ represent the configuration of $\mathcal{A}$.
+
+\end{definition}
+
+The semantic of an OCA can be regarded as a labelled transition system where the states are the configurations of $\mathcal{A}$ and the transitions are induced from $\Delta$ and $\epsilon$.
+
+
+\textbf{REACHABILITY PROBLEM:}
+
+Given an oca $\mathcal{A}$ and two configurations $(s, c_s), (t, c_t)$, whether we can find a feasible run of transition system $T_{\mathcal{A}}$ such that $(s,c_s)\rightarrow_{\mathcal{A}}^*(t,c_t)$.
+
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Complexity of OCAReach Problem}
+
+\begin{theorem}[Haase's Phd]
+Reachability problem in one-counter automata is NP-complete.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}\frametitle{Algorithm}
+Why the reachability of OCA is hard?
+
+The idea of the algorithm.
+
+Our work.
+\end{frame}
+
+\end{document}

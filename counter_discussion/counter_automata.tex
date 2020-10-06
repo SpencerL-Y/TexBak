@@ -26,35 +26,6 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Contributions}
-\begin{itemize}
-\item Define a new logic called AFL that can express interesting properties of counting over arrays.
-\item Show the satisfiability of AFL is \textbf{PSPACE}-complete and provide a decision procedure.
-\item Implement a tool \textsc{AFolder} that can solve some cases of program verification.
- 
-\end{itemize}
-\end{frame}
-
-\begin{frame}\frametitle{A Toy Example}
-Why ``fold''? A concept in functional language which folds some functions over an array.
-
-\begin{example}
-\begin{center}
-\includegraphics[scale=0.36]{c1.png}
-\end{center}
-\end{example}
-\end{frame}
-
-\begin{frame}\frametitle{ A Toy Example}
-\begin{center}
-\includegraphics[scale=0.3]{f1.png}
-\end{center}
-This kind of formula is undecidable because we can reduce the Hilbert's 10th problem to it.
-\begin{center}
-\includegraphics[scale=0.38]{afl1.png}
-\end{center}
-\end{frame}
-
 
 \begin{frame}\frametitle{Array Fold Logic: Syntax}
 \textbf{Implicit Variables:} $\{\textbf{e}, \textbf{c}_1, \ldots, \textbf{c}_{m-1}, \textbf{i}\} = FV^{m}$
@@ -93,7 +64,7 @@ $\kappa = FV^{m} \rightarrow \mathbb{Z}^{m+1}$
 
 \end{frame}
 
-
+\iffalse
 \begin{frame}\frametitle{Utility and Expressive Power}
 \begin{itemize}
 \item Boundedness:
@@ -115,36 +86,71 @@ $\kappa = FV^{m} \rightarrow \mathbb{Z}^{m+1}$
 \end{itemize}
 Properties that require universal quantification over \textit{several} index variables are inexpressive.
 e.g. Sortedness and ...
-\end{frame}
-
-\begin{frame}\frametitle{Utility and Expressive Power}
-\begin{itemize}
-\item Loops.
-\item Conditional statements.
-\end{itemize}
-\begin{center}
-\includegraphics[scale=0.26]{mdafl.png}
-\end{center}
-
-\end{frame}
-
+ \end{frame}
+ 
+ \fi
 \begin{frame}\frametitle{Theoretical Results: Complexity}
 \begin{definition}[symbolic $k$-counter machine]
 
-An SMC is a tuple $\mathcal{M} = (\eta, X, Q, \delta, q^{init})$ where 
+An SMC is a tuple $\mathcal{M} = (\vec{\eta}, X, Q, \delta, q^{init})$ where 
 \begin{itemize}
-\item $\eta$ is a vector of k counters.
+\item $\vec{\eta}$ is a vector of k counters $\eta_1, \ldots,\eta_n$.
+\item $X$ is a finite set of integer variables.
+\item $Q$ is a finite set of states.
+
 \item $\delta \subseteq Q\times \texttt{CC}_k(X) \times \texttt{IC}(X)\times Q\times \mathbb{Z}^k$ is the transition relation.
+
+\item $q^{init} \in Q$ is the initial state.
 
 \end{itemize}
 \end{definition}
+The effect of a transition $(q_1, \alpha, \beta, q_2, \kappa)\in \delta$. 
+
+Input constraints $\texttt{IC}(X)$.
+
+Counter constraints $\texttt{CC}_k(X)$, here $k$ means the counters are no greater than $k$.
+
+\end{frame}
+
+\begin{frame}\frametitle{Reversal and Reversal-Bounded}
+\begin{definition}[Reversal]
+A counter machine makes a \textit{reversal} if it makes an alternation between non-increasing and non-decreasing some counter.
+
+A machine is \textit{reversal-bounded} if there exists a constant $c\ge 0$ such that on all accepting runs every counter makes at most $c$ reversal.
+\end{definition}
+
+\begin{example}
+Assume there is only one counter.
+
+$\textbf{1,2,3,3,4},3,2,2,\textbf{3,5},3,1$
+
+
+
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Translation from Function to SCM}
+
 Translation from a functional constant $f$ of $\texttt{FSort}^m$ to an SCM.
 
-Reversal bounded.
+\begin{definition}
+We define the translation of functional constant $f$ of sort $\texttt{FSort}^m$ ocurring in a formula $\phi$, as an SCM $\mathcal{M}(f) = (\vec{\eta}, X, Q, \delta, q^{init})$. Let $G = \langle G,E,\gamma\rangle$ be the CFG defined before, then $\vec{\eta} = \{\mathbf{i, c_1, \ldots, c_m}\}$, $X$ are fresh free variables for each integer term $T$ in $f$, $Q = S$, $q^{init} = 0$. For transitions the formula are translated from $\Phi(grd)$ and $\Phi(upd)$ in $G$.
+
+\end{definition}
+
+
+The translated SVM is reversal bounded. Why?
 
 \[SCC_1 \rightarrow SCC_2 \rightarrow\cdots \rightarrow SCC_m\]
 
-Parallel composition of SCMs.
+\end{frame}
+
+\begin{frame}\frametitle{
+Parallel composition of SCMs}
+\begin{center}
+\includegraphics[scale=0.28]{para.png}
+\end{center}
+
 \end{frame}
 
 \begin{frame}\frametitle{Small model property}
@@ -196,20 +202,4 @@ The complexity of satifiability of $m$-AFL for a fixed $m$ is \textbf{NP}-comple
 
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Results}
-Tool: \textsc{AFolder} implemented on C++ and uses \textsc{Z3} for PA solving.
-
-Benchmarks:
-\begin{itemize}
-\item Program RedCarpet project that is used for parsing the Markdown language.
-\item NUMA(non-uniform memory access) which include multi-thread and memory operations.
-\item Several cases in SV-COMP.
-\item Histogram examples.
-\end{itemize}
-\end{frame}
-\begin{frame}\frametitle{Experimental Results}
-\begin{center}
-\includegraphics[scale=0.3]{expresultalf.png}
-\end{center}
-\end{frame}
 \end{document}
