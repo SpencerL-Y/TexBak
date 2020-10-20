@@ -49,7 +49,7 @@ We define a translation of a functional constant $f$ of $\texttt{FSort}^m$ as an
 \begin{lemma}
 There exists a constant $c\in \mathbb{N}$, such that an AFL formula $\Phi$ is satisfiable iff there exists a model $\sigma$ it maps each variable in $X$ to integer that $\le 2^{|\Phi|^c}$ and array to sequence of $\le 2^{|\phi|^c}$ where each integer of the array also lies in the bound.
 \end{lemma}
-
+\iffalse
 Give fixed counter values. The value of counters can be splitted into a finite number of intervals.
 
 Semantic of the translated SMC is the semantic of the array fold expression.
@@ -60,7 +60,7 @@ For $Tr_i$, find the support and delete repeated simple cycle.
 
 Why we want reversal-bounded?
 
-
+\fi
 \end{frame}
 
 \begin{frame}\frametitle{Complexity}
@@ -72,17 +72,37 @@ The satisfiability problem of AFL is \textbf{PSPACE}-complete.
 \end{theorem}
 \begin{itemize}
 \item Membership:
+If the small model property holds, an NTM can
+\begin{itemize}
+\item nondeterministically guess variable use space of $|\Phi|^c$ bits.
+\item guess one-by-one the value of $2^{|\Phi|^c}$ array cells and use $|\Phi|^c$ bits to count the current index.
+\item due to the bound of the variable and the bound of length, the counter value of fold is also bounded in poly.
+\end{itemize} 
+
+Then a NTM can simulate the SAT problen in PSPACE.
+
+
+
 
 
 
 
 
 \item Hardness:
+Reduce the emptiness problem of intersection of DFAs to this problem.
+
+\[\bigcap_{i = 1}^n \mathcal{L}(A_i)\ne \emptyset\]
+
+$A_i$ can be simulated by $fold^i_a$ with a single counter: What is the alphabet? What is accept? Why this work?
+
+Intersection of folds.
 \end{itemize}
 
 \end{frame}
 
+\begin{frame}\frametitle{Proof of Small Model Lemma}
 
+\end{frame}
 
 
 
