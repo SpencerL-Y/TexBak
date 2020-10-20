@@ -1,5 +1,5 @@
 \documentclass[11pt]{beamer}
-\title{One-Counter Automata and its Reachability Problem} 
+\title{Array Fold Logic Proof} 
 \usepackage{verbatim}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -16,45 +16,79 @@
 \maketitle
 \begin{frame}\frametitle{Overview }
 \begin{itemize}
-\item Preliminaries: Counter Automata and Pushdown Automata and Turing Machine.
+\item  Overview of the proof.
 
 
-\item Reachability Problem.
+\item Proof of Complexity.
 
-\item Some Interesting Reductions.
-
-
-\item Algorithm.
+\item Decision Procedure.
 
            
 \end{itemize}
 \end{frame}
-
-\begin{frame}\frametitle{Reference}
-[1] Haase et al. On the Complexity of Model Checking Counter Automata. Phd thesis.
-
-[2] Marvin L. Minsky. Recursive unsolvability of post’s problem of ”tag” and othertopics in theory of turing machines.The Annals of Mathematics, 74(3):437–455,1961.
-
-[3] Xie Li, Taolue Chen, Zhilin Wu and Mingji Xia. Computing Linear Arithmetic Representation for Reachability Relation of One-counter Automata
-
-[4] Wikipedia..
-\end{frame}
-
-\begin{frame}\frametitle{Counter Automata}
-\begin{definition}[k-Counter Automata]
-
-Let $k\in \mathbb{N}_{>0}$ and $\texttt{Op} = \{\texttt{add}_i(z)\mid i\in[k], z\in \mathbb{Z}\} \cup \{\texttt{zero}_i\}$. A $k$-counter automaton is a tuple $\mathcal{A} = (Q, q_0, F, \Delta, \epsilon)$ where $\epsilon: \Delta \rightarrow \texttt{Op}$ is a additional transition labelling function.
-
+\begin{frame}\frametitle{Definitions}
+\begin{definition}[SMC]
+A symolic $k$-counter machine is a tuple $\mathcal{M} = (\mathbf{\eta}, X, Q, \delta, q^{init})$, where 
+$\delta \subseteq Q \times \textsc{CC}_k(X) \times \texttt{IC}(X) \times Q \times \mathbb{Z}^k$.
 
 \end{definition}
+\begin{definition}[Translation]
+We define a translation of a functional constant $f$ of $\texttt{FSort}^m$ as an SCM $\mathcal{M}(f) = (\mathbf{\eta}, X, Q, \delta, q^{init})$. Let $G = \langle S, E, \gamma\rangle$ be the edge-labeled graph of $f$, then the translation... 
+\end{definition}
 
-\begin{example}{1-Counter Automata}
-
-
-
-\end{example}\hspace{5000pt}
 \end{frame}
 
+\begin{frame}\frametitle{Definitions}
+\begin{center}
+\includegraphics[scale=0.28]{para.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}\frametitle{Small model property}
+\begin{lemma}
+There exists a constant $c\in \mathbb{N}$, such that an AFL formula $\Phi$ is satisfiable iff there exists a model $\sigma$ it maps each variable in $X$ to integer that $\le 2^{|\Phi|^c}$ and array to sequence of $\le 2^{|\phi|^c}$ where each integer of the array also lies in the bound.
+\end{lemma}
+
+Give fixed counter values. The value of counters can be splitted into a finite number of intervals.
+
+Semantic of the translated SMC is the semantic of the array fold expression.
+
+$(q^{init}, \mathbf{c}_{in}) \rightarrow^* (\cdot, \mathbf{c}_{out})$, Let the trace be $Tr = Tr_1\cdots Tr_{max}$
+
+For $Tr_i$, find the support and delete repeated simple cycle.
+
+Why we want reversal-bounded?
+
+
+\end{frame}
+
+\begin{frame}\frametitle{Complexity}
+
+
+\begin{theorem}
+The satisfiability problem of AFL is \textbf{PSPACE}-complete.
+
+\end{theorem}
+\begin{itemize}
+\item Membership:
+
+
+
+
+
+\item Hardness:
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+\iffalse
 \begin{frame}\frametitle{Pushdown Automata}
 \begin{definition}[PDA]
 A pushdown automaton is a tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, Z, F)$.
@@ -161,5 +195,5 @@ Why the reachability of OCA is hard?
 \end{itemize}
 
 \end{frame}
-
+\fi
 \end{document}
