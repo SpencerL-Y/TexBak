@@ -21,7 +21,6 @@
 
 \item Proof of Complexity.
 
-\item Decision Procedure.
 
            
 \end{itemize}
@@ -45,22 +44,12 @@ We define a translation of a functional constant $f$ of $\texttt{FSort}^m$ as an
 \end{frame}
 
 
-\begin{frame}\frametitle{Small model property}
+\begin{frame}\frametitle{Small Model Property}
 \begin{lemma}
 There exists a constant $c\in \mathbb{N}$, such that an AFL formula $\Phi$ is satisfiable iff there exists a model $\sigma$ it maps each variable in $X$ to integer that $\le 2^{|\Phi|^c}$ and array to sequence of $\le 2^{|\phi|^c}$ where each integer of the array also lies in the bound.
 \end{lemma}
-\iffalse
-Give fixed counter values. The value of counters can be splitted into a finite number of intervals.
 
-Semantic of the translated SMC is the semantic of the array fold expression.
 
-$(q^{init}, \mathbf{c}_{in}) \rightarrow^* (\cdot, \mathbf{c}_{out})$, Let the trace be $Tr = Tr_1\cdots Tr_{max}$
-
-For $Tr_i$, find the support and delete repeated simple cycle.
-
-Why we want reversal-bounded?
-
-\fi
 \end{frame}
 
 \begin{frame}\frametitle{Complexity}
@@ -79,7 +68,7 @@ If the small model property holds, an NTM can
 \item due to the bound of the variable and the bound of length, the counter value of fold is also bounded in poly.
 \end{itemize} 
 
-Then a NTM can simulate the SAT problen in PSPACE.
+Then a NTM can simulate the SAT problem in \textbf{PSPACE}.
 
 
 
@@ -89,23 +78,70 @@ Then a NTM can simulate the SAT problen in PSPACE.
 
 
 \item Hardness:
-Reduce the emptiness problem of intersection of DFAs to this problem.
+Reduce the emptiness problem of intersection of DFAs which is \textbf{PSPACE}-complete to this problem.
 
 \[\bigcap_{i = 1}^n \mathcal{L}(A_i)\ne \emptyset\]
 
-$A_i$ can be simulated by $fold^i_a$ with a single counter: What is the alphabet? What is accept? Why this work?
 
-Intersection of folds.
+$A_i$ can be simulated by $fold^i_a$ with a single counter: What is the alphabet? What is accepting? Why this work?
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}\frametitle{Proof of Small Model Lemma}
+
+
+\begin{frame}\frametitle{Proof of Small Model Property}
+
+Given a array $a$ and a assignment $\sigma$, assume $\sigma$ satisfiy $\phi$.
+
+Let $s = |\psi| \le 3|\phi|$.
+
+
+\[\mathcal{R} = \{[0, c_1], [c_1,c_1], [c_1 + 1, c_2 - 1], [c_2, c_2], \ldots, [c_l, +\infty]\}\]
+
+Size of $\mathcal{R}$: $2dim(\mathbf{c}) + 1 \le 3s$.
+
+
+A \textit{mode}: is a tuple in $\mathcal{R}^k$ that describes the region of each counter.
+
+Reversal-bounded: $\mathcal{M}$ is reversal-bounded, then any run can traverse at most $max = r\cdot k \cdot |\mathcal{R}| \le \mathcal{O}(s^3)$ different modes.
+
+Take an accepting run $Tr = Tr_1\cdots Tr_{max} $ of $\mathcal{M}$.
+
+The property of $Tr_i = \delta_m, \cdots, \delta_n$. How to modify $Tr_i$ to get $\bar{Tr_i}, Tr_i^*$.
+
+
+
 
 \end{frame}
 
 
+\begin{frame}\frametitle{Proof of Small Model Property}
 
+The satisfiability of $\phi$ then can be translated into a LP problem $\mathbf{LP} = \bigwedge_{i = 1}^{5}\mathbf{LP}_i$, where
+
+$\mathbf{LP}_1$: 
+\begin{center}
+\includegraphics[scale=0.4]{lp1_1.png}
+
+\includegraphics[scale=0.4]{lp1_2.png}
+\end{center}
+
+
+$\mathbf{LP}_2$: not fold(copy of variables).
+
+$\mathbf{LP}_3$: link fold and not fold. 
+
+$\mathbf{LP}_4$: bound of counters.
+
+
+$\mathbf{LP}_5$: all input constraint in $Tr$ are satisfiable.
+
+Then we get an LP problem, which by [1] the model is bounded.
+
+[1]C. H. Papadimitriou. On the complexity of integer programming. 
+
+\end{frame}
 
 
 \iffalse
