@@ -8,7 +8,17 @@
 \usepackage{color}
 \usepackage{stmaryrd}
 \usepackage{multicol}
+\usepackage{tabularx}
 \usepackage{listings}
+\usepackage{tikz}
+
+\usetikzlibrary{automata,shapes,arrows,patterns,calc,positioning}
+\tikzset{every picture/.style={->, >=stealth', shorten >=0pt, auto, initial text={}}}
+\tikzstyle{flowchartelement} = [draw, inner sep=3pt, align=center]
+\tikzstyle{inputoutput} = [flowchartelement, trapezium, trapezium right angle=-70pt, trapezium left angle=70pt]
+\tikzstyle{test} = [flowchartelement, diamond]
+\tikzstyle{code} = [flowchartelement, minimum width=20mm, rectangle]
+\tikzstyle{connector} = [draw, circle, fill=black, inner sep=1.25pt]
 \newtheorem{proposition}{Proposition}
 \author{
     Authors: \textbf{Xie Li}, Yi Li, Yong Li, Xuechao Sun \\Andrea Turrini and Lijun Zhang
@@ -129,14 +139,41 @@ Advantage? Disadvantage?
 \end{frame}
 
 \begin{frame}\frametitle{SVMRanker: Architecture}
-
+\includegraphics[scale=0.65]{archi1.eps}
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Evaluation}
-
+\begin{frame}\frametitle{Experimental Results: Nonlinear Loops}
+Cases are adapted from \textsc{SV-COMP}.
+\begin{table}
+\tiny
+	\label{tab:nonlinear}
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+	Case ID & \textsc{SVMRanker} & \textsc{iRankFinder} & \textsc{LassoRanker} & \textsc{CPAChecker}\\
+	\hline 
+	116 & U &U& U & U \\
+	148 & Y &U& U & F\\
+	149 & Y &U& U & U\\
+	151 & Y &U& U & F\\
+	152 & Y &U& U & F\\
+	153 & Y &U& U & F\\
+	154 & U &U& U & F\\
+	155 & Y &U& U & F\\
+	157 & Y &U& U & U\\
+	158 & Y &U& U & TO \\
+	159 & Y &U& U & F\\
+	160 & Y &U& U & TO\\
+	161 & U &U& U & F\\
+	162 & Y &U& U & F\\
+	163 & Y &U& U & F\\
+	164 & Y &U& U & U\\
+	167 & Y &U& U & E\\
+	171 & Y &U& U & E\\
+	DoubleNeg & U&U & U & U
+	\end{tabular}
+\end{table}
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Evaluation}
-
+\begin{frame}\frametitle{Experimental Results: Linear Loops}
 \end{frame}
 \end{document}
