@@ -1,0 +1,142 @@
+\documentclass[11pt]{beamer}
+\title{SVMRanker: A General Termination Analysis Framework of Loop Programs via SVM}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{multicol}
+\usepackage{listings}
+\newtheorem{proposition}{Proposition}
+\author{
+    Authors: \textbf{Xie Li}, Yi Li, Yong Li, Xuechao Sun \\Andrea Turrini and Lijun Zhang
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\begin{frame}[fragile]\frametitle{Verification}
+Checking termination is neccessary.
+\begin{example}
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[language=C++,
+    xleftmargin=.3\textwidth, 
+    xrightmargin=.3\textwidth]
+assume(True);
+int x = 1;
+while(x>0) x++;
+assertion(x<=0);
+\end{lstlisting}
+\end{minipage}
+\end{example}
+The assertion can be checked once the loop is terminating.
+
+
+However theoretically...
+
+In the practice the program return \texttt{UNKNOWN} once we cannot prove or disprove the termination.
+
+Our tool: focus on the synthesis ranking function.
+
+What is \textbf{ranking function}?
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Ranking Function}
+\begin{multicols}{2}
+\begin{minipage}{\linewidth}
+
+\texttt{assume(True);}\\
+\texttt{int x = 5;}\\
+\texttt{while(x > 0) x--;}\\
+\texttt{assertion(x<=0);}\\
+\end{minipage}
+
+ranking function is the function used for proof of termiation.
+\[\Omega(\mathbf{x}, \mathbf{x}') := x > 0 \wedge x' = x - 1 \]
+Ranking function: 
+\[f(\mathbf{x}) = x\]
+
+\begin{itemize}
+\item Informally: $f: S\rightarrow \mathbb{R}$ where $S$ is the set of states and $\mathbb{R}$ is a well-founded ordered set.
+
+\item strictly decreases at each iteration.
+
+\item has a lower bound in the loop state space.
+
+\end{itemize}
+
+\end{multicols}
+\end{frame}
+
+\begin{frame}\frametitle{More Powerful Ranking Functions}
+\begin{itemize}
+\item Linear ranking function: $f(\mathbf{x}) = \mathbf{ax} + b$.
+\item Polynomial ranking function.
+\item $k$-phase- nested or multiphase ranking function:
+\[\langle f_1, \cdots, f_k\rangle\]
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Synthesis of Ranking Function}
+
+\begin{itemize}
+\item Prove the termination is UNDECIDABLE.
+\item Synthesis of a certain class of ranking function is DECIDABLE.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{State-of-the-Art Tools}
+Termination problem is essential and basic to program verification.
+
+State-of-the-art tools:
+\begin{itemize}
+\item \textsc{LassoRanker} in \textsc{Ultimate Automizer}.
+\item \textsc{iRankFinder}: A tool for ranking function inferring.
+\item \textsc{Loopster}: A static loop termination analyzer.
+\item \textsc{CPAChecker}
+\item ...
+\end{itemize}
+Competition \textsc{SV-COMP} also has a termination track for this problem.
+
+\end{frame}
+
+
+
+\begin{frame}\frametitle{\textsc{SVMRanker}: Synthesize Ranking Function via SVM}
+\begin{center}
+
+Technique previous tools use.
+\end{center}
+
+\begin{center}
+We reduce the synthesis of ranking functions
+\\ into the SVM problem.
+\end{center}
+
+\begin{center}
+Advantage? Disadvantage?
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}\frametitle{SVMRanker: Architecture}
+
+\end{frame}
+
+\begin{frame}\frametitle{Experimental Evaluation}
+
+\end{frame}
+
+\begin{frame}\frametitle{Experimental Evaluation}
+
+\end{frame}
+\end{document}

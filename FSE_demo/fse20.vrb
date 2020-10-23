@@ -1,0 +1,25 @@
+\frametitle{Ranking Function}
+\begin{multicols}{2}
+\begin{minipage}{\linewidth}
+
+\texttt{assume(True);}\\
+\texttt{int x = 5;}\\
+\texttt{while(x > 0) x--;}\\
+\texttt{assertion(x<=0);}\\
+\end{minipage}
+
+ranking function is the function used for proof of termiation.
+\[\Omega(\mathbf{x}, \mathbf{x}') := x > 0 \wedge x' = x - 1 \]
+Ranking function:
+\[f(\mathbf{x}) = x\]
+
+\begin{itemize}
+\item Informally: $f: S\rightarrow \mathbb{R}$ where $S$ is the set of states and $\mathbb{R}$ is a well-founded ordered set.
+
+\item strictly decreases at each iteration.
+
+\item has a lower bound in the loop state space.
+
+\end{itemize}
+
+\end{multicols}
