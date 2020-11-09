@@ -1,5 +1,10 @@
 \documentclass[11pt]{beamer}
+\usetheme{Rochester}
+\usecolortheme{beaver}
 \title{Computing Linear Arithmetic Representation of Reachability Relation  of One-counter Automata}
+\usepackage{beamerfoils}
+\usepackage{tikz}
+\usepackage{pgf}
 \usepackage{verbatim}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -25,6 +30,13 @@
 }
 \date{SETTA 2020: Guangzhou, China, November 24-28, 2020}
 
+\titlegraphic{\includegraphics[width=3cm]{iscaslogo.png}\hspace*{0.75cm}~%
+\includegraphics[width = 2cm]{birkbeck.jpg}
+\hspace*{0.75cm}~%
+\includegraphics[width = 3cm]{ucaslogo.png}
+}
+
+
 \begin{document}
 \maketitle
 \begin{frame}\frametitle{Overview}
@@ -32,7 +44,7 @@
 \item Introduction to One-counter Automata(OCA) and its Reachability Problem.
 \pause
 \item Computing the Reachability Relation of OCA.
-
+\pause
 \item Introduction to Tool \textsc{ORAReach}.
 
 \item Experimental Results of our Tool \textsc{OCAReach}.
@@ -45,9 +57,10 @@
 \begin{itemize}
 
 \item DFA with a \textbf{counter} where counter value is \textbf{non-negative}.
-
+\pause
 \item Transitions: $q\stackrel{\texttt{Op}}{\rightarrow} q'$ where $\texttt{Op}\in \{\texttt{add}(+1), \texttt{add}(-1), \texttt{zero}\}$
 \end{itemize}
+\pause
 \begin{example}[OCA]
 \begin{center}
 \includegraphics[scale=1]{ocaexample.eps}
@@ -55,6 +68,10 @@
 
 
 \end{example}
+
+\end{frame}
+\begin{frame}\frametitle{Semantic of OCA}
+
 Semantic of OCA: A transition system where the configuration is of the form $(q,c)$ and counter changes corresponds to OCA.
 
 \[(q_1, c_1) \rightarrow_\mathcal{A} (q_2,c_2)\]
@@ -67,7 +84,7 @@ if $q_1 \stackrel{\texttt{zero}}{\longrightarrow} q_2$ and $c_1 = c_2 = 0$.
 \begin{frame}\frametitle{Reachability Problem of OCA}
 
 \textbf{Reachability Problem of OCA: } whether $(q_s, c_s)\rightarrow^*_{\mathcal{A}} (q_t, c_t)$
-
+\pause
 \begin{example}\frametitle{Reachability}
 \begin{multicols}{2}
 \begin{center}
@@ -77,7 +94,7 @@ if $q_1 \stackrel{\texttt{zero}}{\longrightarrow} q_2$ and $c_1 = c_2 = 0$.
 \item  $(q_3, 0)$ is reachable from $(q_0, 1)$.
 \item  $(q_3, 0)$ is not reachable from $(q_0, 0)$ 
 \end{itemize}
-
+\pause
 \begin{center}
 \includegraphics[scale=1]{reachexample2.eps}
 
@@ -98,12 +115,14 @@ $(q_1, 1)$ is not reachable from $(q_0, 0)$
 \begin{itemize}
 
 \item An OCA can be regarded as a weighted directed graph $G_\mathcal{A} = (V,E,\eta)$.
-
+\pause
 \item \textbf{Path}: a sequence of vertices $v_0\cdot v_1 \cdots v_k$ where $(v_i, v_{i+1}) \in E$.
+\pause
 \begin{itemize}
 \item Weight of path
 \item Drop of path
 \end{itemize}
+\pause
 \item \textbf{Flow}: a function $f: E\rightarrow \mathbb{N}$.
 \end{itemize}
 
@@ -114,8 +133,7 @@ $(q_1, 1)$ is not reachable from $(q_0, 0)$
 \begin{itemize}
 
 \item path: $v_0\cdot v_1\cdot v_1$
-\item weight: $+1$
-\item drop: $-1$
+\item weight: $+1$, drop: $-1$
 \end{itemize}
 \end{center}
 
@@ -132,7 +150,7 @@ $(q_1, 1)$ is not reachable from $(q_0, 0)$
 
 \item Support: edge-induced subgraph of path.
 \end{itemize}
-
+\pause
 
 \begin{example}
 \begin{multicols}{2}
@@ -152,7 +170,7 @@ $f(v_0,v_1) = 1$
 
 $ f(v_1,v_1) = 2$
 
-\item Weight: $w = \Sigma_{e\in E} f(e)\cdot \eta(e)$
+\item Weight: $weight(f) = \Sigma_{e\in E} f(e)\cdot \eta(e)$
 \end{itemize}
 \end{multicols}
 
@@ -166,19 +184,21 @@ $ f(v_1,v_1) = 2$
 \begin{center}
 \large
 \textbf{NON-NEGATIVE}
-\end{center}
+\end{center}\pause
 If we do not require the non-negative of counter.
 
 \begin{itemize}
 \item Flow is a path flow $\Leftrightarrow$ Requirements on flow.
+\pause
 \begin{itemize}
 \item $v_s\cdots v_t$ where $s \ne t$
 
 \item $v_s\cdots v_s$
 \end{itemize}
+\pause
 \item Weight equals to the value change.
 \end{itemize}
-
+\pause
 \textbf{Non-negative} implies the constraint:
 everywhere along the path, the counter need to be non-negative.
 \end{frame}
@@ -186,13 +206,25 @@ everywhere along the path, the counter need to be non-negative.
 \begin{frame}\frametitle{Certificate of the Reachability}
 
 Use \textbf{path flow} as certificate of OCA reachability problem.
-
+\pause
 \begin{itemize}
-\item Type 1 Certificate: 
+\item Type-1 Certificate: 
+\begin{itemize}
+\item Flow is a path flow.
+\item No positive cycle.
+\item Weight correctly added.
+\item Path flow can be divided into edge decompositions (which implies non-negative).
 
-\item Type 2 Certificate
+\end{itemize}\pause
 
-\item Type 3 Certificate
+
+\item Type-3 Certificate:
+\begin{center}
+\includegraphics[scale=1]{type2.eps}
+\end{center}
+\pause
+\item Type-2 Certificate: reverse of type-1 certificate
+
 \end{itemize}
 
 
@@ -201,6 +233,34 @@ Use \textbf{path flow} as certificate of OCA reachability problem.
 
 \begin{frame}\frametitle{Edge Decomposition}
 
+\begin{definition}{Edge Decomposition}
+Edge decomposition of a path flow $f$ is 
+\begin{itemize}
+\pause
+\item $f = \Sigma_{i\in |E|} f_{i} + f_{e_i}$ where $f_{i}$ is also a path flow, $e_i\in E$.
+\pause
+\item $e_i$ does not appear in support of $f_{j}$ where $j > i$.
+\pause
+\item $weight(f_{i}) + weight(e_i) \ge 0$ for all $i$.
+\end{itemize}
+
+\end{definition}
+\pause
+
+This definition implies the non-negative requirement of Type-1 certificate.
+\begin{center}
+\includegraphics[scale=1.2]{edgeDecom.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Decidability of Reachability of OCA}
+\begin{theorem}[Haase]
+The reachability can be solved iff we can find a certificate that is of the form
+
+\[(\text{Type-1})^{n_1}(\text{Type-3})^{n_3}(\text{Type-2})^{n_2}\]
+
+where $n_i\in \{0,1\}$
+\end{theorem}
 \end{frame}
 
 
@@ -209,21 +269,67 @@ Use \textbf{path flow} as certificate of OCA reachability problem.
 \textbf{Reachability Relation of OCA}: 
 \[\phi_{{\mathcal{A}}, q_s, q_t}(x_s, x_t)\]
 
+
+$\phi_{{\mathcal{A}}, q_s, q_t}(c_s, c_t)$ is true iff $(q_s, c_s)\rightarrow^*_{\mathcal{A}} (q_t, c_t)$.
 \end{frame}
 
 
 	
 
-\begin{frame}\frametitle{How we Reduce the Reachability Relation to QFPA Formula}
-
+\begin{frame}\frametitle{How to Reduce the Reachability Relation to PA Formula}
+\[\phi_{{\mathcal{A}}, q_s, q_t}(x_s, x_t) =\exists (y_e)_{e\in E}. \phi^{T1RC} \vee \phi^{T2RC} \vee \phi^{T3RC} \vee \cdots \]
+\textbf{Type-3 certificate:}
+\[\phi^{T3RC}_{q_s, q_t}(x_s, x_t, (y_{e,1})_{e\in E}) \]
+\begin{itemize}
+\item Positive Cycle.
+\item Weight of Path flow equals to the change.
+\item Negative Cycle.
+\end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{\textsc{OCAReach}: Architecture}
+\begin{frame}\frametitle{How to Reduce the Reachability Relation to QFPA Formula}
 
+\textbf{Type-1 certificate:}
+\[\phi^{T1RC}_{q_s, q_t}(x_s, x_t, (y_{e,1})_{e\in E}) \]
+\begin{itemize}
+\item Weight equals to the counter change.
+\pause
+\item Existence of edge decomposition of the path flow.
+\pause
+\begin{itemize}
+\item The order of the edge last appears. $idx$.
+\pause
+\item Correct concatenation of the splitted path flows.
+\end{itemize}
+\end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Experimental Evaluation}
 
+\begin{frame}\frametitle{\textsc{OCAReach}: Experimental Evaluation}
+Implemented in Java.
+
+\textbf{INPUT:} file describing the OCA.
+
+\textbf{OUTPUT:} A PA formula $\phi$ representing reachability relation.
+\begin{itemize}
+\item Experiment on handcrafted cases.
+\begin{center}
+\includegraphics[scale=0.4]{expoca.png}
+\end{center}
+\item On random cases.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Conclusion and Future Work}
+We built the gap between the theory and implementation by the tool \textsc{OCAReach}
+
+Future work:
+
+\begin{itemize}
+\item Optimize the efficiency of our tool.
+
+\item More cases and benchmark for experiment.
+\end{itemize}
 \end{frame}
 
 \end{document}
