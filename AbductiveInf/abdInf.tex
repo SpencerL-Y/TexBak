@@ -40,7 +40,7 @@ Form of invariants: boolean combination of linear integer constraints.
 
 \item Hoare-style program reasoning (VC Generation) + Abduction based on quantifier elimination (QE).
 
-\item A tool \textsc{Hola} and implementation consideration.
+\item The tool \textsc{Hola} and implementation consideration.
 \end{itemize}
 
 \end{frame}
@@ -76,7 +76,7 @@ $\chi$ is the speculated invariant. The inference of $\psi$ as a strengthening o
 \includegraphics[scale=0.4]{exp.png}
 \end{center}
 
-1.1 Start with the weakest $\Delta_1(\phi) = true$. According to the explaination of VC: $\phi_{vc}^1 = (true\Rightarrow (\text{flag}\Rightarrow a = b))$ which is not valid ( postcondition not implied).
+1.1 Start with the weakest $\Delta_1(\phi) = true$. According to the explaination of VC: $\phi_{vc}^1 = (true\Rightarrow (\text{flag}\Rightarrow a = b))$ which is not valid (postcondition not implied).
 
 1.2 Find strengthening $\phi_1$, s.t. $\models true\wedge \phi_1 \Rightarrow (\text{flag}\Rightarrow a = b)$.
 
@@ -84,7 +84,7 @@ $\chi$ is the speculated invariant. The inference of $\psi$ as a strengthening o
 
 \end{frame}
 
-\begin{frame}\frametitle{Running Example of the Algorithm}
+\begin{frame}\frametitle{Running Example of Abduction Inference}
 \begin{center}
 
 \includegraphics[scale=0.25]{exp.png}
@@ -99,7 +99,7 @@ $\chi$ is the speculated invariant. The inference of $\psi$ as a strengthening o
 2.3 Candidates: $\neg \text{flag}, j = i + 1, \text{flag}\Rightarrow  j = i + 1$
 \end{frame}
 
-\begin{frame}\frametitle{Running Example of the Algorithm}
+\begin{frame}\frametitle{Running Example of Abduction Inference}
 
 \begin{center}
 
@@ -125,7 +125,7 @@ After several iterations:
 \begin{center}
 \includegraphics[scale=0.4]{main.png}
 \end{center}
-Here $\pi$ is the program whose syntax is:
+Here $\pi$ is the program whose syntax is defined by:
 \begin{center}
 
 \includegraphics[scale=0.4]{prog.png}
