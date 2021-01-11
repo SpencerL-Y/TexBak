@@ -60,4 +60,24 @@ Merge the automaton of called procedure into the main automaton?
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}\frametitle{Checking Path Feasibility}
+
+After converting the CFG to an automaton e.g. DFA. We are able to sample a path of the automaton and do the path feasibility checking.
+ 
+Current path feasibility check:
+\begin{itemize}
+\item Frontend: C$\rightarrow$ IR $\rightarrow$ CFG.
+\item Modelling: CFG$\rightarrow$ DFA, where alphabet of DFA is the set of instructions.
+
+\item Sampling a path and conjuncts condition induced by the instructions result in the path condition.
+\end{itemize}
+
+We are now able to generate path conditions for programs with only arithmetic operations. 
+\end{frame}
+
+\begin{frame}\frametitle{Checking LTL Formula on a Path}
+Beyond the path condition, we can also check LTL property on a path. 
+\end{frame}
+
 \end{document}
