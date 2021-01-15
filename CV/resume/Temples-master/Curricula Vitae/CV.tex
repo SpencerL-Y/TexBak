@@ -1,0 +1,241 @@
+% Academic Curriculum Vitae
+% Copyright 2018 Lu Niu
+% Email: LukeNiu@outlook.com
+% GitHub: https://github.com/ConAntares
+
+\documentclass[12pt,a4paper,utf8]{report}
+
+\usepackage[UTF8]{ctex}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{datetime}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{framed}
+\usepackage{color}
+\usepackage{tabto}
+\usepackage{crimson}    % serif font
+\usepackage{helvet}     % sans serif font
+
+\geometry{left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}
+\pagestyle{fancy}
+\definecolor{shadecolor}{rgb}{0.0,0.5,0.8}
+\definecolor{subtitlecolor}{rgb}{0.5,0.8,0.9}
+\linespread{0.9}
+
+\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
+\newcommand{\myname}{Xie Li (李勰)}
+\newcommand{\mydegree}{Master Student in CS}
+\newcommand{\mywork}{}
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+
+\fancyhead[C]{
+    \colorbox{shadecolor}{\raisebox{0pt}[\height][0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad CURRICULUM VITAE
+}}}}}}
+% \fancyfoot[C]{\thepage}
+
+\renewcommand\headrulewidth{0.0pt}
+
+\begin{document}
+
+\begin{minipage}[t]{8cm}
+    \begin{center}
+        \vspace{0.0cm}\namefont{\myname}\\[0.1cm]
+    \end{center}
+\end{minipage}
+\begin{minipage}[t]{8cm}
+    \vspace{0.0cm}
+    {\em{\mydegree}}\par
+    {\em{\mywork}}\par
+\end{minipage}
+
+\begin{minipage}[t]{8cm}
+    \vspace{0.4cm}
+    University of China Academy of Sciences,\\
+    Institue of Software, CAS \\
+\end{minipage}
+\begin{minipage}[t]{1.5cm}
+    \vspace{0.4cm}
+    Email: \\
+    Web: \\
+    GitHub: \\
+    Phone: \\
+\end{minipage}
+\begin{minipage}[t]{8cm}
+    \vspace{0.4cm}
+    lixie19@ios.ac.cn \\
+    https://github.com/SpencerL-Y \\
+    https://github.com/SpencerL-Y \\
+    15810517138 \\
+\end{minipage}
+\vspace{-0.2cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Personal Information
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}
+    \begin{minipage}[t]{4cm}
+        \qquad \textbf{Gender:}\par
+        \qquad \textbf{Day of Birth:}\par
+        \qquad \textbf{Place of Birth:}\par
+        \qquad \textbf{Nationality:}\par
+    \end{minipage}
+    \begin{minipage}[t]{12cm}
+        Male \par
+        July 7, 1997 \par
+        Kunming, Yunnan,  P.R.China \par
+        The People's Republic of China \par
+    \end{minipage}\par
+\vspace{0.4cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Research Interests
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}\hspace{0.5cm}
+    \begin{minipage}[t]{15.0cm}
+        \textbf{Verification and Static Analysis}\par
+        \begin{itemize}
+        \item Proving functional correctness of a given program via inference and model checking, including research on \textbf{invariant synthesis} for programs, computation \textbf{models} and \textbf{logic} in model checking problem, etc.
+        \item Proving termination of loop programs via \textbf{ranking function}.
+		\end{itemize}       
+    \end{minipage}\par
+\vspace{0.4cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Education
+    }}}}}
+\end{minipage}\par
+
+\vspace{0.2cm}\hspace{0.5cm}\
+\begin{minipage}[t]{15.0cm}
+    {{\textbf{University of China Academy of Sciences}}}\hfill
+    {\em{Sep. 2019 -- now}}\par\vspace{0.1cm}
+    {\qquad\em{Master Student of Science in Computer Science and Technology}}\par
+\end{minipage}\par
+\vspace{0.1cm}
+    \begin{minipage}[t]{4cm}
+        \qquad \textbf{Supervisor:}\par
+    \end{minipage}
+    \begin{minipage}[t]{11cm}
+        Lijun Zhang\par
+    \end{minipage}\par
+\vspace{0.4cm}
+\vspace{0.2cm}\hspace{0.5cm}\
+\begin{minipage}[t]{15.0cm}
+    {{\textbf{University of China Academy of Sciences}}}\hfill
+    {\em{Sep. 2015 -- Jun. 2019}}\par\vspace{0.1cm}
+    {\qquad\em{Bachelor of Science in Computer Science and Technology}}\par
+\end{minipage}\par
+\vspace{0.1cm}
+    \begin{minipage}[t]{4cm}
+        \qquad \textbf{GPA:}\par
+        \qquad \textbf{Supervisor:}\par
+    \end{minipage}
+    \begin{minipage}[t]{11cm}
+        3.69 \par
+        Lijun Zhang\par
+    \end{minipage}\par
+\vspace{0.4cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Expertise and Technical Strengths
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}
+    \begin{minipage}[t]{4cm}
+        \qquad \textbf{Programming:}\par
+        \qquad \textbf{Skills:}\par
+        \qquad \par
+        \qquad \textbf{Language:}\par
+    \end{minipage}
+    \begin{minipage}[t]{14cm}
+        C/C++, Python, Java, \LaTeX \par
+       	Familiar with development based on SMT solving tools like \textsc{Z3-solver}.\par
+       	Familiar with network programming (Network Layer, Data Link Layer). \par
+        Chinese (Native), English \par
+    \end{minipage}\par
+\vspace{0.4cm}
+
+\newpage
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Research Experience
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}\hspace{0.5cm}
+\begin{minipage}[t]{15cm}
+    {\textbf{Research Experience 1}}\par
+    {\textbf{Collaborators: Zhilin Wu et al.}}\par
+    \qquad\qquad\qquad\qquad\qquad\qquad\qquad{\em{Dec. 2019 -- Nov. 2020 @ UCAS, Beijing, P.R.China}}\par
+    \quad Engineering Project on a closed cycle verification tool, which provides a platform for modelling, verification and code generation of network protocols. Responsible for the implementation of \textbf{code generation} module. \par
+    \vspace{0.2cm}
+    {\textbf{Research Experience 2}}\par
+    \textbf{In-Group Work.}\par
+    \qquad\qquad\qquad\qquad\qquad\qquad\qquad{\em{May. 2020 -- July. 2020 @ UCAS, Beijing, P.R.China}}\par
+    \quad Research Project on  ranking function synthesis to prove termination of loop program. Extend the existing SVM-based algorithm on  synthesis of nested ranking functions to the synthesis of multi-phase ranking functions. Implemented the extended algorithm in prototype tool \textsc{SVMRanker} and implementation can be found in Github repository.\par
+    \vspace{0.2cm}
+    {\textbf{Research Experience 3}}\par
+    {\textbf{Collaborators: Zhilin Wu et al.}}\par
+    \qquad\qquad\qquad\qquad\qquad\qquad\qquad{\em{Apr. 2018 -- Oct. 2020 @ UCAS, Beijing, P.R.China}}\par
+    \quad Research Project (Bachelor thesis) on computing the reachability relation of one-counter automata. Helped constructing the algorithm and implemented the algorithm for the computation in prototype tool \textsc{OCAReach} and the implementation can be found in Github repository.\par
+    
+\end{minipage}\par
+\vspace{0.4cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Publications
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}\hspace{0.5cm}
+\begin{minipage}[t]{15cm}
+    {\textbf{\em{2020}}}\par
+    \quad \textbf{Xie Li}, Taolue Chen, Zhilin Wu, and Mingji Xia;{\em{ Computing Linear Arithmetic Representation of Reachability Relation of One-counter Automata}}; SETTA 2020.\par
+    \vspace{0.2cm}
+    \quad \textbf{Xie Li}, Yi Li, Yong Li, Xuechao Sun, Andrea Turrini, Lijun Zhang;{\em{ SVMRanker: A General Termination Analysis Framework of Loop Programs via SVM}}; ESEC/FSE 2020 Tool Demos.\par
+\end{minipage}\par
+\vspace{0.4cm}
+
+\begin{minipage}[t]{16cm}
+    \colorbox{subtitlecolor}{\raisebox{0pt}[10.0pt][1.0pt]{
+        \textcolor{white}{\textsf{\leftline{
+            \quad Activites
+    }}}}}
+\end{minipage}\par
+\vspace{0.2cm}\hspace{0.5cm}
+\begin{minipage}[t]{15cm}
+{\textbf{\em{2020}}}\par
+	\quad Nov. 24 -- Nov. 28, Beijing, SETTA 2020 conference.\par
+    \quad Nov. 6 -- Nov.16, Online, ESEC/FSE 2020 conference.\par
+    \vspace{0.2cm}
+{\textbf{\em{2019}}}\par
+    \quad Nov. 5 -- Nov.9, Shenzhen, ICFEM conference.\par
+    \vspace{0.2cm}
+    {\textbf{\em{2018}}}\par
+    \quad Feb. 8 -- March. 1, Germany, visit Holger Hermanns in Saarland University.\par
+    \vspace{0.2cm}
+\end{minipage}\par
+\vspace{0.4cm}
+
+\vspace{0.2cm}\hspace{0.5cm}
+
+\begin{center}\vspace{1.0cm}
+    Updated \monthyeardate\today
+\end{center}
+
+\end{document}
