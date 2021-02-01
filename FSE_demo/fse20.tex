@@ -176,4 +176,17 @@ Cases are adapted from \textsc{SV-COMP}.
 
 \begin{frame}\frametitle{Experimental Results: Linear Loops}
 \end{frame}
+
+
+\begin{frame}\frametitle{Draft}
+Find the derivative of the following function $f(x)$
+\[f(x) = 120x - 4x^2\]
+\begin{align*}
+\dfrac{df(x)}{dx} &= \lim_{dx\rightarrow 0}\dfrac{f(x + dx) - f(x)}{dx}\\
+&= \lim_{dx\rightarrow 0}\dfrac{120(x+dx) - 4(x+dx)^2 -120x + 4x^2}{dx}\\
+&= \lim_{dx\rightarrow 0}(120 - 8x - 4dx)\\
+&= 120 - 8x\\
+\end{align*}
+
+\end{frame}
 \end{document}
