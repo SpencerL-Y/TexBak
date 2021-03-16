@@ -45,7 +45,7 @@ Problem: Invariant synthesis and termination checking in probablistic settings.
 
 \begin{frame}\frametitle{Contributions}
 \begin{itemize}
-\item Extend \emph{quantitative invariants} using Azuma-Hoeffding theorem to generate probabilistic assertions.
+\item Extend \emph{quantitative invariants}, using Azuma-Hoeffding theorem to generate probabilistic assertions.
 
 \item Define \emph{super martigale ranking functions} (SMRF) to prove almost sure termination ($\texttt{Pr}(terminates) = 1$) of probablistic programs.
 \item A constraint-based algorithm for supermartingale expression generation.
@@ -196,7 +196,7 @@ A PTS is said to be almost sure terminating iff the sum of probabilities of all 
 \end{frame}
 \begin{frame}\frametitle{Pre-Expectation}
 \begin{definition}[Pre-expectation of an expression]
-Let state $s:(l,\mathbf{x})$ be a state and $\tau$ be the enabled transition on $s$. The pre-expectation $\mathbb{E}(\mathbf{e}'|s)$ is defined as the conditional expected value of $\mathbf{e}'$ over $\mathtt{Post-Distrib}(s)$ as 
+Let state $s:(l,\mathbf{x})$ be a state and $\tau$ be the enabled transition on $s$. The pre-expectation $\mathbb{E}(\mathbf{e}'|s)$ is defined as the conditional expected value of $\mathbf{e}'$ over $\textsc{Post-Distrib}(s)$ as 
 \[\mathbb{E}_\tau(\mathbf{e}'|s) = \Sigma_{j = 1}^k p_j\mathbb{E}_R(\mathtt{pre}(\mathbf{e}', F_j))\]
 \end{definition}
 \end{frame}
@@ -222,6 +222,13 @@ Adapting the original definition to PTS:
 \end{center}
 \end{frame}
 
+
+\begin{frame}\frametitle{Formal Definition of Martingale}
+
+
+
+\end{frame}
+
 \begin{frame}\frametitle{From Martingale to Probabilistic Assertion}
 
 \begin{center}
@@ -240,7 +247,7 @@ A supermartingale $\{M_n\}$ is ranking iff
 
 \item For all $n\ge 0$, $M_n \ge -K$ for some $K >0$. 
 
-(Equiv. Def. For all $n\ge 0$, $M_n\ge 0$).
+(Equiv. Def. For all $T(\omega) > j$, $M_j\ge 0$).
 \end{itemize}
 \end{definition}
 \end{frame}
@@ -248,7 +255,7 @@ A supermartingale $\{M_n\}$ is ranking iff
 \begin{frame}\frametitle{How a.s. Termination is Proved?}
 Ranking function: will finally become negative.
 
-Ranking Supermartingale: will almost surely be come negative.
+Ranking supermartingale: will almost surely become negative.
 \pause
 \begin{theorem}[Main result]
 A ranking supermartingale with a positive initial value will a.s. become negative.
@@ -258,16 +265,83 @@ A ranking supermartingale with a positive initial value will a.s. become negativ
 Stopping time: $t = \inf_{n\ge 0} m_n\le 0$. Let the r.v. be $T$.
 $M_{n}^{T}$. 
 $Y_n = M_{n}^{T} + \epsilon\min(n,T)$.
+$n < t, n \ge t$.
 \end{proof}
 \pause
 \begin{lemma}
 $\{Y_n\}$ is a super martingale and $Y_n \ge -K$
 \end{lemma}
+\begin{proof}
+Hint: discuss $n+1 \ge t$ and $n+1 < t$
+\end{proof}
 
 \end{frame}
 
+\begin{frame}\frametitle{How a.s. Termination is Proved?}
+
+\begin{theorem}[Super Martingale Convergence Theorem]
+
+A lower-bounded supermartingale converges almost surely.
+
+\end{theorem}
+
+\begin{lemma}
+For any convergent sample path $y_0, \ldots, y_n, \ldots$, the corresponding $\{M_n\}$ sample path $m_0, \ldots, m_n, \ldots$ eventually becomes negative eventually.
+\end{lemma}
+
+\begin{proof}
+Hint: assume $\{M_n\}$ sample path has stopping time $t = \infty$. By the definition of convergence and the definition of $t$.
+\end{proof}
+
+\end{frame}
+
+\begin{frame}\frametitle{Expression Map}
+\begin{center}
+\includegraphics[scale=0.35]{expmapdef.png}
+
+\end{center}
+\begin{example}
+
+\begin{center}
+
+\includegraphics[scale=0.35]{example_map.png}
+
+\end{center}
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{Super Martingale Ranking Function}
+\begin{center}
+
+\includegraphics[scale=0.35]{smrfdef.png}
+
+
+\textbf{How SMRF works?}
+\end{center}
+
+
+\end{frame}
 
 \begin{frame}\frametitle{How to Synthesize SMRF}
+
+Affine  linear templates.
+
+\begin{center}
+\includegraphics[scale=0.35]{template.png}
+\end{center}
+
+By Farkas Lemma convert the  system to the system of parameters. [CAV'06]
+
+\begin{example}
+Template: $f_{l_3}(h,t) = c_1h + c_2t$
+
+\begin{itemize}
+\item $\tau = (l_3, (h\le t), f_1, f_2)$
+\item $f_1: (\frac{1}{2}, (\lambda(h,t). h, t+1), l_3)$.
+\item $f_2: (\frac{1}{2}, (\lambda(h,t). h+r_1, t+1))$
+\end{itemize}
+
+\end{example}
 
 \end{frame}
 
