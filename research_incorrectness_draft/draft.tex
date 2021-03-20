@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{multirow}
+
+\title{Discussion on Octagon}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\cona}{\mathcal{A}}
+\newcommand{\conb}{\mathcal{B}}
+\newcommand{\conc}{\mathcal{C}}
+\newcommand{\cond}{\mathcal{D}}
+\geometry{a4paper, scale = 0.8}
+\begin{document}
+\maketitle
+
+\section{Draft}
+\paragraph{Synthesizing an Octagon Predicate $p$}
+
+\begin{definition}[Octagon]
+Given a set of variables $X$ where all variables in the set belongs to a numerical set $\mathbb{I}$, which can be $\mathbb{Z}, \mathbb{R}$ or $\mathbb{Q}$. We call \emph{octagonal constraint} any constraint of the form $\pm x_i \pm x_j \ge c$ where $c\in\mathbb{I}$ and $x_i,x_j\in X$. An \emph{octagon} is the set of points that satisfies the conjunction of all octagonal constraints. 
+
+
+\end{definition}
+Assume the program we consider is affine linear. From the definition of incorrectness logic and the iteration rule, our target is to synthesize a predicate $p(\mathbf{x},n)$ for a loop program where the update of the loop body can be expressed as $\mathbf{x}' = M\mathbf{x}$, s.t. 
+\[\models \forall \mathbf{x}.n. (p(\mathbf{x},n+1) \implies \exists \mathbf{y}.\mathbf{x} = M\mathbf{y} \wedge p(\mathbf{y}, n))\]
+After the elimination of the existential quantifier we get:
+\[\models \forall \mathbf{x}.n. (p(\mathbf{x}, n+1) \implies p(k_0(\mathbf{x} - \mathbf{c}) + k_1\mathbf{v}_i, n))\]
+
+
+
+\begin{example}
+
+We first consider the simplest example where $X = \{x, n\}$, i.e. $\mathbf{x}$ only contains one variable. We assume the update of the program is $x' = ax + b$. The octagon is equivalently given by the form:
+
+
+\begin{align*}
+x + y \ge& \cona_{x,y}\\
+x - y \ge& \conb_{x,y}\\
+-x + y \ge& \conc_{x,y}\\
+-x - y \ge& \cond_{x,y}\\
+\end{align*}
+where $x,y\in X$.
+
+For this example, then the constraint system $S_1$ of $p(\mathbf{x}, n+1)$ can be given as:
+
+\begin{align*}
+2x&& &\ge \cona_{x,x}\\
+&&0 &\ge \conb_{x,x}\\
+&&0 &\ge \conc_{x,x}\\
+-2x&& & \ge \cond_{x,x}\\
+x &+ n& +1&\ge \cona_{x,n}\\
+x &- n& +1&\ge \conb_{x,n}\\
+-x &+ n& +1&\ge \conc_{x,n}\\
+-x &- n&+1 &\ge \cond_{x,n}\\
+&2n & +2&\ge \cona_{n,n}\\
+&& 0&\ge \conb_{n,n}\\
+&& 0&\ge \conc_{n,n}\\
+&-2n& -2&\ge\cond_{n,n}\\
+\end{align*}
+Similarly, from the fact that $\mathbf{y} = [y] = [\frac{1}{a} x - \frac{b}{a}]$, we can also derive a system $S_2$ for $p(\mathbf{y}, n)$:
+
+\begin{align*}
+\frac{2}{a}x&& -\frac{2b}{a} &\ge \cona_{x,x}\\
+&&0 &\ge \conb_{x,x}\\
+&&0 &\ge \conc_{x,x}\\
+-\frac{2}{a}x&& \frac{2b}{a} &\ge \cond_{x,x}\\
+\frac{1}{a}x &+ n& -\frac{b}{a}&\ge \cona_{x,n}\\
+\frac{1}{a}x &- n& -\frac{b}{a}&\ge \conb_{x,n}\\
+-\frac{1}{a}x &+ n& +\frac{b}{a}&\ge \conc_{x,n}\\
+-\frac{1}{a}x &- n& +\frac{b}{a}&\ge \cond_{x,n}\\
+&2n &&\ge \cona_{n,n}\\
+&& 0&\ge \conb_{n,n}\\
+&& 0&\ge \conc_{n,n}\\
+&-2n&&\ge\cond_{n,n}\\
+\end{align*}
+
+Target of the synthesis is to synthesize the unknown parameter $\{\cona, \conb, \conc, \cond\}$ s.t. $\models \forall x.n. (S_1\implies S_2)$.
+
+According to the method in previous SAS'06:
+\end{example}
+
+
+\end{document}
