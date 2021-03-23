@@ -10,7 +10,7 @@
 \usepackage{color}
 \usepackage{stmaryrd}
 \usepackage{multirow}
-
+\usepackage{lscape}
 \title{Discussion on Octagon}
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
@@ -18,7 +18,7 @@
 \newcommand{\conb}{\mathcal{B}}
 \newcommand{\conc}{\mathcal{C}}
 \newcommand{\cond}{\mathcal{D}}
-\geometry{a4paper, scale = 0.8}
+\geometry{a4paper, scale = 0.85}
 \begin{document}
 \maketitle
 
@@ -61,7 +61,7 @@ x &+ n& +1&\ge \cona_{x,n}\\
 x &- n& +1&\ge \conb_{x,n}\\
 -x &+ n& +1&\ge \conc_{x,n}\\
 -x &- n&+1 &\ge \cond_{x,n}\\
-&2n & +2&\ge \cona_{n,n}\\
+&+2n & +2&\ge \cona_{n,n}\\
 && 0&\ge \conb_{n,n}\\
 && 0&\ge \conc_{n,n}\\
 &-2n& -2&\ge\cond_{n,n}\\
@@ -77,7 +77,7 @@ Similarly, from the fact that $\mathbf{y} = [y] = [\frac{1}{a} x - \frac{b}{a}]$
 \frac{1}{a}x &- n& -\frac{b}{a}&\ge \conb_{x,n}\\
 -\frac{1}{a}x &+ n& +\frac{b}{a}&\ge \conc_{x,n}\\
 -\frac{1}{a}x &- n& +\frac{b}{a}&\ge \cond_{x,n}\\
-&2n &&\ge \cona_{n,n}\\
+&+2n &&\ge \cona_{n,n}\\
 && 0&\ge \conb_{n,n}\\
 && 0&\ge \conc_{n,n}\\
 &-2n&&\ge\cond_{n,n}\\
@@ -85,7 +85,46 @@ Similarly, from the fact that $\mathbf{y} = [y] = [\frac{1}{a} x - \frac{b}{a}]$
 
 Target of the synthesis is to synthesize the unknown parameter $\{\cona, \conb, \conc, \cond\}$ s.t. $\models \forall x.n. (S_1\implies S_2)$.
 
-According to the method in previous SAS'06:
+According to the method in previous SAS'04, e.g. if we consider the implication 
+\[\forall \mathbf{x}. (S_1\implies \frac{2}{a}x-\frac{2b}{a} \ge \cona_{x,x})\]
+By introducing the symbol $\lambda^{\cona_{x,x}}_{\conb_{x,x}}$, we mean the parameter introduced during the application of Farkas' Lemma from the equation with parameter $\conb_{x,x}$ to the equation in $S_2$ with parameter $\cona_{x,x}$. Then for this instance of implication we have $\exists \lambda_{\cona_{x,x}}^{\cona_{x,x}}\ldots\lambda_{\cond_{n,n}}^{\cona_{x,x}}$. 
+\begin{tiny}
+
+\begin{landscape}
+\begin{align*}
+&+2\lambda_{\cona_{x,x}}^{\cona_{x,x}}&&& - 2\lambda_{\cond_{x,x}}^{\cona_{x,x}} &+ \lambda_{\cona_{x,n}}^{\cona_{x,x}} &+ \lambda_{\conb_{x,n}}^{\cona_{x,x}} &- \lambda_{\conc_{x,n}}^{\cona_{x,x}}&-\lambda_{\cond_{x,n}}^{\cona_{x,x}}&&&& &= \frac{2}{a}\\
+&&&&&+\lambda_{\cona_{x,n}}^{\cona_{x,x}} &- \lambda_{\conb_{x,b}}^{\conb_{x,x}} &+ \lambda_{\conc_{x,n}}^{\cona_{x,x}} &- \lambda_{\cond_{x,n}}^{\cona_{x,x}} &+ 2\lambda_{\cona_{n,n}}^{\cona_{x,x}} &&&- 2\lambda_{\cond_{n,n}}^{\cona_{x,x}} &= 0\\
+&-\lambda_{\cona_{x,x}}^{\cona_{x,x}}\cona_{x,x}&-\lambda_{\conb_{x,x}}^{\cona_{x,x}}\conb_{x,x}&-\lambda_{\conc_{x,x}}^{\cona_{x,x}}\conc_{x,x}&-\lambda_{\cond_{x,x}}^{\cona_{x,x}}\cond_{x,x}&+(1-\cona_{x,n})\lambda_{\cona_{x,n}}^{\cona_{x,x}}&+(1-\conb_{x,n})\lambda_{\conb_{x,n}}^{\cona_{x,x}}&+(1-\conc_{x,n})\lambda_{\conc_{x,n}}^{\cona_{x,x}}&+(1-\cond_{x,n})\lambda_{\cond_{x,n}}^{\cona_{x,x}}&+(2-\cona_{n,n})\lambda_{\cona_{n,n}}^{\cona_{x,x}}&-\conb_{n,n}\lambda_{\conb_{n,n}}^{\cona_{x,x}}&-\conc_{n,n}\lambda_{\conc_{n,n}}^{\cona_{x,x}}&+(2-\cond_{n,n})\lambda_{\cond_{n,n}}^{\cona_{x,x}} &= -\frac{2b}{a} - \cona_{x,x}\\
+&-\lambda_{\cona_{x,x}}^{\cona_{x,x}}\cona_{x,x}&&&-\lambda_{\cond_{x,x}}^{\cona_{x,x}}\cond_{x,x}&+(1-\cona_{x,n})\lambda_{\cona_{x,n}}^{\cona_{x,x}}&+(1-\conb_{x,n})\lambda_{\conb_{x,n}}^{\cona_{x,x}}&+(1-\conc_{x,n})\lambda_{\conc_{x,n}}^{\cona_{x,x}}&+(1-\cond_{x,n})\lambda_{\cond_{x,n}}^{\cona_{x,x}}&+(2-\cona_{n,n})\lambda_{\cona_{n,n}}^{\cona_{x,x}}&&&+(2-\cond_{n,n})\lambda_{\cond_{n,n}}^{\cona_{x,x}} &= -\frac{2b}{a} - \cona_{x,x}\\
+\end{align*}
+\end{landscape}
+
+\end{tiny}
+The first three equations in page 3 are directly derived from the method.
+
+Due to the fact that types of $\conb_{x,x}$ and $\conc_{x,x}$ can be directly assigned to $0$ and not influencing the result.
+
+Without any assumption on the parameters, it seems the number of equations are not enough to remove all the nonlinear nomials in the equation of constant column.
+
+However, observe the equation in the second line, we can add some assumptions according to the sum is $0$:
+\begin{align*}
+&&&&&+\lambda_{\cona_{x,n}}^{\cona_{x,x}} &- \lambda_{\conb_{x,b}}^{\conb_{x,x}} &+ \lambda_{\conc_{x,n}}^{\cona_{x,x}} &- \lambda_{\cond_{x,n}}^{\cona_{x,x}} &+ 2\lambda_{\cona_{n,n}}^{\cona_{x,x}} &&&- 2\lambda_{\cond_{n,n}}^{\cona_{x,x}} &= 0\\
+\end{align*}
+
+
+i.e. $\lambda_{\cona_{x,n}}^{\cona_{x,x}} = \lambda_{\conb_{x,b}}^{\conb_{x,x}}$,  $\lambda_{\conc_{x,n}}^{\cona_{x,x}} = \lambda_{\cond_{x,n}}^{\cona_{x,x}}$ and $\lambda_{\cona_{n,n}}^{\cona_{x,x}} = \lambda_{\cond_{n,n}}^{\cona_{x,x}}$.
+
+These assumptions can help to remove the nonlinear nomials. 
+
+But this situation only occurs when there is only one nomial with variable in the implied equation. If another equation is taking into consider, e.g. $\frac{1}{a}x+n -\frac{b}{a}\ge \cona_{x,n}$. The first two equation is similar to that of in page three except the RHS of the second equation in page 3 is not $0$. Observing that we can make use of equation $1$ and equation $2$ to produce equation whose RHS is $0$, thus resulting in a familiar analysis like before.
+
+Hence, we can remove the nonlinear constraint by simply applying some assumptions obtained from the equations which is only related to $\lambda$s'.
+
+This is just a trivial case where two variables $\{x,n\}$ are considered. Can we prove that this tactic can be applies to a system with $k\in\mathbb{N}$ variables? Seemingly yes, maybe by induction on the number of variables (A detailed proof needed.). Stopped here, deal with it later.
+
+
+
+
 \end{example}
 
 
