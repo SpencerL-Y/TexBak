@@ -1,0 +1,201 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage[UTF8]{ctex}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{zi4}
+\usepackage[font={scriptsize,bf}]{caption}
+% \usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{mathpartir}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+
+\newcommand{\Dist}[1]{\mathcal{D}(#1)}
+\newcommand{\expectation}{\mathbb{E}}
+
+\newcommand{\states}{S}
+\newcommand{\actions}{A}
+\newcommand{\observables}{O}
+\newcommand{\trans}{T}
+\newcommand{\obs}{Z}
+\newcommand{\reward}{R}
+\newcommand{\discount}{\gamma}
+
+\newcommand{\beliefs}{\mathcal{B}}
+\newcommand{\beliefUpdate}{\tau}
+
+\newcommand{\policy}{\pi}
+
+\newcommand{\diff}[1]{\mathop{}\!\mathrm{d}#1}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\refname}{Reference}
+
+\AtBeginDocument{
+  \catcode`_=12
+  \begingroup\lccode`~=`_
+  \lowercase{\endgroup\let~}\sb
+  \mathcode`_="8000
+}
+
+% \usetheme{Madrid}
+% % \usetheme{default}
+% \setbeamertemplate{caption}[numbered]
+% \setbeamerfont{title}{size=\large}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme[onlymath]{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{footline}[frame number] 
+} 
+
+\usepackage{listings}
+\lstdefinestyle{heaplang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    escapeinside={<@}{@>},
+    morekeywords={new_chan, fork, recv, send, swap, ref}
+}
+\lstdefinestyle{clang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    escapeinside={<@}{@>},
+}
+\lstset{style=heaplang}
+
+\usepackage{natbib}
+
+\newcommand{\buchi}{B\"uchi }
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{green2}{rgb}{0.1,0.7,0.3} 
+\newcommand{\gcheck}{{\color{green2}\faCheckCircle[regular] }}
+\newcommand{\rcross}{{\color{red} \faTimesCircle[regular]} }
+\newcommand{\rflag}{{\color{red} \faFlag}}
+% \usepackage{algorithm,amsmath}
+% \usepackage[noend]{algpseudocode}
+
+\newcommand{\zlstinline}{\let\par\endgraf\lstinline}
+\newcommand{\comments}[1]{{\color{red}#1}}
+\title{Group Meeting - 2}
+\date{\today}
+\author{Member: Yong Li, Depeng Liu, Weizhi Feng, Xie Li, Shizhen yu, Zongxin Liu}
+\begin{document}
+\maketitle
+
+\begin{frame}\frametitle{MemSafety: Progress and Problem Encountered}
+
+\begin{itemize}
+\item SMACK: code reading.
+\begin{itemize}
+\item Problem 1: How SMACK do the region splitting to modify the memory model? 
+
+Paper reading: 
+\begin{itemize}
+\item 
+[{[1]}] Making Context-sensitive Points-to Analysis with Heap Cloning Practical For The Real World.
+\item DSA, Andersen style analysis, Steensgaard's analysis and shape analysis.
+\end{itemize}
+
+
+\item Problem 2: How to adapt the assertion of separation logic into the generating and parsing of Boogie IVL.
+
+Paper reading: 
+
+\begin{itemize}
+\item [{[2]}] A Primer on Separation Logic.
+\item [{[3]}] Enhancing Symbolic Execution of Heap-based Programs with Separation Logic for Test Input Generation.
+\end{itemize}
+
+Tool investigating:
+
+\begin{itemize}
+\item Predator, on how they deal with separation assertions.
+\end{itemize}
+
+Case study: 
+\begin{itemize}
+\item Find a example program and write assertions in FOL and SL by hand to compare.
+\end{itemize}
+
+
+\item Problem 3: Sorting a document about the whole procedure of SMACK.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{MemSafety: Progress and Problem Encourtered}
+\begin{itemize}
+\item SMACK: running SV-COMP cases.
+\begin{itemize}
+\item Problem 1: Specify the detailed result: which property, consistent or not.
+
+\item Problem 2: Report the issue in Github.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Outline}
+\begin{frame}{BBA: Outline}
+    \begin{itemize}
+        \item  Bounded \buchi automata.
+        \item \textbf{Bounded: }
+        \begin{itemize}
+        
+        \item Definition of bounded \buchi automata and bounded languages.
+   		 \item Relationship of bounded languages and $\omega$-regular languages. 
+        \end{itemize}
+        \item Plan.
+    \end{itemize}
+    
+\end{frame}
+
+\section{Automata}
+\begin{frame}{BBA: Bounded \buchi Automaton \& Bounded Language}
+\begin{block}{Definition}
+    Given an integer $d > 0$ and a \buchi automaton $\mathcal{A}$, we call the \buchi automaton with the integer $d$ as a bounded \buchi automaton.
+\end{block}
+\begin{block}{Definition}
+    A run $\rho=q_{0}q_{1}...$ is accepting iff there exists an integer $i \geq 0$, the distance between any two consecutive accepting states with index greater than i is at most $d$. 
+    
+    Formally, a run is accepting iff $\exists i \geq 0, \forall j \geq i, \{q_{j},q_{j+1},...,q_{j+d-1}\} \cap F \ne \emptyset$, where F is the set of accepting states. Then we call such an accepting run a bounded run. A bounded word $w$ is accepted by $(\mathcal{A}, d)$ if there is an accepting bounded run of $(\mathcal{A}, d)$ on $w$. The bounded language recognized by $(\mathcal{A}, d)$, denoted $\mathcal{L(A,\textit{d})}$, is the set of bounded words that $(\mathcal{A},d)$ accepts. 
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{BBA: Bounded Languages \& $\omega$-regular Languages}
+    \begin{itemize}
+        \item Proved that bounded languages are $\omega$-regular languages.
+        \item Proved that $\omega$-regular languages cannot be expressed by bounded languages. 
+        \item Therefore, bounded languages are the subset of $\omega$-regular languages.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{BBA: Plan}
+    Thinking about the computation of bounded languages...
+    \begin{itemize}
+        \item Intersection；
+        \begin{itemize}
+            \item Two bounded automata with the same $d$ and different $d$;
+        \end{itemize}
+        \item Complement.
+    \end{itemize}
+\end{frame}
+
+\end{document}
