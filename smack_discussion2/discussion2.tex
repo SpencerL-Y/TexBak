@@ -99,19 +99,48 @@ Three steps:
 \end{itemize}
 Two important properties:
 \begin{itemize}
-\item 
-\item 
+\item The DSG is correct even if only a portion of the callers and callees are consider and incorperated into the graph.
+\item  The order of the graph inlining does not modify the final result.
 \end{itemize}
+
+Problem: How to understand these two properties?
 \end{frame}
 
 \begin{frame}\frametitle{Primitive Graph Operation}
 
+TODO: include graphics here.
+\begin{itemize}
+\item \texttt{mergeCells(c1, c2)}
+
+\item \texttt{cloneGraphInto(G1, G2)}
+
+\item \texttt{resolveCallee} and \texttt{resolveCaller}
+
+\item \texttt{resolveArguments} and \texttt{markComplete}
+\end{itemize}
+
 \end{frame}
+
+\begin{frame}\frametitle{Local Analysis Phase}
+
+\end{frame}
+
+\begin{frame}\frametitle{Bottom-Up Analysis Phase}
+\begin{itemize}
+\item Non-recursive calls.
+\item Recursive calls.
+\item Recursive calls with function pointer.
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}\frametitle{Insert Self-defined Assertion}
 
 \end{frame}
 
+\begin{frame}\frametitle{}
+
+\end{frame}
 
 
 \end{document}

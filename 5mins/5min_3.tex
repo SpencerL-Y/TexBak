@@ -1,7 +1,6 @@
 \documentclass[aspectratio=1610]{beamer}
 
-
-\usepackage{CJK}[UTF-8]
+\usepackage[UTF8]{ctex}
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{mathtools,array}
@@ -63,7 +62,7 @@
     language=Caml,
     basicstyle=\footnotesize\ttfamily,
     keywordstyle=\color{blue},
-    commentstyle=\color{red},
+    commentstyle=\color{gray},
     escapeinside={<@}{@>},
     morekeywords={new_chan, fork, recv, send, swap, ref}
 }
@@ -71,7 +70,7 @@
     language=Caml,
     basicstyle=\footnotesize\ttfamily,
     keywordstyle=\color{blue},
-    commentstyle=\color{red},
+    commentstyle=\color{gray},
     escapeinside={<@}{@>},
 }
 \lstset{style=heaplang}
@@ -91,32 +90,35 @@
 
 \newcommand{\zlstinline}{\let\par\endgraf\lstinline}
 \newcommand{\comments}[1]{{\color{red}#1}}
-\title{Group Meeting - 3}
+\title{Group Meeting - 2}
 \date{\today}
-\author{李絜}
+\author{Member: Yong Li, Depeng Liu, Weizhi Feng, Xie Li, Shizhen yu, Zongxin Liu}
 \begin{document}
 \maketitle
 
-\begin{frame}\frametitle{Presentation for Scholarship}
+\begin{frame}\frametitle{MemSafety: Progress and Problem Encountered}
 
 \begin{itemize}
-\item SMACK:
+\item SMACK: code reading.
 \begin{itemize}
-\item Prev - Problem 1 (Done): How SMACK do the region splitting to modify the memory model? 
+\item Problem 1: How SMACK do the region splitting to modify the memory model? 
 
-
-
+Paper reading: 
 \begin{itemize}
-\item   DSA algorithm: to be introduced tomorrow. 
-
-Data Structure Graph (can  be regarded as memory model) is introduced to do pointer analysis.
-
-
-\item Problem 1: What is the difference if we adapt separation logic to it?
+\item 
+[{[1]}] Making Context-sensitive Points-to Analysis with Heap Cloning Practical For The Real World.
+\item DSA, Andersen style analysis, Steensgaard's analysis and shape analysis.
 \end{itemize}
 
-\item Prev - Problem 2 (Ongoing): How to adapt the assertion of separation logic into the generating and parsing of Boogie IVL.
 
+\item Problem 2: How to adapt the assertion of separation logic into the generating and parsing of Boogie IVL.
+
+Paper reading: 
+
+\begin{itemize}
+\item [{[2]}] A Primer on Separation Logic.
+\item [{[3]}] Enhancing Symbolic Execution of Heap-based Programs with Separation Logic for Test Input Generation.
+\end{itemize}
 
 Tool investigating:
 
@@ -126,71 +128,24 @@ Tool investigating:
 
 Case study: 
 \begin{itemize}
-\item (1) Find a example program and write assertions in FOL and SL by hand to compare.
+\item Find a example program and write assertions in FOL and SL by hand to compare.
 \end{itemize}
 
 
-%\item Prev - Problem 3 (Done): Sorting a document about the whole procedure of SMACK.
+\item Problem 3: Sorting a document about the whole procedure of SMACK.
 \end{itemize}
-\item  Boogie Verifier: code reading (Ongoing).
-\begin{itemize}
-\item  Found where to modify to add separation logic parsing.
-\item Found the interface to plug the SL-Solver to backend to do VC generation and verification.
 \end{itemize}
-
-\end{itemize}
-
 \end{frame}
 
 
-\begin{frame}[t,fragile]\frametitle{MemSafety: A Simple Case}
-\begin{example}
-\begin{center}
-\begin{lstlisting}[language=C++, escapeinside={(*}{*)}]
-int main(){
-    // emp 
-    int *i = malloc(2*sizeof(int));
-    // blk(i, i+2)
-    int *j = malloc(sizeof(int));
-    // blk(i, i+2) * blk(j, j+1)
-    *i = 0;
-    // i (*\color{red}$\mapsto$*) 0 * blk(i+1, i+2) * blk(j, j+1)
-    *j = 1;
-    // i (*\color{red}$\mapsto$*) 0 * blk(i+1, i+2) * j (*\color{red}$\mapsto$*) 1
-    free(i);
-    // blk(i+1, i+2) * j (*\color{red}$\mapsto$*) 1
-    free(j);
-    // blk(i+1, i+2)
-    
-}
-
-\end{lstlisting}
-\end{center}
-\end{example}
-
-
-\end{frame}
-
-\begin{frame}\frametitle{MemSafety: TODOs}
+\begin{frame}\frametitle{MemSafety: Progress and Problem Encourtered}
 \begin{itemize}
-\item Problem: How to adapt separation logic to current framework?
+\item SMACK: running SV-COMP cases.
 \begin{itemize}
+\item Problem 1: Specify the detailed result: which property, consistent or not.
 
-\item Code reading of Predator: how to deal with assertion in separation logic.
-
-\item [{[1]}] Paper about shape analysis.
-
-\item [{[2]}] Shape analysis based on separation logic.
-
+\item Problem 2: Report the issue in Github.
 \end{itemize}
-
-\item Combine termination and memory safety:
-\begin{itemize}
-\item [{[1]}] Existing work: Proving Termination and Memory Safety for Programs with Pointer Arithmetic.
-\end{itemize}
-\item Investigate and try the SL-Solver: Asterix,
-ComSPEN,...
-
 \end{itemize}
 \end{frame}
 

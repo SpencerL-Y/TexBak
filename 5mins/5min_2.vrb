@@ -1,0 +1,26 @@
+\frametitle{MemSafety: A Simple Case}
+\begin{example}
+\begin{center}
+\begin{lstlisting}[language=C++, escapeinside={(*}{*)}]
+int main(){
+    // emp
+    int *i = malloc(2*sizeof(int));
+    // blk(i, i+2)
+    int *j = malloc(sizeof(int));
+    // blk(i, i+2) * blk(j, j+1)
+    *i = 0;
+    // i (*\color{red}$\mapsto$*) 0 * blk(i+1, i+2) * blk(j, j+1)
+    *j = 1;
+    // i (*\color{red}$\mapsto$*) 0 * blk(i+1, i+2) * j (*\color{red}$\mapsto$*) 1
+    free(i);
+    // blk(i+1, i+2) * j (*\color{red}$\mapsto$*) 1
+    free(j);
+    // blk(i+1, i+2)
+
+}
+
+\end{lstlisting}
+\end{center}
+\end{example}
+
+
