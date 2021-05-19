@@ -1,0 +1,171 @@
+
+\documentclass[aspectratio=1610, 13pt]{beamer}
+
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{zi4}
+\usepackage[font={scriptsize,bf}]{caption}
+% \usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{mathpartir}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+
+\newcommand{\Dist}[1]{\mathcal{D}(#1)}
+\newcommand{\expectation}{\mathbb{E}}
+
+\newcommand{\states}{S}
+\newcommand{\actions}{A}
+\newcommand{\observables}{O}
+\newcommand{\trans}{T}
+\newcommand{\obs}{Z}
+\newcommand{\reward}{R}
+\newcommand{\discount}{\gamma}
+
+\newcommand{\beliefs}{\mathcal{B}}
+\newcommand{\beliefUpdate}{\tau}
+
+\newcommand{\policy}{\pi}
+
+\newcommand{\diff}[1]{\mathop{}\!\mathrm{d}#1}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\refname}{Reference}
+
+\AtBeginDocument{
+  \catcode`_=12
+  \begingroup\lccode`~=`_
+  \lowercase{\endgroup\let~}\sb
+  \mathcode`_="8000
+}
+
+% \usetheme{Madrid}
+% % \usetheme{default}
+% \setbeamertemplate{caption}[numbered]
+% \setbeamerfont{title}{size=\large}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme[onlymath]{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{footline}[frame number] 
+} 
+
+\usepackage{listings}
+\lstdefinestyle{heaplang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+    morekeywords={new_chan, fork, recv, send, swap, ref}
+}
+\lstdefinestyle{clang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+}
+\lstset{style=heaplang}
+
+\usepackage{natbib}
+
+\newcommand{\buchi}{B\"uchi }
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{green2}{rgb}{0.1,0.7,0.3} 
+\newcommand{\gcheck}{{\color{green2}\faCheckCircle[regular] }}
+\newcommand{\rcross}{{\color{red} \faTimesCircle[regular]} }
+\newcommand{\rflag}{{\color{red} \faFlag}}
+% \usepackage{algorithm,amsmath}
+% \usepackage[noend]{algpseudocode}
+
+\newcommand{\zlstinline}{\let\par\endgraf\lstinline}
+\newcommand{\comments}[1]{{\color{red}#1}}
+\title{Group Meeting - 5}
+\date{\today}
+\author{Member: Yong Li, Depeng Liu, Weizhi Feng, Xie Li, Shizhen Yu, Yutian Zhu and Zongxin Liu}
+\begin{document}
+\maketitle
+
+\begin{frame}\frametitle{MemSafety: Progress and Problems}
+Previous plan: add implementation at SMACK frontend to support symbolic execution of separation logic.
+
+Problems encountered: 
+\begin{itemize}
+\item How to express symbolic heap in data structure/generated boogie program? (Feasible)
+\begin{itemize}
+\item Added definition of symbolic heap into \texttt{BoogieAST.h}.
+
+\end{itemize}
+
+\item How to modify the symbolic heap? (Feasible)
+\begin{itemize}
+\item $\langle \Pi \mid \Sigma\rangle$, assume $\Sigma$ has a fix order during the execution, find pattern.
+
+
+\end{itemize}
+\item VC generation and verification (Problematic):
+\begin{itemize}
+\item Seems tedious to use Boogie IVL because it is hard to unified separation logic at backend. (TODO: a more thorough look into Boogie to find out capabilities.)
+\item Only use SMACK frontend and implement our own VC generation. (Feasible)
+\end{itemize} 
+\item Interblock: construct the CFG during instruction visiting. (Feasible)
+
+\end{itemize}
+
+Plan: implement SE for \texttt{malloc,free} and assignment in one block.
+\end{frame}
+
+
+\begin{frame}{Shizhen Yu}
+    \begin{itemize}
+        \item  Reading
+        \begin{itemize}
+            \item  Enhancing Symbolic Execution of Heap-based Programs with Separation Logic for Test Input Generation
+            \begin{itemize}
+            \item Motivation and Illustration
+            \item Operational semantics of the core language
+            \end{itemize}
+        \end{itemize}
+        \item Preparing for matrix test
+    %     \item \textbf{Bounded: }
+    %     \begin{itemize}
+        
+    %     \item Definition of bounded \buchi automata and bounded languages.
+   	% 	 \item Relationship of bounded languages and $\omega$-regular languages. 
+    %     \end{itemize}
+        
+        \item Plan
+        \begin{itemize}
+            \item Continue reading "Details on symbolic execution using SL" part of "Enhancing Symbolic Execution of Heap-based Programs with Separation Logic for Test Input Generation"  
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yutian Zhu}
+  \begin{itemize}
+      \item Compositional Shape Analysis by means of Bi-Abduction(Done, prepare for ppt)
+  \end{itemize}
+  Recent:
+  \begin{itemize}
+    \item Prepare for tests. A lot of homework.
+  \end{itemize}
+  Plan:
+  \begin{itemize}
+    \item Static automated program repair for heap properties. ICSE 2018. Rijnard van Tonder, Claire Le Goues
+\end{itemize}  
+
+\end{frame}
+
+\end{document}
