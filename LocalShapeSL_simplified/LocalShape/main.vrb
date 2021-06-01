@@ -1,0 +1,41 @@
+\frametitle{Symbolic Execution Semantic}
+Primitive commands: $x:=E,x:=[E],[E]:=F,\mathbf{new}(x),\mathbf{dispose}(E)$.
+
+Assume the locations and values are all non-negative integers.
+\[\Pi\mid \Sigma , p\Longrightarrow \Pi'\mid \Sigma' \]
+\begin{multicols}{2}
+\begin{lstlisting}
+int main(){
+	// true|emp
+	x = 1;
+	
+	
+	new(y);
+	
+	
+	[y]:=x;
+
+
+	dispose(y);
+	
+	
+}
+
+\end{lstlisting}
+\begin{lstlisting}
+int main(){
+
+	new(x)
+	
+	if(x = y){
+	
+		z := a;
+		
+	} else {
+		z := b;
+	}
+	dispose(x);
+}
+
+\end{lstlisting}\[\mathcal{I}\llbracket c \rrbracket : \mathcal{P(SH)} \rightarrow \mathcal{P(SH)} \]
+\end{multicols}

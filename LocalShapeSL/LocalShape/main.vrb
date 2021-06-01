@@ -1,0 +1,28 @@
+\frametitle{Symbolic Execution Semantic: Example}
+\begin{center}
+    \includegraphics[scale=0.35]{symb_exec.png}
+\end{center}
+\begin{example}
+\begin{center}
+
+\begin{multicols}{2}
+\begin{lstlisting}
+int main(){
+    // true|emp
+    x = 1;
+    // x=x'|emp
+    new(y);
+    // x=x'|emp * y|->y'
+    [y]=x;
+    // x=x'|emp * y|->x
+    dispose(y);
+    // x=x'|emp
+    dispose(y);
+    // T
+}
+\end{lstlisting}
+\end{multicols}
+\end{center}
+\end{example}
+
+
