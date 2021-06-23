@@ -1,0 +1,30 @@
+\frametitle{例子}
+\begin{multicols}{2}
+\begin{lstlisting}
+typedef struct {
+    void *lo;
+    void *hi;
+} TData;
+\end{lstlisting}
+\begin{lstlisting}
+int main(){
+    TData data;
+    TData* pdata = &data;
+    pdata->lo = malloc(16);
+    pdata->hi = malloc(24);
+    void *lo = pdata->lo;
+    void *hi = pdata->hi;
+    if (lo == hi) {
+        free(lo);
+        free(hi);
+    }
+    pdata->lo = (void *) 0;
+    pdata->hi = (void *) 0;
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item 可能有机会完成的内容：将\texttt{BlockExecutor}用到CFG上，实现CFG上的符号执行。
+\end{itemize}
+\end{multicols}
+

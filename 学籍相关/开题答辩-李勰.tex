@@ -1,6 +1,6 @@
 
-\documentclass[11pt]{beamer}
-%aspectratio=1610
+\documentclass[aspectratio=1610, 11pt]{beamer}
+%
 \usepackage{ctex}
 \usepackage{CJKutf8}
 \usepackage{xcolor}
@@ -102,7 +102,7 @@
 \begin{itemize}
 \item 选题的背景及意义
 \item 本题目的研究内容
-\item 已有科研基础及研究计划
+\item 研究计划及已有科研基础
 \end{itemize}
 \end{frame}
 \begin{frame}\frametitle{背景和意义}
@@ -150,9 +150,11 @@
 $\Pi$为纯公式$\Sigma$为空间公式。
 \end{definition}
 \begin{example}
-\[ y = x + 3 \wedge x > 0 \mid \texttt{blk}(x, y)* y\mapsto 2\]
-\[ i = 0\wedge j = 0 \mid \texttt{emp}\]
-\[\texttt{true}\mid \texttt{blk}(a,b) * \texttt{blk}(c,d)\]
+\begin{align*}
+y = x + 3 \wedge x > 0 &\mid \texttt{blk}(x, y)* y\mapsto 2\\
+ i = 0\wedge j = 0 &\mid \texttt{emp}\\
+\texttt{true}&\mid \texttt{blk}(a,b) * \texttt{blk}(c,d)\\
+\end{align*}
 \end{example}
 \end{frame}
 
@@ -170,20 +172,40 @@ $\Pi$为纯公式$\Sigma$为空间公式。
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}\frametitle{其他问题}
 \begin{itemize}
 \item 循环的处理
 \begin{itemize}
 \item 循环展开
 \item 合成循环不变式 - 抽象解释 - 抽象域
+\item Loop summary.
 \end{itemize}
 \item 指针算术
-\item 不确定的变量初始值
+\item 和终止性等的结合
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}\frametitle{研究计划}
+\begin{itemize}
+\item 第一阶段：更深入的调研，对相关工具的调研。如\textsc{Predator}，抽象解释框架\textsc{Crab}.
 
+\item 第二阶段：基于已有的工具搭建分析验证平台，从符号执行开始对工具迭代增强。
+
+\item 第三阶段：通过对实例的研究，探索能够提高验证工具的效率和能力的理论途径和技术手段，包括设计设计抽象域并进行抽象解释、对内存操作的具体细节进行技术上的优化。
+
+\item 第四阶段：在以上的工作中形成并发表学术论文，撰写学位论文。
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{已有研究基础}
+已发表两篇论文，
+\begin{itemize}
+\item [{[1]}] Xie Li, Yi Li, Yong Li, Xuechao Sun, Andrea Turrini and Lijunzhang. SVMRanker: a general termination analysis framework of loop programs via SVM. ESEC/SIGSOFT FSE 2020: 1635-1639
+\item [{[2]}] Xie Li, Taolue Chen, Zhilin Wu, Mingji Xia. Computing Linear Arithmetic Representation of Reachability Relation of One-Counter Automata. SETTA 2020: 89-107
+\end{itemize}
+
+对利用SMT做程序性质验证、逻辑归约等方法和技术手段较为熟悉。并在以上两个项目中进行了工具的开发，在实现方面也有一定经验。
 \end{frame}
 
 \end{document}
