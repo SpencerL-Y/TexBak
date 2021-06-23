@@ -110,7 +110,7 @@ Give the syntax of the program considered and the semantic (or symbolic executio
 \begin{align*}
 e &::= n \mid x \mid x + n\\
 B &::= e = e \mid e\ne e\mid e \le e\\
-S &::= x:= e\mid [e] := e\mid x := \mathtt{malloc}(e)\mid \mathtt{free}(x)\\
+S &::= x:= e\mid x := \mathtt{load}(e)\mid \mathtt{store}(e,e)\mid x := \mathtt{malloc}(e)\mid \mathtt{free}(x)\\
 C &::= B\mid C;C\mid \mathtt{if }(B)\mathtt{ then }\{C\}\mathtt{ else }\{C\}
 \end{align*}
 

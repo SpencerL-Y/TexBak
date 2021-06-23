@@ -1,0 +1,189 @@
+
+\documentclass[11pt]{beamer}
+%aspectratio=1610
+\usepackage{ctex}
+\usepackage{CJKutf8}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{zi4}
+\usepackage[font={scriptsize,bf}]{caption}
+% \usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{mathpartir}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+
+\newcommand{\Dist}[1]{\mathcal{D}(#1)}
+\newcommand{\expectation}{\mathbb{E}}
+
+\newcommand{\states}{S}
+\newcommand{\actions}{A}
+\newcommand{\observables}{O}
+\newcommand{\trans}{T}
+\newcommand{\obs}{Z}
+\newcommand{\reward}{R}
+\newcommand{\discount}{\gamma}
+
+\newcommand{\beliefs}{\mathcal{B}}
+\newcommand{\beliefUpdate}{\tau}
+
+\newcommand{\policy}{\pi}
+
+\newcommand{\diff}[1]{\mathop{}\!\mathrm{d}#1}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\refname}{Reference}
+
+\AtBeginDocument{
+  \catcode`_=12
+  \begingroup\lccode`~=`_
+  \lowercase{\endgroup\let~}\sb
+  \mathcode`_="8000
+}
+
+% \usetheme{Madrid}
+% % \usetheme{default}
+% \setbeamertemplate{caption}[numbered]
+% \setbeamerfont{title}{size=\large}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme[onlymath]{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{footline}[frame number] 
+} 
+
+\usepackage{listings}
+\lstdefinestyle{heaplang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+    morekeywords={new_chan, fork, recv, send, swap, ref}
+}
+\lstdefinestyle{clang}{
+    language=Caml,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+}
+\lstset{style=heaplang}
+
+\usepackage{natbib}
+
+\newcommand{\buchi}{B\"uchi }
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{green2}{rgb}{0.1,0.7,0.3} 
+\newcommand{\gcheck}{{\color{green2}\faCheckCircle[regular] }}
+\newcommand{\rcross}{{\color{red} \faTimesCircle[regular]} }
+\newcommand{\rflag}{{\color{red} \faFlag}}
+% \usepackage{algorithm,amsmath}
+% \usepackage[noend]{algpseudocode}
+
+\newcommand{\zlstinline}{\let\par\endgraf\lstinline}
+\newcommand{\comments}[1]{{\color{red}#1}}
+\title{硕士开题答辩\\基于分离逻辑的内存安全分析与验证}
+\date{2021年6月25日}
+\author{学生：李勰 \qquad 导师：张立军}
+\begin{document}
+\maketitle
+
+\begin{frame}\frametitle{提纲}
+\begin{itemize}
+\item 选题的背景及意义
+\item 本题目的研究内容
+\item 已有科研基础及研究计划
+\end{itemize}
+\end{frame}
+\begin{frame}\frametitle{背景和意义}
+\begin{itemize}
+\item 什么是内存安全问题
+
+\begin{itemize}
+\item 程序中的内存操作：\texttt{malloc, free, load, store...}
+\item 
+常见的内存安全问题：内存泄漏、空指针解引用、访问越界等..
+\item 可能出现的场景：嵌入式开发、网络编程、并发编程等
+\end{itemize}
+
+
+\item 内存安全的重要性
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{本题目的研究内容}
+\begin{center}
+基于分离逻辑的内存安全分析与验证
+\end{center}
+\pause
+
+\begin{definition}[霍尔三元组]
+霍尔三元组的语法形式：
+\[\{P\}C\{Q\}\]
+其中$P,Q$分别是用逻辑公式表示的前置条件和后置条件，$C$是执行的程序。
+\end{definition}
+
+\pause
+这里$C$是含有内存操作的程序，程序的状态可以表示为
+
+\[\texttt{States} = \texttt{Store}\times \texttt{Heap}\]
+\[\texttt{Store}: Var \rightarrow Val, \quad \texttt{Heap}: Loc \rightarrow_+ (Loc \cup Val)\]
+
+
+\end{frame}
+
+\begin{frame}\frametitle{分离逻辑}
+\begin{definition}[符号堆]
+符号堆(Symbolic Heap)的语法形式：
+\[\Pi \mid \Sigma \]
+$\Pi$为纯公式$\Sigma$为空间公式。
+\end{definition}
+\begin{example}
+\[ y = x + 3 \wedge x > 0 \mid \texttt{blk}(x, y)* y\mapsto 2\]
+\[ i = 0\wedge j = 0 \mid \texttt{emp}\]
+\[\texttt{true}\mid \texttt{blk}(a,b) * \texttt{blk}(c,d)\]
+\end{example}
+\end{frame}
+
+\begin{frame}\frametitle{本题目研究内容}
+基于已有的利用分离逻辑公式的符号执行思想，对关心的内存安全性质进行归约验证。
+\begin{example}
+\texttt{main}函数中的代码片段$C$，内存泄漏
+
+\[\{\texttt{true}\mid \texttt{emp}\} C \{\texttt{true}\mid \texttt{emp}\}\]
+\end{example}
+需要的工作：
+\begin{itemize}
+\item 给出符合程序语义的分离逻辑推导规则
+\item 根据性质，定位需要进行验证的位置，并生成验证条件
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{其他问题}
+\begin{itemize}
+\item 循环的处理
+\begin{itemize}
+\item 循环展开
+\item 合成循环不变式 - 抽象解释 - 抽象域
+\end{itemize}
+\item 指针算术
+\item 不确定的变量初始值
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+\end{document}
