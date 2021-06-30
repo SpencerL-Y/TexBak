@@ -1,0 +1,176 @@
+
+\documentclass[aspectratio=1610, 13pt]{beamer}
+\usepackage{ctex}
+\usepackage{CJKutf8}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{zi4}
+\usepackage[font={scriptsize,bf}]{caption}
+% \usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{mathpartir}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+
+\newcommand{\Dist}[1]{\mathcal{D}(#1)}
+\newcommand{\expectation}{\mathbb{E}}
+
+\newcommand{\states}{S}
+\newcommand{\actions}{A}
+\newcommand{\observables}{O}
+\newcommand{\trans}{T}
+\newcommand{\obs}{Z}
+\newcommand{\reward}{R}
+\newcommand{\discount}{\gamma}
+
+\newcommand{\beliefs}{\mathcal{B}}
+\newcommand{\beliefUpdate}{\tau}
+
+\newcommand{\policy}{\pi}
+
+\newcommand{\diff}[1]{\mathop{}\!\mathrm{d}#1}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\refname}{Reference}
+
+\AtBeginDocument{
+  \catcode`_=12
+  \begingroup\lccode`~=`_
+  \lowercase{\endgroup\let~}\sb
+  \mathcode`_="8000
+}
+
+% \usetheme{Madrid}
+% % \usetheme{default}
+% \setbeamertemplate{caption}[numbered]
+% \setbeamerfont{title}{size=\large}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme[onlymath]{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{footline}[frame number] 
+} 
+
+\usepackage{listings}
+\lstdefinestyle{heaplang}{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+    morekeywords={new_chan, fork, recv, send, swap, ref}
+}
+\lstdefinestyle{clang}{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+}
+\lstset{style=heaplang}
+
+\usepackage{natbib}
+
+\newcommand{\buchi}{B\"uchi }
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{green2}{rgb}{0.1,0.7,0.3} 
+\newcommand{\gcheck}{{\color{green2}\faCheckCircle[regular] }}
+\newcommand{\rcross}{{\color{red} \faTimesCircle[regular]} }
+\newcommand{\rflag}{{\color{red} \faFlag}}
+% \usepackage{algorithm,amsmath}
+% \usepackage[noend]{algpseudocode}
+
+\newcommand{\zlstinline}{\let\par\endgraf\lstinline}
+\newcommand{\comments}[1]{{\color{red}#1}}
+\title{Group Meeting - 7}
+\date{\today}
+\author{Members: Yong Li, Depeng Liu, Weizhi Feng, Xie Li, Shizhen Yu, Yutian Zhu, Zongxin Liu}
+\begin{document}
+\maketitle
+\begin{frame}\frametitle{差分隐私}
+这俩周:
+\begin{itemize}
+  \item 中期答辩；
+  \item Aplas期刊：其他部分初步完成；
+  由于MDP算法仅是充分的，Stream例子的pan-privacy分析可能有点问题，需加以解释和根据实验情况确定。
+  \item 在调研几个部分：预估通过学习算法学得DP模型可行性、实际代码中的DP部署及验证、APPLE的差分隐私验证、隐私参数的选取等。
+  \item 用SageMath做带有绝对值的连续噪声的带参定积分，分段积分是可计算的，解决简单连续机制如Laplace的验证；
+  复杂机制刻画输入输出关系方面困难一些，需尝试。
+\end{itemize}
+
+计划:
+\begin{itemize}
+  \item Aplas期刊：计划完成
+  \item 调研部分：报告讨论一下调研情况，再具体分析后续工作。
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{内存安全工具开发}
+
+上周目标和进展情况：
+\begin{itemize}
+\item 将变量类型统一为字节变量并进行求解：完成
+\item 加入对数组和结构体的支持：基本完成，能够支持基本的结构体的处理，但在链表等复杂数据结构上还需要例子来改进
+\item 多个基本块的符号执行：加入了获得展开循环的所有执行路径的功能，还未将符号执行整合。
+\end{itemize}
+TODOs：
+\begin{itemize}
+\small
+\item 代码的重构
+\item 对已处理的例子进行收集，逐步构建出benchmark
+\item 调整编译选项获取结构体等信息
+\item 对\texttt{memcpy()},\texttt{memset()}的语义进行调研
+\item 讨论过程间符号执行怎么做，函数调用图和CFG的结合。
+
+\end{itemize}
+
+下周目标：对多个基本块的符号执行，找更多的例子运行，
+
+ \end{frame}
+ 
+ 
+
+
+\begin{frame}\frametitle{内存安全工具开发}
+文献阅读：
+
+李勰：
+\begin{itemize}
+
+\item [{[1]}] Thomas Ströder et al. Proving Termination and Memory Safety for Programs with Pointer Arithmetic. IJCAR'14. (完成)
+
+
+\item [{[2]}] Deciding Memory Safety for Single-Pass Heap-Manipulating Programs. POPL'20.（计划）
+\end{itemize}
+
+宗鑫：
+\begin{itemize}
+\item [{[1]}] Proteus: Computing Disjunctive Loop Summary via Path Dependency Analysis. FSE'16
+\end{itemize}
+
+\end{frame}
+\begin{frame}{冯维直}
+进展：
+    \begin{itemize}
+        \item 阅读rank-based和slice-based算法做unambiguous \buchi automata取补的GandALF‘20文章，在李老师的指导下基于spot库实现slice-based的算法.
+        \item [-] 结合NCSB算法的TACAS文章读seminator和spot中实现semi-deterministic \buchi automata取补的代码.
+        \item [-] 基于seminator和spot提供的自动机库和接口等实现了unambiguous \buchi automata取补的slice-based的算法，运行结果有些问题，需要继续调试.
+\end{itemize}    
+计划：
+    
+    \begin{itemize}
+        \item Slice-based算法正确实现成功运行，进行实验，和李老师讨论，在GandALF‘20文章基础上写实验部分的章节.
+\end{itemize}    
+\end{frame}
+
+
+\end{document}

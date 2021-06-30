@@ -138,7 +138,7 @@
 这里$C$是含有内存操作的程序，程序的状态可以表示为
 
 \[\texttt{States} = \texttt{Store}\times \texttt{Heap}\]
-\[\texttt{Store}: Var \rightarrow Val, \quad \texttt{Heap}: Loc \rightarrow_+ (Loc \cup Val)\]
+\[\texttt{Store}: Var \rightarrow (Val \cup Loc), \quad \texttt{Heap}: Loc \rightarrow_+ (Loc \cup Val)\]
 
 
 \end{frame}
@@ -172,23 +172,27 @@ y = x + 3 \wedge x > 0 &\mid \texttt{blk}(x, y)* y\mapsto 2\\
 \end{itemize}
 \end{frame}
 
+\begin{frame}\frametitle{}
+
+\end{frame}
+
 
 \begin{frame}\frametitle{其他问题}
 \begin{itemize}
 \item 循环的处理
 \begin{itemize}
 \item 循环展开
-\item 合成循环不变式 - 抽象解释 - 抽象域
-\item Loop summary.
+\item 合成循环不变式 - 抽象解释 - 抽象域 
+\item 循环摘要(summary).
 \end{itemize}
 \item 指针算术
-\item 和终止性等的结合
+\item 和终止性、Incorrectness Logic等的结合
 \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{研究计划}
 \begin{itemize}
-\item 第一阶段：更深入的调研，对相关工具的调研。如\textsc{Predator}，抽象解释框架\textsc{Crab}.
+\item 第一阶段：更深入的调研，对相关工具的调研。如\textsc{Predator}，\textsc{Smack}等内存分析工具，以及抽象解释框架\textsc{Crab}等.
 
 \item 第二阶段：基于已有的工具搭建分析验证平台，从符号执行开始对工具迭代增强。
 
@@ -206,6 +210,14 @@ y = x + 3 \wedge x > 0 &\mid \texttt{blk}(x, y)* y\mapsto 2\\
 \end{itemize}
 
 对利用SMT做程序性质验证、逻辑归约等方法和技术手段较为熟悉。并在以上两个项目中进行了工具的开发，在实现方面也有一定经验。
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\large
+谢谢！
+\end{center}
+
 \end{frame}
 
 \end{document}
