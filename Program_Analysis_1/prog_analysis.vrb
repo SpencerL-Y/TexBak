@@ -1,0 +1,22 @@
+\frametitle{Live Variable Analysis}
+\textbf{Live variable:}  varDef $\longrightarrow$ varUsed
+
+Along the path, there is no redefinition to the variable.
+
+Then we call it live at the exit of the program.
+
+\textbf{Problem:} for each program point, which variable \textit{may} be live at the exit from the point.
+\begin{example}
+\begin{lstlisting}
+int main(){
+    int x = 10;
+    int y = 11;
+    int z = x + 1;
+    return z;
+}
+
+\end{lstlisting}
+
+\end{example}
+
+Live variable analysis is useful in dead code elimination.

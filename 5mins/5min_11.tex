@@ -1,0 +1,241 @@
+
+\documentclass[aspectratio=1610, 13pt]{beamer}
+\usepackage{ctex}
+\usepackage{CJKutf8}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{mathtools,array}
+\usepackage[T1]{fontenc}
+\usepackage{zi4}
+\usepackage[font={scriptsize,bf}]{caption}
+% \usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{mathpartir}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+
+\newcommand{\Dist}[1]{\mathcal{D}(#1)}
+\newcommand{\expectation}{\mathbb{E}}
+
+\newcommand{\states}{S}
+\newcommand{\actions}{A}
+\newcommand{\observables}{O}
+\newcommand{\trans}{T}
+\newcommand{\obs}{Z}
+\newcommand{\reward}{R}
+\newcommand{\discount}{\gamma}
+
+\newcommand{\beliefs}{\mathcal{B}}
+\newcommand{\beliefUpdate}{\tau}
+
+\newcommand{\policy}{\pi}
+
+\newcommand{\diff}[1]{\mathop{}\!\mathrm{d}#1}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\refname}{Reference}
+
+\AtBeginDocument{
+  \catcode`_=12
+  \begingroup\lccode`~=`_
+  \lowercase{\endgroup\let~}\sb
+  \mathcode`_="8000
+}
+
+% \usetheme{Madrid}
+% % \usetheme{default}
+% \setbeamertemplate{caption}[numbered]
+% \setbeamerfont{title}{size=\large}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme[onlymath]{serif}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{footline}[frame number] 
+} 
+
+\usepackage{listings}
+\lstdefinestyle{heaplang}{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+    morekeywords={new_chan, fork, recv, send, swap, ref}
+}
+\lstdefinestyle{clang}{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    escapeinside={<@}{@>},
+}
+\lstset{style=heaplang}
+
+\usepackage{natbib}
+
+\newcommand{\buchi}{B\"uchi }
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{green2}{rgb}{0.1,0.7,0.3} 
+\newcommand{\gcheck}{{\color{green2}\faCheckCircle[regular] }}
+\newcommand{\rcross}{{\color{red} \faTimesCircle[regular]} }
+\newcommand{\rflag}{{\color{red} \faFlag}}
+% \usepackage{algorithm,amsmath}
+% \usepackage[noend]{algpseudocode}
+
+\newcommand{\zlstinline}{\let\par\endgraf\lstinline}
+\newcommand{\comments}[1]{{\color{red}#1}}
+\title{Group Meeting - 9}
+\date{\today}
+\author{Members: Yong Li, Depeng Liu, Weizhi Feng, Xie Li, Shizhen Yu, Yutian Zhu, Zongxin Liu}
+\begin{document}
+\maketitle
+
+\begin{frame}\frametitle{差分隐私}
+这周:
+\begin{itemize}
+  \item Aplas期刊：已用PRISM求解差分隐私问题；针对部分问题，为了防止出现计算Pmin=0的情况，加入公平性性质求得更精确的隐私参数；
+  文章再和老师一起加工一下准备这两天投稿；
+  \item 读formal testing的文章，准备和蓝牙协议的黑盒模型学习一起报告。
+\end{itemize}
+
+计划:
+\begin{itemize}
+  \item Aplas期刊：计划完成；
+  \item 报告讨论一下文章，讨论后续差分隐私模型的学习问题；
+  \item 准备几个报告（包括学习、这周五和下周三组会）。
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{内存安全工具开发}
+
+上周目标和进展情况：
+
+由于开会和协助写项目书，花在内存工具安全上的时间较少，没有实质性进展。
+\begin{itemize}
+
+\item 过程间分析的调研和实现
+
+（目前正在阅读 Principles of Program Analysis 的教材、熊英飞老师的课件）
+
+\item 一些Debug的工作：昨天的问题..
+\end{itemize}
+TODOs：
+\begin{itemize}
+
+\item 继续完成上周目标，需要注意以下问题
+\begin{itemize}
+\item 对于栈上基本类型变量的\texttt{alloc}处理。
+\item 过程间分析的函数调用图如何利用的问题，以及递归调用的问题。
+\item 栈上内容的在函数中的上下文信息。
+\end{itemize}
+\end{itemize}
+
+ \end{frame}
+ 
+ 
+\begin{frame}[fragile]\frametitle{内存安全工具的开发}
+
+\begin{multicols}{2}
+ \begin{lstlisting}
+    int a = 10;
+    int* j = malloc(4);
+    if(a > 10){
+        free(j);
+    }
+ \end{lstlisting}
+ \begin{lstlisting}
+    for(int i = 0; i < 15; i ++){
+        int *j = (int*)malloc
+        (sizeof(int));
+        if(i < 10){
+            free(j);
+        }
+    }
+ 
+ \end{lstlisting}
+ 
+ \begin{lstlisting}
+    TData data;
+    TData* pdata = &data;
+
+    TData c;
+    pdata->lo = malloc(16);
+    pdata->hi = malloc(24);
+    void *lo = pdata->lo;
+    void *hi = pdata->hi;
+    if(lo == hi){
+        free(lo);
+        free(hi);
+    }
+ 
+ \end{lstlisting}
+ 
+ 
+ \end{multicols}
+ 
+ 
+ 
+\end{frame}
+ 
+\begin{frame}[fragile]\frametitle{内存安全工具的开发}
+\begin{lstlisting}
+    n = 128;
+    a = malloc (n * sizeof(*a));
+    b = malloc (n * sizeof(*b));
+    *b++ = 0;
+    int i;
+    for (i = 0; i < n; i++)
+        a[i] = -1;
+    for (i = 0; i < 128 - 1; i++)
+        b[i] = -1;
+    if (b[-2]) /* invalid deref */
+    { free(a); free(b-1); }
+    else
+    { free(a); free(b-1); }
+
+\end{lstlisting}
+\end{frame}
+ 
+
+\begin{frame}{冯维直}
+进展：
+    \begin{itemize}
+        \item 代码实现：
+        \item [-] 上周已经实现了GandALF文章中的NCB算法（一种对unambiguous \buchi automata取补的slice-based的算法）.
+        \item [-] 上周提到在实现李老师提出的semi-deterministic automata取补新算法时（NSBC算法）发现有些样例不对，本周已经将bug修复.
+        \item [-] 读李老师博士论文中介绍pldi文章对semi-deterministic取补算法的改进，和李老师讨论了他的改进算法.
+        \item [-] 目前在用seminator自带的公式和李老师给的几百个例子进行实验.
+        
+\end{itemize}    
+计划：
+    \begin{itemize}
+        \item 目前的实验结果显示实现的NSBC算法优势不明显，需要进行优化或者找其他benchmark.
+        \item 调研硬件验证的内容.
+        \begin{itemize}
+            \item [-] 问题，验证方法，难点，工具框架.
+        \end{itemize}
+\end{itemize}    
+\end{frame}
+
+\begin{frame}\frametitle{朱雨田：进度}
+\begin{itemize}
+
+\item Compositional Shape Analysis by means of Bi-Abduction - 整理完成
+\item VeriSolid Correct-by-Design Smart Contracts for Ethereum FC2019 - 读完
+\item Static Automated Program Repair for Heap Properties - 在读
+\item 学习Ocaml
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
