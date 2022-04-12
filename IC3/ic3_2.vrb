@@ -1,0 +1,9 @@
+\frametitle{IC3: Algorithm}
+The main function:
+\begin{algorithm}[!h]
+\caption{Main function}
+\begin{algorithmic}[1]
+
+
+\end{algorithmic}
+\end{algorithm}
