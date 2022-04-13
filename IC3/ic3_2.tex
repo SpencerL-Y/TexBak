@@ -1,4 +1,4 @@
-\documentclass[aspectratio=1610, 13pt]{beamer}
+ \documentclass[aspectratio=1610, 13pt]{beamer}
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{mathtools,array}
@@ -106,6 +106,28 @@ Reporter:  Xie Li}
 \vspace{5em}
 \end{frame}
 
+\begin{frame}{IC3: Basic Data Structure}
+\[F_0 = I, F_1, F_2, \ldots, F_k\]
+
+
+$F_k$ represents the set of ``not greater than $k$ step reachable state''
+
+\begin{itemize}
+\item $I \Rightarrow F_0$
+\item $F_i\Rightarrow F_{i + 1}$
+for $0\le i < k$
+\item $F_i\Rightarrow P$
+for $0\le i \le k$
+\item $F_i\wedge T \Rightarrow F_{i + 1} '$ 
+for $0\le i < k$
+\end{itemize}
+Intuition of these conditions: ...
+\end{frame}
+
+\begin{frame}{Intuition of the Algorithm}
+
+\end{frame}
+
 \begin{frame}{IC3: The Main Function}
 The main function:
 \begin{algorithmic}[1]
@@ -155,7 +177,7 @@ The main function:
 \RETURN $i - 1$
 \ENDIF
 \ENDFOR
-\STATE \texttt{generateClause}$(s, i-1, k)$
+\STATE \texttt{generateClause}$(s, k, k)$
 \RETURN $k$
 \end{algorithmic}
 \begin{algorithmic}[1]
@@ -209,6 +231,7 @@ Experimental result:
 
 \begin{frame}{Further Questions}
 \begin{itemize}
+\item Why IC3 works better than FSIS?
 \item What about infinite transition system?
 \item What about more general transition system?
 \end{itemize}
